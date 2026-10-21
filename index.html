@@ -9,7 +9,7 @@
   <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="getquickhaul-build" content="2026-10-16-driver-pay-80" />
+  <meta name="getquickhaul-build" content="2026-10-21-driver-multi-area-south-dade" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="GetQuickHaul" />
@@ -33,7 +33,7 @@
     "email": "getquickhaul@gmail.com",
     "priceRange": "$45 base + $3/mile",
     "openingHours": "Mo-Su 07:00-19:00",
-    "areaServed": ["Weehawken NJ", "Hudson County NJ", "North Jersey", "New York City metro", "Hollywood FL", "Broward County FL"],
+    "areaServed": ["Weehawken NJ", "Hudson County NJ", "North Jersey", "New York City metro", "Hollywood FL", "Broward County FL", "Cutler Bay FL", "Palmetto Bay FL", "South Dade FL", "Miami-Dade County FL"],
     "makesOffer": [
       "Same-day pickup and delivery",
       "Furniture and store pickup delivery",
@@ -527,6 +527,13 @@
     .driver-review > div { padding: 13px 15px; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); }
     .driver-review dt { margin: 0 0 3px; color: var(--muted); font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
     .driver-review dd { margin: 0; color: var(--ink); font-weight: 800; overflow-wrap: anywhere; }
+    .field-label { display: block; margin-bottom: 7px; color: var(--ink); font-size: .92rem; font-weight: 800; }
+    .driver-area-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .driver-area-choice { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: center; margin: 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); cursor: pointer; }
+    .driver-area-choice input { width: 20px; height: 20px; min-height: 0; margin: 0; padding: 0; accent-color: var(--blue-dark); }
+    .driver-area-choice input:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+    .driver-area-choice:has(input:checked) { border-color: var(--blue-dark); background: var(--soft); }
+    @media (max-width: 470px) { .driver-area-choices { grid-template-columns: 1fr; } }
     .driver-role { padding-top: 18px; border-top: 1px solid rgba(255,255,255,.22); }
     .driver-role h3 { margin: 0 0 9px; color: #fff; font-size: 1.08rem; }
     .driver-role ul { margin: 0; padding-left: 20px; color: #dbe9f4; font-size: .92rem; }
@@ -782,8 +789,8 @@
       <div class="wrap area-grid">
         <div class="area-copy">
           <p class="eyebrow" data-i18n="w.serviceArea">Service area</p>
-          <h2 data-i18n="area.h2">Now serving two areas: Weehawken NJ and Hollywood FL.</h2>
-          <p data-i18n="area.p">Pickups are available in two service areas: Weehawken, North Jersey and the NYC metro area, and now Hollywood and Broward County, Florida. From a pickup inside either area, we can deliver anywhere — the drop-off can be any distance and is priced by driving miles. If the pickup or an extra stop is outside both areas, the app will let you know before the booking can continue.</p>
+          <h2 data-i18n="area.h2">Now serving two areas: Weehawken NJ and South Florida.</h2>
+          <p data-i18n="area.p">Pickups are available in two service areas: Weehawken, North Jersey and the NYC metro area, and South Florida — Hollywood and Broward County, plus South Dade (Cutler Bay and Palmetto Bay). From a pickup inside either area, we can deliver anywhere — the drop-off can be any distance and is priced by driving miles. If the pickup or an extra stop is outside both areas, the app will let you know before the booking can continue.</p>
         </div>
         <ul class="towns" aria-label="Cities served" data-i18n-aria="area.townsAria">
           <li><span class="dot"></span>Weehawken</li>
@@ -794,7 +801,7 @@
           <li><span class="dot"></span>North Bergen</li>
           <li><span class="dot"></span>Guttenberg</li>
           <li><span class="dot"></span>Secaucus</li>
-          <li class="towns-group"><span class="dot"></span><span data-i18n="area.flGroup">Now serving Florida — Hollywood &amp; Broward County</span></li>
+          <li class="towns-group"><span class="dot"></span><span data-i18n="area.flGroup">Now serving Florida — Hollywood, Broward County &amp; South Dade</span></li>
           <li><span class="dot"></span>Hollywood</li>
           <li><span class="dot"></span>Fort Lauderdale</li>
           <li><span class="dot"></span>Hallandale Beach</li>
@@ -809,6 +816,8 @@
           <li><span class="dot"></span>Coral Springs</li>
           <li><span class="dot"></span>Pompano Beach</li>
           <li><span class="dot"></span>Deerfield Beach</li>
+          <li><span class="dot"></span>Cutler Bay</li>
+          <li><span class="dot"></span>Palmetto Bay</li>
         </ul>
       </div>
     </section>
@@ -1470,15 +1479,31 @@
                 <input id="driver-dob" name="driver-dob" type="date" autocomplete="bday" aria-label="Date of birth" data-i18n-aria="drv.dob" required />
                 <small class="hint" data-i18n="drv.dobHint">You must be 21 or older.</small>
               </div>
-              <div class="field">
-                <label for="driver-area" data-i18n="drv.area">Preferred service area</label>
-                <select id="driver-area" name="driver-area" required>
-                  <option value="" data-i18n="drv.areaChoose">Choose an area</option>
-                  <option value="Hudson County and nearby" data-i18n="drv.areaHudson">Hudson County &amp; nearby</option>
-                  <option value="North Jersey" data-i18n="drv.areaNorth">North Jersey</option>
-                  <option value="NYC metro" data-i18n="drv.areaNyc">NYC metro</option>
-                  <option value="Hollywood / Broward County, FL" data-i18n="drv.areaFl">Hollywood / Broward County, FL</option>
-                </select>
+              <div class="field field-wide">
+                <span class="field-label" id="driver-area-label" data-i18n="drv.area">Service areas you can cover</span>
+                <div class="driver-area-choices" role="group" aria-labelledby="driver-area-label">
+                  <label class="driver-area-choice">
+                    <input type="checkbox" name="driver-area" value="Hudson County and nearby" />
+                    <span data-i18n="drv.areaHudson">Hudson County &amp; nearby</span>
+                  </label>
+                  <label class="driver-area-choice">
+                    <input type="checkbox" name="driver-area" value="North Jersey" />
+                    <span data-i18n="drv.areaNorth">North Jersey</span>
+                  </label>
+                  <label class="driver-area-choice">
+                    <input type="checkbox" name="driver-area" value="NYC metro" />
+                    <span data-i18n="drv.areaNyc">NYC metro</span>
+                  </label>
+                  <label class="driver-area-choice">
+                    <input type="checkbox" name="driver-area" value="Hollywood / Broward County, FL" />
+                    <span data-i18n="drv.areaFl">Hollywood / Broward County, FL</span>
+                  </label>
+                  <label class="driver-area-choice">
+                    <input type="checkbox" name="driver-area" value="South Dade (Cutler Bay / Palmetto Bay, FL)" />
+                    <span data-i18n="drv.areaSouthDade">South Dade — Cutler Bay &amp; Palmetto Bay, FL</span>
+                  </label>
+                </div>
+                <small class="hint" data-i18n="drv.areaHint">Pick every area where you can take trips — you can cover more than one area.</small>
               </div>
             </div>
             <div class="step-controls"><button class="btn btn-primary driver-next" type="button" data-i18n="common.next">Next</button></div>
@@ -1661,7 +1686,7 @@
           </details>
           <details>
             <summary data-i18n="faq.q6">Can I enter an address outside New Jersey?</summary>
-            <p data-i18n="faq.a6">Yes. Address search covers all 50 states. Bookings are open to pickups in our two service areas — Weehawken, North Jersey and the NYC metro area, and Hollywood and Broward County, Florida — the drop-off can be anywhere, and the price is based on the driving miles. If the pickup or an extra stop is outside those areas, you’ll see “No drivers available in this area temporarily” and the booking will not continue.</p>
+            <p data-i18n="faq.a6">Yes. Address search covers all 50 states. Bookings are open to pickups in our two service areas — Weehawken, North Jersey and the NYC metro area, and South Florida: Hollywood and Broward County, plus South Dade (Cutler Bay and Palmetto Bay) — the drop-off can be anywhere, and the price is based on the driving miles. If the pickup or an extra stop is outside those areas, you’ll see “No drivers available in this area temporarily” and the booking will not continue.</p>
           </details>
         </div>
       </div>
@@ -1686,7 +1711,7 @@
       <div class="wrap">
         <p class="eyebrow" data-i18n="about.eyebrow">About GetQuickHaul</p>
         <h2 id="about-title" data-i18n="about.h2">GetQuickHaul — Pickup &amp; Delivery Service in Weehawken, NJ</h2>
-        <p data-i18n="about.p1">GetQuickHaul provides fast, careful pickup and delivery for packages, small loads, furniture, and store or warehouse pickups across Weehawken, Hudson County, North Jersey, and the New York City metro area — and now Hollywood and Broward County, Florida. Book online in minutes and get an instant price before you confirm: $45 covers the first 5 miles, then $3 per mile after that, door to door. Extra stops are $15 each, and deliveries to New York City include a $25 toll surcharge. We are open 7 AM to 7 PM every day; pickups outside those hours carry a $15 after-hours charge for new customers.</p>
+        <p data-i18n="about.p1">GetQuickHaul provides fast, careful pickup and delivery for packages, small loads, furniture, and store or warehouse pickups across Weehawken, Hudson County, North Jersey, and the New York City metro area — and now South Florida: Hollywood and Broward County, plus South Dade (Cutler Bay and Palmetto Bay). Book online in minutes and get an instant price before you confirm: $45 covers the first 5 miles, then $3 per mile after that, door to door. Extra stops are $15 each, and deliveries to New York City include a $25 toll surcharge. We are open 7 AM to 7 PM every day; pickups outside those hours carry a $15 after-hours charge for new customers.</p>
         <h3 data-i18n="about.h3a">What we deliver</h3>
         <ul class="about-list">
           <li data-i18n="about.li1">Package &amp; parcel delivery</li>
@@ -1757,9 +1782,9 @@
         "svc.3t": "Instant, itemized pricing",
         "svc.h2": "Right-sized help for local deliveries.",
         "svc.intro": "GetQuickHaul focuses on jobs that fit a cargo van—without the overhead or complexity of a full moving crew.",
-        "area.h2": "Now serving two areas: Weehawken NJ and Hollywood FL.",
-        "area.p": "Pickups are available in two service areas: Weehawken, North Jersey and the NYC metro area, and now Hollywood and Broward County, Florida. From a pickup inside either area, we can deliver anywhere — the drop-off can be any distance and is priced by driving miles. If the pickup or an extra stop is outside both areas, the app will let you know before the booking can continue.",
-        "area.flGroup": "Now serving Florida — Hollywood & Broward County",
+        "area.h2": "Now serving two areas: Weehawken NJ and South Florida.",
+        "area.p": "Pickups are available in two service areas: Weehawken, North Jersey and the NYC metro area, and South Florida — Hollywood and Broward County, plus South Dade (Cutler Bay and Palmetto Bay). From a pickup inside either area, we can deliver anywhere — the drop-off can be any distance and is priced by driving miles. If the pickup or an extra stop is outside both areas, the app will let you know before the booking can continue.",
+        "area.flGroup": "Now serving Florida — Hollywood, Broward County & South Dade",
         "area.townsAria": "Cities served",
         "w.serviceArea": "Service area",
         "w.pickup": "Pickup",
@@ -1935,12 +1960,13 @@
         "drv.agreementH": "Driver acknowledgment",
         "drv.agreementP1": "You confirm that the information you provide is accurate and that you will not knowingly accept or transport appliances or any illegal, stolen, controlled, hazardous, dangerous or undisclosed items. You will follow applicable laws, protect the cargo in your care and immediately report any accident, damage, delay or safety concern.",
         "drv.agreementP2": "Registration expresses interest only. It does not guarantee trips, hours or approval. Your pay is 80% of the fare on each trip you accept. Expenses, insurance requirements, working relationship and other terms are confirmed in a separate written agreement before your first trip.",
-        "drv.area": "Preferred service area",
-        "drv.areaChoose": "Choose an area",
+        "drv.area": "Service areas you can cover",
+        "drv.areaHint": "Pick every area where you can take trips — you can cover more than one area.",
         "drv.areaHudson": "Hudson County & nearby",
         "drv.areaNorth": "North Jersey",
         "drv.areaNyc": "NYC metro",
         "drv.areaFl": "Hollywood / Broward County, FL",
+        "drv.areaSouthDade": "South Dade — Cutler Bay & Palmetto Bay, FL",
         "drv.copyH": "Become a GetQuickHaul driver.",
         "drv.copyP": "Drivers keep 80% of every fare. You’ll review every delivery’s route, load and pay before deciding whether to accept it.",
         "drv.dob": "Date of birth",
@@ -2043,7 +2069,7 @@
         "faq.a3": "The door-to-door quote is $45 for the first 5 miles, then $3 for each additional mile. Extra stops are $15 each. A $25 NYC toll surcharge applies when the route crosses the Hudson to or from Manhattan. Pickups before 7 AM or after 7 PM have a $15 after-hours surge.",
         "faq.a4": "You can pay with Cash App ($GetQuickHaul), in cash, cash on delivery (COD), or by check made payable to GetQuickHaul. If you’d rather arrange payment another way, choose manual payment when you book and GetQuickHaul will set it up with you. Nothing is due until your booking is confirmed.",
         "faq.a5": "GetQuickHaul will not carry appliances; illegal or stolen goods; controlled substances; firearms or ammunition; hazardous, flammable or explosive materials; or anything unsafe to transport. We may inspect or refuse a load.",
-        "faq.a6": "Yes. Address search covers all 50 states. Bookings are open to pickups in our two service areas — Weehawken, North Jersey and the NYC metro area, and Hollywood and Broward County, Florida — the drop-off can be anywhere, and the price is based on the driving miles. If the pickup or an extra stop is outside those areas, you’ll see “No drivers available in this area temporarily” and the booking will not continue.",
+        "faq.a6": "Yes. Address search covers all 50 states. Bookings are open to pickups in our two service areas — Weehawken, North Jersey and the NYC metro area, and South Florida: Hollywood and Broward County, plus South Dade (Cutler Bay and Palmetto Bay) — the drop-off can be anywhere, and the price is based on the driving miles. If the pickup or an extra stop is outside those areas, you’ll see “No drivers available in this area temporarily” and the booking will not continue.",
         "faq.h2": "Good to know.",
         "faq.q1": "What kinds of jobs do you handle?",
         "faq.q2": "Do you handle full-house moves?",
@@ -2066,7 +2092,7 @@
         "about.li4": "Business deliveries on a repeat schedule",
         "about.li5": "Driver opportunities — owner-operators earn 80% of every fare",
         "about.note": "Please note: we do not move appliances.",
-        "about.p1": "GetQuickHaul provides fast, careful pickup and delivery for packages, small loads, furniture, and store or warehouse pickups across Weehawken, Hudson County, North Jersey, and the New York City metro area — and now Hollywood and Broward County, Florida. Book online in minutes and get an instant price before you confirm: $45 covers the first 5 miles, then $3 per mile after that, door to door. Extra stops are $15 each, and deliveries to New York City include a $25 toll surcharge. We are open 7 AM to 7 PM every day; pickups outside those hours carry a $15 after-hours charge for new customers.",
+        "about.p1": "GetQuickHaul provides fast, careful pickup and delivery for packages, small loads, furniture, and store or warehouse pickups across Weehawken, Hudson County, North Jersey, and the New York City metro area — and now South Florida: Hollywood and Broward County, plus South Dade (Cutler Bay and Palmetto Bay). Book online in minutes and get an instant price before you confirm: $45 covers the first 5 miles, then $3 per mile after that, door to door. Extra stops are $15 each, and deliveries to New York City include a $25 toll surcharge. We are open 7 AM to 7 PM every day; pickups outside those hours carry a $15 after-hours charge for new customers.",
         "about.p2": "Weehawken, Union City, West New York, Hoboken, Jersey City, Secaucus, North Bergen, Guttenberg and surrounding Hudson County and North Jersey communities, plus the NYC metro — and in Florida, Hollywood and Broward County towns including Fort Lauderdale, Pembroke Pines, Davie and Coral Springs.",
         "footer.p": "GetQuickHaul is a service operated by AM Fix and Flip Inc.",
         "dock.aria": "Quick contact",
@@ -2103,7 +2129,7 @@
         "js.distManualSuffix": " Please enter the total driving miles manually.",
         "js.distNoDrivers": "No drivers available in this area temporarily",
         "js.distNotFound": "We couldn’t find {label}.",
-        "js.distOutEstimate": "Pickups are currently limited to Weehawken, North Jersey and the NYC metro area, and Hollywood and Broward County, FL.",
+        "js.distOutEstimate": "Pickups are currently limited to Weehawken, North Jersey and the NYC metro area, and South Florida: Hollywood / Broward County and South Dade (Cutler Bay & Palmetto Bay), FL.",
         "js.distOutside": "Outside current service area",
         "js.distRouteNotFound": "We found the addresses but couldn’t build a driving route.",
         "js.distSuccess": "{miles} driving miles calculated. Tap Continue when you’re ready.",
@@ -2112,6 +2138,7 @@
         "js.docSelectedMore": " (+{n} more)",
         "js.driverAgeStatus": "Drivers must be 21 or older.",
         "js.driverAgeValidity": "You must be 21 or older to apply.",
+        "js.driverAreaValidity": "Choose at least one service area.",
         "js.driverIncomplete": "Please complete the required information before continuing.",
         "js.driverSent": "Application sent",
         "js.driverStatusDefault": "Nothing is sent until you tap “Submit application” on the last step.",
@@ -2185,9 +2212,9 @@
         "svc.3t": "Precios instantáneos y detallados",
         "svc.h2": "Ayuda a la medida para entregas locales.",
         "svc.intro": "GetQuickHaul se enfoca en trabajos que caben en una furgoneta de carga, sin los costos ni la complejidad de un equipo completo de mudanza.",
-        "area.h2": "Ahora atendemos dos zonas: Weehawken NJ y Hollywood FL.",
-        "area.p": "Las recogidas están disponibles en dos zonas de servicio: Weehawken, el norte de New Jersey y el área metropolitana de NYC, y ahora Hollywood y el condado de Broward, Florida. Desde una recogida dentro de cualquiera de las dos zonas, podemos entregar en cualquier lugar: la entrega puede ser a cualquier distancia y el precio se basa en las millas del recorrido. Si la recogida o una parada extra está fuera de ambas zonas, la aplicación te lo indicará antes de que la reserva pueda continuar.",
-        "area.flGroup": "Ahora en Florida — Hollywood y el condado de Broward",
+        "area.h2": "Ahora atendemos dos zonas: Weehawken NJ y el sur de la Florida.",
+        "area.p": "Las recogidas están disponibles en dos zonas de servicio: Weehawken, el norte de New Jersey y el área metropolitana de NYC, y el sur de la Florida — Hollywood y el condado de Broward, además de South Dade (Cutler Bay y Palmetto Bay). Desde una recogida dentro de cualquiera de las dos zonas, podemos entregar en cualquier lugar: la entrega puede ser a cualquier distancia y el precio se basa en las millas del recorrido. Si la recogida o una parada extra está fuera de ambas zonas, la aplicación te lo indicará antes de que la reserva pueda continuar.",
+        "area.flGroup": "Ahora en Florida — Hollywood, el condado de Broward y South Dade",
         "area.townsAria": "Ciudades atendidas",
         "w.serviceArea": "Área de servicio",
         "w.pickup": "Recogida",
@@ -2363,12 +2390,13 @@
         "drv.agreementH": "Reconocimiento del conductor",
         "drv.agreementP1": "Confirmas que la información que proporcionas es exacta y que no aceptarás ni transportarás a sabiendas electrodomésticos ni ningún artículo ilegal, robado, controlado, peligroso o no declarado. Cumplirás las leyes aplicables, protegerás la carga a tu cuidado e informarás de inmediato cualquier accidente, daño, retraso o problema de seguridad.",
         "drv.agreementP2": "El registro solo expresa interés. No garantiza viajes, horas ni aprobación. Tu pago es el 80% de la tarifa de cada viaje que aceptes. Los gastos, los requisitos de seguro, la relación laboral y otros términos se confirman en un acuerdo escrito separado antes de tu primer viaje.",
-        "drv.area": "Área de servicio preferida",
-        "drv.areaChoose": "Elige un área",
+        "drv.area": "Áreas de servicio que puedes cubrir",
+        "drv.areaHint": "Elige todas las áreas donde puedes hacer viajes — puedes cubrir más de una área.",
         "drv.areaHudson": "Condado de Hudson y alrededores",
         "drv.areaNorth": "Norte de New Jersey",
         "drv.areaNyc": "Área metropolitana de NYC",
         "drv.areaFl": "Hollywood / condado de Broward, FL",
+        "drv.areaSouthDade": "South Dade — Cutler Bay y Palmetto Bay, FL",
         "drv.copyH": "Conviértete en conductor de GetQuickHaul.",
         "drv.copyP": "Los conductores se quedan con el 80% de cada tarifa. Revisarás la ruta, la carga y el pago de cada entrega antes de decidir si la aceptas.",
         "drv.dob": "Fecha de nacimiento",
@@ -2471,7 +2499,7 @@
         "faq.a3": "La cotización puerta a puerta es de $45 por las primeras 5 millas y luego $3 por cada milla adicional. Las paradas extra cuestan $15 cada una. Se aplica un recargo de $25 por peaje de NYC cuando la ruta cruza el Hudson hacia o desde Manhattan. Las recogidas antes de las 7 AM o después de las 7 PM tienen un recargo de $15 fuera de horario.",
         "faq.a4": "Puedes pagar con Cash App ($GetQuickHaul), en efectivo, en efectivo al entregar (COD) o con un cheque a nombre de GetQuickHaul. Si prefieres acordar el pago de otra manera, elige pago manual al reservar y GetQuickHaul lo coordinará contigo. No debes nada hasta que tu reserva sea confirmada.",
         "faq.a5": "GetQuickHaul no transportará electrodomésticos; artículos ilegales o robados; sustancias controladas; armas de fuego o municiones; materiales peligrosos, inflamables o explosivos; ni nada que no sea seguro transportar. Podemos inspeccionar o rechazar una carga.",
-        "faq.a6": "Sí. La búsqueda de direcciones cubre los 50 estados. Las reservas están abiertas a recogidas en nuestras dos zonas de servicio — Weehawken, el norte de New Jersey y el área metropolitana de NYC, y Hollywood y el condado de Broward, Florida — la entrega puede ser en cualquier lugar y el precio se basa en las millas del recorrido. Si la recogida o una parada extra está fuera de esas zonas, verás «No hay conductores disponibles en esta área temporalmente» y la reserva no continuará.",
+        "faq.a6": "Sí. La búsqueda de direcciones cubre los 50 estados. Las reservas están abiertas a recogidas en nuestras dos zonas de servicio — Weehawken, el norte de New Jersey y el área metropolitana de NYC, y el sur de la Florida: Hollywood y el condado de Broward, además de South Dade (Cutler Bay y Palmetto Bay) — la entrega puede ser en cualquier lugar y el precio se basa en las millas del recorrido. Si la recogida o una parada extra está fuera de esas zonas, verás «No hay conductores disponibles en esta área temporalmente» y la reserva no continuará.",
         "faq.h2": "Es bueno saberlo.",
         "faq.q1": "¿Qué tipos de trabajos realizan?",
         "faq.q2": "¿Hacen mudanzas completas de casas?",
@@ -2494,7 +2522,7 @@
         "about.li4": "Entregas comerciales con programación repetida",
         "about.li5": "Oportunidades para conductores: los propietarios-operadores ganan el 80% de cada tarifa",
         "about.note": "Ten en cuenta: no transportamos electrodomésticos.",
-        "about.p1": "GetQuickHaul ofrece recogida y entrega rápida y cuidadosa de paquetes, cargas pequeñas, muebles y recogidas en tiendas o almacenes en Weehawken, el condado de Hudson, el norte de New Jersey y el área metropolitana de la ciudad de Nueva York — y ahora Hollywood y el condado de Broward, Florida. Reserva en línea en minutos y obtén un precio instantáneo antes de confirmar: $45 cubren las primeras 5 millas y luego $3 por milla, puerta a puerta. Las paradas extra cuestan $15 cada una, y las entregas a la ciudad de Nueva York incluyen un recargo de $25 por peaje. Abrimos de 7 AM a 7 PM todos los días; las recogidas fuera de ese horario tienen un cargo de $15 fuera de horario para clientes nuevos.",
+        "about.p1": "GetQuickHaul ofrece recogida y entrega rápida y cuidadosa de paquetes, cargas pequeñas, muebles y recogidas en tiendas o almacenes en Weehawken, el condado de Hudson, el norte de New Jersey y el área metropolitana de la ciudad de Nueva York — y ahora el sur de la Florida: Hollywood y el condado de Broward, además de South Dade (Cutler Bay y Palmetto Bay). Reserva en línea en minutos y obtén un precio instantáneo antes de confirmar: $45 cubren las primeras 5 millas y luego $3 por milla, puerta a puerta. Las paradas extra cuestan $15 cada una, y las entregas a la ciudad de Nueva York incluyen un recargo de $25 por peaje. Abrimos de 7 AM a 7 PM todos los días; las recogidas fuera de ese horario tienen un cargo de $15 fuera de horario para clientes nuevos.",
         "about.p2": "Weehawken, Union City, West New York, Hoboken, Jersey City, Secaucus, North Bergen, Guttenberg y las comunidades cercanas del condado de Hudson y el norte de New Jersey, además del área metropolitana de NYC — y en Florida, Hollywood y las ciudades del condado de Broward, como Fort Lauderdale, Pembroke Pines, Davie y Coral Springs.",
         "footer.p": "GetQuickHaul es un servicio operado por AM Fix and Flip Inc.",
         "dock.aria": "Contacto rápido",
@@ -2531,7 +2559,7 @@
         "js.distManualSuffix": " Ingresa el total de millas del recorrido manualmente.",
         "js.distNoDrivers": "No hay conductores disponibles en esta área temporalmente",
         "js.distNotFound": "No pudimos encontrar {label}.",
-        "js.distOutEstimate": "Actualmente las recogidas están limitadas a Weehawken, el norte de New Jersey y el área metropolitana de NYC, y a Hollywood y el condado de Broward, FL.",
+        "js.distOutEstimate": "Actualmente las recogidas están limitadas a Weehawken, el norte de New Jersey y el área metropolitana de NYC, y al sur de la Florida: Hollywood / condado de Broward y South Dade (Cutler Bay y Palmetto Bay), FL.",
         "js.distOutside": "Fuera del área de servicio actual",
         "js.distRouteNotFound": "Encontramos las direcciones, pero no pudimos crear una ruta de manejo.",
         "js.distSuccess": "{miles} millas de recorrido calculadas. Toca Continuar cuando estés listo.",
@@ -2540,6 +2568,7 @@
         "js.docSelectedMore": " (+{n} más)",
         "js.driverAgeStatus": "Los conductores deben tener 21 años o más.",
         "js.driverAgeValidity": "Debes tener 21 años o más para postularte.",
+        "js.driverAreaValidity": "Elige al menos un área de servicio.",
         "js.driverIncomplete": "Completa la información requerida antes de continuar.",
         "js.driverSent": "Solicitud enviada",
         "js.driverStatusDefault": "No se envía nada hasta que toques «Enviar la solicitud» en el último paso.",
@@ -2613,9 +2642,9 @@
         "svc.3t": "Preços instantâneos e detalhados",
         "svc.h2": "Ajuda na medida certa para entregas locais.",
         "svc.intro": "A GetQuickHaul se concentra em serviços que cabem em uma van de carga — sem os custos nem a complexidade de uma equipe completa de mudança.",
-        "area.h2": "Agora atendemos duas áreas: Weehawken NJ e Hollywood FL.",
-        "area.p": "As coletas estão disponíveis em duas áreas de atendimento: Weehawken, o norte de New Jersey e a região metropolitana de NYC, e agora Hollywood e o condado de Broward, na Flórida. A partir de uma coleta dentro de qualquer uma das áreas, podemos entregar em qualquer lugar — a entrega pode ser a qualquer distância e o preço é baseado nas milhas do trajeto. Se a coleta ou uma parada extra estiver fora das duas áreas, o aplicativo avisará antes que a reserva possa continuar.",
-        "area.flGroup": "Agora na Flórida — Hollywood e o condado de Broward",
+        "area.h2": "Agora atendemos duas áreas: Weehawken NJ e o sul da Flórida.",
+        "area.p": "As coletas estão disponíveis em duas áreas de atendimento: Weehawken, o norte de New Jersey e a região metropolitana de NYC, e o sul da Flórida — Hollywood e o condado de Broward, além de South Dade (Cutler Bay e Palmetto Bay). A partir de uma coleta dentro de qualquer uma das áreas, podemos entregar em qualquer lugar — a entrega pode ser a qualquer distância e o preço é baseado nas milhas do trajeto. Se a coleta ou uma parada extra estiver fora das duas áreas, o aplicativo avisará antes que a reserva possa continuar.",
+        "area.flGroup": "Agora na Flórida — Hollywood, condado de Broward e South Dade",
         "area.townsAria": "Cidades atendidas",
         "w.serviceArea": "Área de atendimento",
         "w.pickup": "Coleta",
@@ -2791,12 +2820,13 @@
         "drv.agreementH": "Reconhecimento do motorista",
         "drv.agreementP1": "Você confirma que as informações fornecidas são precisas e que não aceitará nem transportará, de forma consciente, eletrodomésticos nem qualquer item ilegal, roubado, controlado, perigoso ou não declarado. Você cumprirá as leis aplicáveis, protegerá a carga sob os seus cuidados e comunicará imediatamente qualquer acidente, dano, atraso ou preocupação de segurança.",
         "drv.agreementP2": "O cadastro expressa apenas interesse. Ele não garante viagens, horas nem aprovação. O seu pagamento é de 80% da tarifa de cada viagem que você aceitar. Despesas, exigências de seguro, relação de trabalho e outros termos são confirmados em um acordo escrito separado antes da sua primeira viagem.",
-        "drv.area": "Área de atendimento preferida",
-        "drv.areaChoose": "Escolha uma área",
+        "drv.area": "Áreas de atendimento que você pode cobrir",
+        "drv.areaHint": "Escolha todas as áreas onde você pode fazer viagens — você pode cobrir mais de uma área.",
         "drv.areaHudson": "Condado de Hudson e arredores",
         "drv.areaNorth": "Norte de New Jersey",
         "drv.areaNyc": "Região metropolitana de NYC",
         "drv.areaFl": "Hollywood / condado de Broward, FL",
+        "drv.areaSouthDade": "South Dade — Cutler Bay e Palmetto Bay, FL",
         "drv.copyH": "Torne-se um motorista da GetQuickHaul.",
         "drv.copyP": "Os motoristas ficam com 80% de cada tarifa. Você revisará a rota, a carga e o pagamento de cada entrega antes de decidir se a aceita.",
         "drv.dob": "Data de nascimento",
@@ -2899,7 +2929,7 @@
         "faq.a3": "O orçamento porta a porta é de $45 pelas primeiras 5 milhas e depois $3 por cada milha adicional. As paradas extras custam $15 cada uma. Aplica-se uma taxa adicional de pedágio de NYC de $25 quando a rota cruza o Hudson de ou para Manhattan. Coletas antes das 7 AM ou depois das 7 PM têm uma taxa adicional de $15 fora de horário.",
         "faq.a4": "Você pode pagar com o Cash App ($GetQuickHaul), em dinheiro, em dinheiro na entrega (COD) ou com um cheque nominal a GetQuickHaul. Se preferir combinar o pagamento de outra forma, escolha o pagamento manual ao reservar e a GetQuickHaul acertará isso com você. Nada é devido até que a sua reserva seja confirmada.",
         "faq.a5": "A GetQuickHaul não transportará eletrodomésticos; mercadorias ilegais ou roubadas; substâncias controladas; armas de fogo ou munição; materiais perigosos, inflamáveis ou explosivos; nem qualquer coisa que não seja segura de transportar. Podemos inspecionar ou recusar uma carga.",
-        "faq.a6": "Sim. A busca de endereços cobre os 50 estados. As reservas estão abertas a coletas em nossas duas áreas de atendimento — Weehawken, o norte de New Jersey e a região metropolitana de NYC, e Hollywood e o condado de Broward, na Flórida — a entrega pode ser em qualquer lugar, e o preço é baseado nas milhas do trajeto. Se a coleta ou uma parada extra estiver fora dessas áreas, você verá “Não há motoristas disponíveis nesta área temporariamente” e a reserva não continuará.",
+        "faq.a6": "Sim. A busca de endereços cobre os 50 estados. As reservas estão abertas a coletas em nossas duas áreas de atendimento — Weehawken, o norte de New Jersey e a região metropolitana de NYC, e o sul da Flórida: Hollywood e o condado de Broward, além de South Dade (Cutler Bay e Palmetto Bay) — a entrega pode ser em qualquer lugar, e o preço é baseado nas milhas do trajeto. Se a coleta ou uma parada extra estiver fora dessas áreas, você verá “Não há motoristas disponíveis nesta área temporariamente” e a reserva não continuará.",
         "faq.h2": "Bom saber.",
         "faq.q1": "Que tipos de trabalhos vocês fazem?",
         "faq.q2": "Vocês fazem mudanças completas de casa?",
@@ -2922,7 +2952,7 @@
         "about.li4": "Entregas comerciais em uma programação repetida",
         "about.li5": "Oportunidades para motoristas — proprietários-operadores ganham 80% de cada tarifa",
         "about.note": "Observação: não transportamos eletrodomésticos.",
-        "about.p1": "A GetQuickHaul oferece coleta e entrega rápida e cuidadosa de pacotes, cargas pequenas, móveis e coletas em lojas ou armazéns em Weehawken, no condado de Hudson, no norte de New Jersey e na área metropolitana da cidade de Nova York — e agora Hollywood e o condado de Broward, na Flórida. Reserve on-line em minutos e receba um preço instantâneo antes de confirmar: $45 cobrem as primeiras 5 milhas e depois $3 por milha, porta a porta. As paradas extras custam $15 cada uma, e as entregas para a cidade de Nova York incluem uma taxa adicional de pedágio de $25. Estamos abertos das 7 AM às 7 PM todos os dias; coletas fora desse horário têm uma taxa adicional de $15 fora de horário para novos clientes.",
+        "about.p1": "A GetQuickHaul oferece coleta e entrega rápida e cuidadosa de pacotes, cargas pequenas, móveis e coletas em lojas ou armazéns em Weehawken, no condado de Hudson, no norte de New Jersey e na área metropolitana da cidade de Nova York — e agora o sul da Flórida: Hollywood e o condado de Broward, além de South Dade (Cutler Bay e Palmetto Bay). Reserve on-line em minutos e receba um preço instantâneo antes de confirmar: $45 cobrem as primeiras 5 milhas e depois $3 por milha, porta a porta. As paradas extras custam $15 cada uma, e as entregas para a cidade de Nova York incluem uma taxa adicional de pedágio de $25. Estamos abertos das 7 AM às 7 PM todos os dias; coletas fora desse horário têm uma taxa adicional de $15 fora de horário para novos clientes.",
         "about.p2": "Weehawken, Union City, West New York, Hoboken, Jersey City, Secaucus, North Bergen, Guttenberg e as comunidades vizinhas do condado de Hudson e do norte de New Jersey, além da região metropolitana de NYC — e na Flórida, Hollywood e as cidades do condado de Broward, incluindo Fort Lauderdale, Pembroke Pines, Davie e Coral Springs.",
         "footer.p": "A GetQuickHaul é um serviço operado pela AM Fix and Flip Inc.",
         "dock.aria": "Contato rápido",
@@ -2959,7 +2989,7 @@
         "js.distManualSuffix": " Informe o total de milhas do trajeto manualmente.",
         "js.distNoDrivers": "Não há motoristas disponíveis nesta área temporariamente",
         "js.distNotFound": "Não foi possível encontrar {label}.",
-        "js.distOutEstimate": "As coletas estão atualmente limitadas a Weehawken, ao norte de New Jersey e à região metropolitana de NYC, e a Hollywood e o condado de Broward, FL.",
+        "js.distOutEstimate": "As coletas estão atualmente limitadas a Weehawken, ao norte de New Jersey e à região metropolitana de NYC, e ao sul da Flórida: Hollywood / condado de Broward e South Dade (Cutler Bay e Palmetto Bay), FL.",
         "js.distOutside": "Fora da área de atendimento atual",
         "js.distRouteNotFound": "Encontramos os endereços, mas não foi possível criar uma rota de carro.",
         "js.distSuccess": "{miles} milhas de trajeto calculadas. Toque em Continuar quando estiver pronto.",
@@ -2968,6 +2998,7 @@
         "js.docSelectedMore": " (+{n} mais)",
         "js.driverAgeStatus": "Os motoristas devem ter 21 anos ou mais.",
         "js.driverAgeValidity": "Você deve ter 21 anos ou mais para se candidatar.",
+        "js.driverAreaValidity": "Escolha pelo menos uma área de atendimento.",
         "js.driverIncomplete": "Preencha as informações obrigatórias antes de continuar.",
         "js.driverSent": "Candidatura enviada",
         "js.driverStatusDefault": "Nada é enviado até você tocar em “Enviar candidatura” na última etapa.",
@@ -3176,6 +3207,16 @@
       var driverStepItems = Array.prototype.slice.call(document.querySelectorAll('#driver-step-list li'));
       var driverProgressFill = document.getElementById('driver-progress-fill');
       var driverDob = document.getElementById('driver-dob');
+      // Drivers can cover more than one service area: the step-1 area
+      // field is a checkbox group, and at least one box must be ticked.
+      var driverAreaBoxes = Array.prototype.slice.call(document.querySelectorAll('input[name="driver-area"]'));
+      function selectedDriverAreas() {
+        return driverAreaBoxes.filter(function (box) { return box.checked; });
+      }
+      function setDriverAreaValidity() {
+        if (!driverAreaBoxes.length) return;
+        driverAreaBoxes[0].setCustomValidity(selectedDriverAreas().length ? '' : t('js.driverAreaValidity'));
+      }
       var driverSubmit = document.getElementById('driver-submit');
       var documentsSend = document.getElementById('driver-documents-send');
       var driverPortal = document.getElementById('driver-portal');
@@ -3203,13 +3244,15 @@
       var calculatedRoute = '';
       var isCalculatingRoute = false;
       var outOfAreaRoute = false;
-      // Two pickup service areas: Weehawken / North Jersey / NYC metro and
-      // Hollywood / Broward County, FL. A pickup or extra stop is in-area
-      // when it falls within the radius of either center; the drop-off may
-      // be anywhere and is priced by driving miles.
+      // Pickup service areas: Weehawken / North Jersey / NYC metro,
+      // Hollywood / Broward County, FL, and South Dade, FL (Cutler Bay /
+      // Palmetto Bay, Miami-Dade). A pickup or extra stop is in-area when
+      // it falls within the radius of any center; the drop-off may be
+      // anywhere and is priced by driving miles.
       var serviceCenters = [
         { lat: 40.7695, lon: -74.0204, radiusMiles: 45 },
-        { lat: 26.0112, lon: -80.1495, radiusMiles: 25 }
+        { lat: 26.0112, lon: -80.1495, radiusMiles: 25 },
+        { lat: 25.5834, lon: -80.3247, radiusMiles: 12 }
       ];
       var basePrice = 45;
       var extraStopPrice = 15;
@@ -5053,6 +5096,7 @@
 
       function validateDriverStep(step) {
         setDriverAgeValidity();
+        setDriverAreaValidity();
         var controls = Array.prototype.slice.call(step.querySelectorAll('input, select, textarea'));
         var invalid = controls.find(function (control) { return !control.checkValidity(); });
         if (invalid) {
@@ -5070,8 +5114,11 @@
       function updateDriverReview() {
         document.getElementById('driver-review-name').textContent = clean(document.getElementById('driver-name').value);
         document.getElementById('driver-review-contact').textContent = clean(document.getElementById('driver-email').value) + ' · ' + clean(document.getElementById('driver-phone').value);
-        var areaSelect = document.getElementById('driver-area');
-        document.getElementById('driver-review-area').textContent = areaSelect.selectedIndex >= 0 ? areaSelect.options[areaSelect.selectedIndex].textContent : areaSelect.value;
+        var areaLabels = selectedDriverAreas().map(function (box) {
+          var choice = box.closest('label');
+          return choice ? choice.textContent.replace(/\s+/g, ' ').trim() : box.value;
+        });
+        document.getElementById('driver-review-area').textContent = areaLabels.join(', ');
         var vehicleTypeSelect = document.getElementById('vehicle-type');
         var vehicleTypeText = vehicleTypeSelect.selectedIndex >= 0 ? vehicleTypeSelect.options[vehicleTypeSelect.selectedIndex].textContent : vehicleTypeSelect.value;
         document.getElementById('driver-review-vehicle').textContent = [
@@ -5115,6 +5162,7 @@
         });
       });
       driverDob.addEventListener('change', setDriverAgeValidity);
+      driverAreaBoxes.forEach(function (box) { box.addEventListener('change', setDriverAreaValidity); });
 
       function driverApplicationMessage() {
         return [
@@ -5124,7 +5172,7 @@
           'Email: ' + clean(document.getElementById('driver-email').value),
           'Phone: ' + clean(document.getElementById('driver-phone').value),
           'Date of birth: ' + driverDob.value,
-          'Preferred area: ' + document.getElementById('driver-area').value,
+          'Service areas: ' + selectedDriverAreas().map(function (box) { return box.value; }).join(', '),
           'Vehicle: ' + clean(document.getElementById('vehicle-year').value) + ' ' + clean(document.getElementById('vehicle-make-model').value) + ' (' + document.getElementById('vehicle-type').value + ')',
           'Plate: ' + clean(document.getElementById('vehicle-plate').value).toUpperCase() + ' · ' + clean(document.getElementById('vehicle-state').value).toUpperCase(),
           'Driver acknowledgment: Accepted — responsibilities, prohibited-item rules and pre-trip written terms reviewed.',
