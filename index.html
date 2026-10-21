@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="GetQuickHaul is a local pickup and delivery service based in Weehawken, NJ. Packages, small loads, furniture and store pickups delivered door to door across Hudson County, North Jersey and the NYC metro. Instant online quote: $45 for the first 5 miles, then $3 per mile. Call (551) 233-8583 or book at getquickhaulnj.com. Open 7 AM–7 PM, 7 days." />
+  <meta name="description" content="GetQuickHaul is a local pickup and delivery service based in Weehawken, NJ. Packages, small loads, furniture and store pickups delivered door to door across Hudson County, North Jersey and the NYC metro — and now Hollywood and Broward County, FL. Instant online quote: $45 for the first 5 miles, then $3 per mile. Call (551) 233-8583 or book at getquickhaulnj.com. Open 7 AM–7 PM, 7 days." />
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#18395d" />
   <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
@@ -16,7 +16,7 @@
   <link rel="manifest" href="assets/manifest.webmanifest" />
   <link rel="icon" type="image/png" sizes="192x192" href="assets/app-icon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
-  <title>GetQuickHaul — Pickup &amp; Delivery Service in Weehawken &amp; North Jersey | getquickhaulnj.com</title>
+  <title>GetQuickHaul — Pickup &amp; Delivery Service in Weehawken, North Jersey &amp; Hollywood FL | getquickhaulnj.com</title>
   <meta property="og:title" content="GetQuickHaul — Pickup &amp; Delivery Service, Weehawken NJ" />
   <meta property="og:description" content="Door-to-door pickup &amp; delivery across Hudson County, North Jersey &amp; NYC metro. Instant quote online. (551) 233-8583." />
   <meta property="og:type" content="website" />
@@ -33,7 +33,7 @@
     "email": "getquickhaul@gmail.com",
     "priceRange": "$45 base + $3/mile",
     "openingHours": "Mo-Su 07:00-19:00",
-    "areaServed": ["Weehawken NJ", "Hudson County NJ", "North Jersey", "New York City metro"],
+    "areaServed": ["Weehawken NJ", "Hudson County NJ", "North Jersey", "New York City metro", "Hollywood FL", "Broward County FL"],
     "makesOffer": [
       "Same-day pickup and delivery",
       "Furniture and store pickup delivery",
@@ -177,6 +177,7 @@
     .towns { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .towns li { display: flex; gap: 10px; align-items: center; background: var(--surface); border: 1px solid var(--line); padding: 16px; border-radius: 5px 13px 5px 13px; font-weight: 700; }
     .towns li:first-child { grid-column: 1 / -1; background: var(--soft); }
+    .towns li.towns-group { grid-column: 1 / -1; background: var(--soft); font-size: .95rem; letter-spacing: .01em; }
     .dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; flex: 0 0 auto; box-shadow: 0 0 0 4px rgba(246,189,50,.18); }
 
     .quote-section { background: var(--soft); }
@@ -659,7 +660,7 @@
     <div class="wrap utility-inner">
       <div class="location">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.7" stroke="currentColor" stroke-width="2"/></svg>
-        <span data-i18n="hdr.location">Weehawken, NJ & nearby</span>
+        <span data-i18n="hdr.location">Weehawken, NJ & Hollywood, FL</span>
       </div>
       <div class="utility-actions">
         <div class="lang-toggle" role="group" aria-label="Language / Idioma">
@@ -781,8 +782,8 @@
       <div class="wrap area-grid">
         <div class="area-copy">
           <p class="eyebrow" data-i18n="w.serviceArea">Service area</p>
-          <h2 data-i18n="area.h2">Current service area: Weehawken and nearby.</h2>
-          <p data-i18n="area.p">Address search covers all 50 states, including Florida, so you can enter any U.S. route accurately. For now, pickups are limited to Weehawken, North Jersey and the NYC metro area — from a pickup inside the area, we can deliver anywhere. If the pickup or an extra stop is outside the current area, the app will let you know before the booking can continue.</p>
+          <h2 data-i18n="area.h2">Now serving two areas: Weehawken NJ and Hollywood FL.</h2>
+          <p data-i18n="area.p">Pickups are available in two service areas: Weehawken, North Jersey and the NYC metro area, and now Hollywood and Broward County, Florida. From a pickup inside either area, we can deliver anywhere — the drop-off can be any distance and is priced by driving miles. If the pickup or an extra stop is outside both areas, the app will let you know before the booking can continue.</p>
         </div>
         <ul class="towns" aria-label="Cities served" data-i18n-aria="area.townsAria">
           <li><span class="dot"></span>Weehawken</li>
@@ -793,6 +794,21 @@
           <li><span class="dot"></span>North Bergen</li>
           <li><span class="dot"></span>Guttenberg</li>
           <li><span class="dot"></span>Secaucus</li>
+          <li class="towns-group"><span class="dot"></span><span data-i18n="area.flGroup">Now serving Florida — Hollywood &amp; Broward County</span></li>
+          <li><span class="dot"></span>Hollywood</li>
+          <li><span class="dot"></span>Fort Lauderdale</li>
+          <li><span class="dot"></span>Hallandale Beach</li>
+          <li><span class="dot"></span>Dania Beach</li>
+          <li><span class="dot"></span>Davie</li>
+          <li><span class="dot"></span>Cooper City</li>
+          <li><span class="dot"></span>Plantation</li>
+          <li><span class="dot"></span>Sunrise</li>
+          <li><span class="dot"></span>Weston</li>
+          <li><span class="dot"></span>Pembroke Pines</li>
+          <li><span class="dot"></span>Miramar</li>
+          <li><span class="dot"></span>Coral Springs</li>
+          <li><span class="dot"></span>Pompano Beach</li>
+          <li><span class="dot"></span>Deerfield Beach</li>
         </ul>
       </div>
     </section>
@@ -1461,6 +1477,7 @@
                   <option value="Hudson County and nearby" data-i18n="drv.areaHudson">Hudson County &amp; nearby</option>
                   <option value="North Jersey" data-i18n="drv.areaNorth">North Jersey</option>
                   <option value="NYC metro" data-i18n="drv.areaNyc">NYC metro</option>
+                  <option value="Hollywood / Broward County, FL" data-i18n="drv.areaFl">Hollywood / Broward County, FL</option>
                 </select>
               </div>
             </div>
@@ -1644,7 +1661,7 @@
           </details>
           <details>
             <summary data-i18n="faq.q6">Can I enter an address outside New Jersey?</summary>
-            <p data-i18n="faq.a6">Yes. Address search covers all 50 states, including Florida. Bookings are currently limited to pickups in Weehawken, North Jersey and the NYC metro area — the drop-off can be anywhere, and the price is based on the driving miles. If the pickup or an extra stop is outside that area, you’ll see “No drivers available in this area temporarily” and the booking will not continue.</p>
+            <p data-i18n="faq.a6">Yes. Address search covers all 50 states. Bookings are open to pickups in our two service areas — Weehawken, North Jersey and the NYC metro area, and Hollywood and Broward County, Florida — the drop-off can be anywhere, and the price is based on the driving miles. If the pickup or an extra stop is outside those areas, you’ll see “No drivers available in this area temporarily” and the booking will not continue.</p>
           </details>
         </div>
       </div>
@@ -1669,7 +1686,7 @@
       <div class="wrap">
         <p class="eyebrow" data-i18n="about.eyebrow">About GetQuickHaul</p>
         <h2 id="about-title" data-i18n="about.h2">GetQuickHaul — Pickup &amp; Delivery Service in Weehawken, NJ</h2>
-        <p data-i18n="about.p1">GetQuickHaul provides fast, careful pickup and delivery for packages, small loads, furniture, and store or warehouse pickups across Weehawken, Hudson County, North Jersey, and the New York City metro area. Book online in minutes and get an instant price before you confirm: $45 covers the first 5 miles, then $3 per mile after that, door to door. Extra stops are $15 each, and deliveries to New York City include a $25 toll surcharge. We are open 7 AM to 7 PM every day; pickups outside those hours carry a $15 after-hours charge for new customers.</p>
+        <p data-i18n="about.p1">GetQuickHaul provides fast, careful pickup and delivery for packages, small loads, furniture, and store or warehouse pickups across Weehawken, Hudson County, North Jersey, and the New York City metro area — and now Hollywood and Broward County, Florida. Book online in minutes and get an instant price before you confirm: $45 covers the first 5 miles, then $3 per mile after that, door to door. Extra stops are $15 each, and deliveries to New York City include a $25 toll surcharge. We are open 7 AM to 7 PM every day; pickups outside those hours carry a $15 after-hours charge for new customers.</p>
         <h3 data-i18n="about.h3a">What we deliver</h3>
         <ul class="about-list">
           <li data-i18n="about.li1">Package &amp; parcel delivery</li>
@@ -1679,7 +1696,7 @@
           <li data-i18n="about.li5">Driver opportunities — owner-operators earn 80% of every fare</li>
         </ul>
         <h3 data-i18n="about.h3b">Where we deliver</h3>
-        <p data-i18n="about.p2">Weehawken, Union City, West New York, Hoboken, Jersey City, Secaucus, North Bergen, Guttenberg and surrounding Hudson County and North Jersey communities, plus the NYC metro.</p>
+        <p data-i18n="about.p2">Weehawken, Union City, West New York, Hoboken, Jersey City, Secaucus, North Bergen, Guttenberg and surrounding Hudson County and North Jersey communities, plus the NYC metro — and in Florida, Hollywood and Broward County towns including Fort Lauderdale, Pembroke Pines, Davie and Coral Springs.</p>
         <p class="about-contact" data-i18n-html="about.contact">Call or text <a href="tel:+15512338583">(551) 233-8583</a> · <a href="mailto:getquickhaul@gmail.com">getquickhaul@gmail.com</a> · Book online at <a href="https://getquickhaulnj.com/">getquickhaulnj.com</a></p>
         <p class="about-note" data-i18n="about.note">Please note: we do not move appliances.</p>
       </div>
@@ -1712,10 +1729,10 @@
        ================================================================== */
     var GQH_CATALOG = {
       en: {
-        "doc.title": "GetQuickHaul — Pickup & Delivery Service in Weehawken & North Jersey | getquickhaulnj.com",
+        "doc.title": "GetQuickHaul — Pickup & Delivery Service in Weehawken, North Jersey & Hollywood FL | getquickhaulnj.com",
         "hdr.contactDetails": "Contact details",
         "hdr.driveCta": "Drive with GetQuickHaul",
-        "hdr.location": "Weehawken, NJ & nearby",
+        "hdr.location": "Weehawken, NJ & Hollywood, FL",
         "hdr.phoneOrders": "Phone orders",
         "hero.call": "Call GetQuickHaul",
         "hero.cartoonAria": "Become a driver — open the driver application",
@@ -1740,8 +1757,9 @@
         "svc.3t": "Instant, itemized pricing",
         "svc.h2": "Right-sized help for local deliveries.",
         "svc.intro": "GetQuickHaul focuses on jobs that fit a cargo van—without the overhead or complexity of a full moving crew.",
-        "area.h2": "Current service area: Weehawken and nearby.",
-        "area.p": "Address search covers all 50 states, including Florida, so you can enter any U.S. route accurately. For now, pickups are limited to Weehawken, North Jersey and the NYC metro area — from a pickup inside the area, we can deliver anywhere. If the pickup or an extra stop is outside the current area, the app will let you know before the booking can continue.",
+        "area.h2": "Now serving two areas: Weehawken NJ and Hollywood FL.",
+        "area.p": "Pickups are available in two service areas: Weehawken, North Jersey and the NYC metro area, and now Hollywood and Broward County, Florida. From a pickup inside either area, we can deliver anywhere — the drop-off can be any distance and is priced by driving miles. If the pickup or an extra stop is outside both areas, the app will let you know before the booking can continue.",
+        "area.flGroup": "Now serving Florida — Hollywood & Broward County",
         "area.townsAria": "Cities served",
         "w.serviceArea": "Service area",
         "w.pickup": "Pickup",
@@ -1922,6 +1940,7 @@
         "drv.areaHudson": "Hudson County & nearby",
         "drv.areaNorth": "North Jersey",
         "drv.areaNyc": "NYC metro",
+        "drv.areaFl": "Hollywood / Broward County, FL",
         "drv.copyH": "Become a GetQuickHaul driver.",
         "drv.copyP": "Drivers keep 80% of every fare. You’ll review every delivery’s route, load and pay before deciding whether to accept it.",
         "drv.dob": "Date of birth",
@@ -2024,7 +2043,7 @@
         "faq.a3": "The door-to-door quote is $45 for the first 5 miles, then $3 for each additional mile. Extra stops are $15 each. A $25 NYC toll surcharge applies when the route crosses the Hudson to or from Manhattan. Pickups before 7 AM or after 7 PM have a $15 after-hours surge.",
         "faq.a4": "You can pay with Cash App ($GetQuickHaul), in cash, cash on delivery (COD), or by check made payable to GetQuickHaul. If you’d rather arrange payment another way, choose manual payment when you book and GetQuickHaul will set it up with you. Nothing is due until your booking is confirmed.",
         "faq.a5": "GetQuickHaul will not carry appliances; illegal or stolen goods; controlled substances; firearms or ammunition; hazardous, flammable or explosive materials; or anything unsafe to transport. We may inspect or refuse a load.",
-        "faq.a6": "Yes. Address search covers all 50 states, including Florida. Bookings are currently limited to pickups in Weehawken, North Jersey and the NYC metro area — the drop-off can be anywhere, and the price is based on the driving miles. If the pickup or an extra stop is outside that area, you’ll see “No drivers available in this area temporarily” and the booking will not continue.",
+        "faq.a6": "Yes. Address search covers all 50 states. Bookings are open to pickups in our two service areas — Weehawken, North Jersey and the NYC metro area, and Hollywood and Broward County, Florida — the drop-off can be anywhere, and the price is based on the driving miles. If the pickup or an extra stop is outside those areas, you’ll see “No drivers available in this area temporarily” and the booking will not continue.",
         "faq.h2": "Good to know.",
         "faq.q1": "What kinds of jobs do you handle?",
         "faq.q2": "Do you handle full-house moves?",
@@ -2047,8 +2066,8 @@
         "about.li4": "Business deliveries on a repeat schedule",
         "about.li5": "Driver opportunities — owner-operators earn 80% of every fare",
         "about.note": "Please note: we do not move appliances.",
-        "about.p1": "GetQuickHaul provides fast, careful pickup and delivery for packages, small loads, furniture, and store or warehouse pickups across Weehawken, Hudson County, North Jersey, and the New York City metro area. Book online in minutes and get an instant price before you confirm: $45 covers the first 5 miles, then $3 per mile after that, door to door. Extra stops are $15 each, and deliveries to New York City include a $25 toll surcharge. We are open 7 AM to 7 PM every day; pickups outside those hours carry a $15 after-hours charge for new customers.",
-        "about.p2": "Weehawken, Union City, West New York, Hoboken, Jersey City, Secaucus, North Bergen, Guttenberg and surrounding Hudson County and North Jersey communities, plus the NYC metro.",
+        "about.p1": "GetQuickHaul provides fast, careful pickup and delivery for packages, small loads, furniture, and store or warehouse pickups across Weehawken, Hudson County, North Jersey, and the New York City metro area — and now Hollywood and Broward County, Florida. Book online in minutes and get an instant price before you confirm: $45 covers the first 5 miles, then $3 per mile after that, door to door. Extra stops are $15 each, and deliveries to New York City include a $25 toll surcharge. We are open 7 AM to 7 PM every day; pickups outside those hours carry a $15 after-hours charge for new customers.",
+        "about.p2": "Weehawken, Union City, West New York, Hoboken, Jersey City, Secaucus, North Bergen, Guttenberg and surrounding Hudson County and North Jersey communities, plus the NYC metro — and in Florida, Hollywood and Broward County towns including Fort Lauderdale, Pembroke Pines, Davie and Coral Springs.",
         "footer.p": "GetQuickHaul is a service operated by AM Fix and Flip Inc.",
         "dock.aria": "Quick contact",
         "dock.call": "Call now",
@@ -2084,7 +2103,7 @@
         "js.distManualSuffix": " Please enter the total driving miles manually.",
         "js.distNoDrivers": "No drivers available in this area temporarily",
         "js.distNotFound": "We couldn’t find {label}.",
-        "js.distOutEstimate": "Pickups are currently limited to Weehawken, North Jersey and the NYC metro area.",
+        "js.distOutEstimate": "Pickups are currently limited to Weehawken, North Jersey and the NYC metro area, and Hollywood and Broward County, FL.",
         "js.distOutside": "Outside current service area",
         "js.distRouteNotFound": "We found the addresses but couldn’t build a driving route.",
         "js.distSuccess": "{miles} driving miles calculated. Tap Continue when you’re ready.",
@@ -2138,10 +2157,10 @@
         "js.unitMiles": "miles"
       },
       es: {
-        "doc.title": "GetQuickHaul — Servicio de recogida y entrega en Weehawken y el norte de New Jersey | getquickhaulnj.com",
+        "doc.title": "GetQuickHaul — Servicio de recogida y entrega en Weehawken, el norte de New Jersey y Hollywood FL | getquickhaulnj.com",
         "hdr.contactDetails": "Datos de contacto",
         "hdr.driveCta": "Conduce con GetQuickHaul",
-        "hdr.location": "Weehawken, NJ y alrededores",
+        "hdr.location": "Weehawken, NJ y Hollywood, FL",
         "hdr.phoneOrders": "Pedidos por teléfono",
         "hero.call": "Llamar a GetQuickHaul",
         "hero.cartoonAria": "Conviértete en conductor: abre la solicitud para conductores",
@@ -2166,8 +2185,9 @@
         "svc.3t": "Precios instantáneos y detallados",
         "svc.h2": "Ayuda a la medida para entregas locales.",
         "svc.intro": "GetQuickHaul se enfoca en trabajos que caben en una furgoneta de carga, sin los costos ni la complejidad de un equipo completo de mudanza.",
-        "area.h2": "Área de servicio actual: Weehawken y alrededores.",
-        "area.p": "La búsqueda de direcciones cubre los 50 estados, incluida Florida, para que puedas ingresar cualquier ruta de EE. UU. con precisión. Por ahora, las recogidas están limitadas a Weehawken, el norte de New Jersey y el área metropolitana de NYC: desde una recogida dentro del área, podemos entregar en cualquier lugar. Si la recogida o una parada extra está fuera del área actual, la aplicación te lo indicará antes de que la reserva pueda continuar.",
+        "area.h2": "Ahora atendemos dos zonas: Weehawken NJ y Hollywood FL.",
+        "area.p": "Las recogidas están disponibles en dos zonas de servicio: Weehawken, el norte de New Jersey y el área metropolitana de NYC, y ahora Hollywood y el condado de Broward, Florida. Desde una recogida dentro de cualquiera de las dos zonas, podemos entregar en cualquier lugar: la entrega puede ser a cualquier distancia y el precio se basa en las millas del recorrido. Si la recogida o una parada extra está fuera de ambas zonas, la aplicación te lo indicará antes de que la reserva pueda continuar.",
+        "area.flGroup": "Ahora en Florida — Hollywood y el condado de Broward",
         "area.townsAria": "Ciudades atendidas",
         "w.serviceArea": "Área de servicio",
         "w.pickup": "Recogida",
@@ -2348,6 +2368,7 @@
         "drv.areaHudson": "Condado de Hudson y alrededores",
         "drv.areaNorth": "Norte de New Jersey",
         "drv.areaNyc": "Área metropolitana de NYC",
+        "drv.areaFl": "Hollywood / condado de Broward, FL",
         "drv.copyH": "Conviértete en conductor de GetQuickHaul.",
         "drv.copyP": "Los conductores se quedan con el 80% de cada tarifa. Revisarás la ruta, la carga y el pago de cada entrega antes de decidir si la aceptas.",
         "drv.dob": "Fecha de nacimiento",
@@ -2450,7 +2471,7 @@
         "faq.a3": "La cotización puerta a puerta es de $45 por las primeras 5 millas y luego $3 por cada milla adicional. Las paradas extra cuestan $15 cada una. Se aplica un recargo de $25 por peaje de NYC cuando la ruta cruza el Hudson hacia o desde Manhattan. Las recogidas antes de las 7 AM o después de las 7 PM tienen un recargo de $15 fuera de horario.",
         "faq.a4": "Puedes pagar con Cash App ($GetQuickHaul), en efectivo, en efectivo al entregar (COD) o con un cheque a nombre de GetQuickHaul. Si prefieres acordar el pago de otra manera, elige pago manual al reservar y GetQuickHaul lo coordinará contigo. No debes nada hasta que tu reserva sea confirmada.",
         "faq.a5": "GetQuickHaul no transportará electrodomésticos; artículos ilegales o robados; sustancias controladas; armas de fuego o municiones; materiales peligrosos, inflamables o explosivos; ni nada que no sea seguro transportar. Podemos inspeccionar o rechazar una carga.",
-        "faq.a6": "Sí. La búsqueda de direcciones cubre los 50 estados, incluida Florida. Actualmente las reservas están limitadas a recogidas en Weehawken, el norte de New Jersey y el área metropolitana de NYC: la entrega puede ser en cualquier lugar y el precio se basa en las millas del recorrido. Si la recogida o una parada extra está fuera de esa área, verás «No hay conductores disponibles en esta área temporalmente» y la reserva no continuará.",
+        "faq.a6": "Sí. La búsqueda de direcciones cubre los 50 estados. Las reservas están abiertas a recogidas en nuestras dos zonas de servicio — Weehawken, el norte de New Jersey y el área metropolitana de NYC, y Hollywood y el condado de Broward, Florida — la entrega puede ser en cualquier lugar y el precio se basa en las millas del recorrido. Si la recogida o una parada extra está fuera de esas zonas, verás «No hay conductores disponibles en esta área temporalmente» y la reserva no continuará.",
         "faq.h2": "Es bueno saberlo.",
         "faq.q1": "¿Qué tipos de trabajos realizan?",
         "faq.q2": "¿Hacen mudanzas completas de casas?",
@@ -2473,8 +2494,8 @@
         "about.li4": "Entregas comerciales con programación repetida",
         "about.li5": "Oportunidades para conductores: los propietarios-operadores ganan el 80% de cada tarifa",
         "about.note": "Ten en cuenta: no transportamos electrodomésticos.",
-        "about.p1": "GetQuickHaul ofrece recogida y entrega rápida y cuidadosa de paquetes, cargas pequeñas, muebles y recogidas en tiendas o almacenes en Weehawken, el condado de Hudson, el norte de New Jersey y el área metropolitana de la ciudad de Nueva York. Reserva en línea en minutos y obtén un precio instantáneo antes de confirmar: $45 cubren las primeras 5 millas y luego $3 por milla, puerta a puerta. Las paradas extra cuestan $15 cada una, y las entregas a la ciudad de Nueva York incluyen un recargo de $25 por peaje. Abrimos de 7 AM a 7 PM todos los días; las recogidas fuera de ese horario tienen un cargo de $15 fuera de horario para clientes nuevos.",
-        "about.p2": "Weehawken, Union City, West New York, Hoboken, Jersey City, Secaucus, North Bergen, Guttenberg y las comunidades cercanas del condado de Hudson y el norte de New Jersey, además del área metropolitana de NYC.",
+        "about.p1": "GetQuickHaul ofrece recogida y entrega rápida y cuidadosa de paquetes, cargas pequeñas, muebles y recogidas en tiendas o almacenes en Weehawken, el condado de Hudson, el norte de New Jersey y el área metropolitana de la ciudad de Nueva York — y ahora Hollywood y el condado de Broward, Florida. Reserva en línea en minutos y obtén un precio instantáneo antes de confirmar: $45 cubren las primeras 5 millas y luego $3 por milla, puerta a puerta. Las paradas extra cuestan $15 cada una, y las entregas a la ciudad de Nueva York incluyen un recargo de $25 por peaje. Abrimos de 7 AM a 7 PM todos los días; las recogidas fuera de ese horario tienen un cargo de $15 fuera de horario para clientes nuevos.",
+        "about.p2": "Weehawken, Union City, West New York, Hoboken, Jersey City, Secaucus, North Bergen, Guttenberg y las comunidades cercanas del condado de Hudson y el norte de New Jersey, además del área metropolitana de NYC — y en Florida, Hollywood y las ciudades del condado de Broward, como Fort Lauderdale, Pembroke Pines, Davie y Coral Springs.",
         "footer.p": "GetQuickHaul es un servicio operado por AM Fix and Flip Inc.",
         "dock.aria": "Contacto rápido",
         "dock.call": "Llamar ahora",
@@ -2510,7 +2531,7 @@
         "js.distManualSuffix": " Ingresa el total de millas del recorrido manualmente.",
         "js.distNoDrivers": "No hay conductores disponibles en esta área temporalmente",
         "js.distNotFound": "No pudimos encontrar {label}.",
-        "js.distOutEstimate": "Actualmente las recogidas están limitadas a Weehawken, el norte de New Jersey y el área metropolitana de NYC.",
+        "js.distOutEstimate": "Actualmente las recogidas están limitadas a Weehawken, el norte de New Jersey y el área metropolitana de NYC, y a Hollywood y el condado de Broward, FL.",
         "js.distOutside": "Fuera del área de servicio actual",
         "js.distRouteNotFound": "Encontramos las direcciones, pero no pudimos crear una ruta de manejo.",
         "js.distSuccess": "{miles} millas de recorrido calculadas. Toca Continuar cuando estés listo.",
@@ -2564,10 +2585,10 @@
         "js.unitMiles": "millas"
       },
       pt: {
-        "doc.title": "GetQuickHaul — Serviço de coleta e entrega em Weehawken e no norte de New Jersey | getquickhaulnj.com",
+        "doc.title": "GetQuickHaul — Serviço de coleta e entrega em Weehawken, no norte de New Jersey e em Hollywood FL | getquickhaulnj.com",
         "hdr.contactDetails": "Dados de contato",
         "hdr.driveCta": "Dirija com a GetQuickHaul",
-        "hdr.location": "Weehawken, NJ e arredores",
+        "hdr.location": "Weehawken, NJ e Hollywood, FL",
         "hdr.phoneOrders": "Pedidos por telefone",
         "hero.call": "Ligar para a GetQuickHaul",
         "hero.cartoonAria": "Torne-se um motorista — abra a candidatura de motorista",
@@ -2592,8 +2613,9 @@
         "svc.3t": "Preços instantâneos e detalhados",
         "svc.h2": "Ajuda na medida certa para entregas locais.",
         "svc.intro": "A GetQuickHaul se concentra em serviços que cabem em uma van de carga — sem os custos nem a complexidade de uma equipe completa de mudança.",
-        "area.h2": "Área de atendimento atual: Weehawken e arredores.",
-        "area.p": "A busca de endereços cobre os 50 estados, incluindo a Flórida, para que você possa informar qualquer rota dos EUA com precisão. Por enquanto, as coletas estão limitadas a Weehawken, ao norte de New Jersey e à região metropolitana de NYC — a partir de uma coleta dentro da área, podemos entregar em qualquer lugar. Se a coleta ou uma parada extra estiver fora da área atual, o aplicativo avisará antes que a reserva possa continuar.",
+        "area.h2": "Agora atendemos duas áreas: Weehawken NJ e Hollywood FL.",
+        "area.p": "As coletas estão disponíveis em duas áreas de atendimento: Weehawken, o norte de New Jersey e a região metropolitana de NYC, e agora Hollywood e o condado de Broward, na Flórida. A partir de uma coleta dentro de qualquer uma das áreas, podemos entregar em qualquer lugar — a entrega pode ser a qualquer distância e o preço é baseado nas milhas do trajeto. Se a coleta ou uma parada extra estiver fora das duas áreas, o aplicativo avisará antes que a reserva possa continuar.",
+        "area.flGroup": "Agora na Flórida — Hollywood e o condado de Broward",
         "area.townsAria": "Cidades atendidas",
         "w.serviceArea": "Área de atendimento",
         "w.pickup": "Coleta",
@@ -2774,6 +2796,7 @@
         "drv.areaHudson": "Condado de Hudson e arredores",
         "drv.areaNorth": "Norte de New Jersey",
         "drv.areaNyc": "Região metropolitana de NYC",
+        "drv.areaFl": "Hollywood / condado de Broward, FL",
         "drv.copyH": "Torne-se um motorista da GetQuickHaul.",
         "drv.copyP": "Os motoristas ficam com 80% de cada tarifa. Você revisará a rota, a carga e o pagamento de cada entrega antes de decidir se a aceita.",
         "drv.dob": "Data de nascimento",
@@ -2876,7 +2899,7 @@
         "faq.a3": "O orçamento porta a porta é de $45 pelas primeiras 5 milhas e depois $3 por cada milha adicional. As paradas extras custam $15 cada uma. Aplica-se uma taxa adicional de pedágio de NYC de $25 quando a rota cruza o Hudson de ou para Manhattan. Coletas antes das 7 AM ou depois das 7 PM têm uma taxa adicional de $15 fora de horário.",
         "faq.a4": "Você pode pagar com o Cash App ($GetQuickHaul), em dinheiro, em dinheiro na entrega (COD) ou com um cheque nominal a GetQuickHaul. Se preferir combinar o pagamento de outra forma, escolha o pagamento manual ao reservar e a GetQuickHaul acertará isso com você. Nada é devido até que a sua reserva seja confirmada.",
         "faq.a5": "A GetQuickHaul não transportará eletrodomésticos; mercadorias ilegais ou roubadas; substâncias controladas; armas de fogo ou munição; materiais perigosos, inflamáveis ou explosivos; nem qualquer coisa que não seja segura de transportar. Podemos inspecionar ou recusar uma carga.",
-        "faq.a6": "Sim. A busca de endereços cobre os 50 estados, incluindo a Flórida. As reservas estão atualmente limitadas a coletas em Weehawken, no norte de New Jersey e na região metropolitana de NYC — a entrega pode ser em qualquer lugar, e o preço é baseado nas milhas do trajeto. Se a coleta ou uma parada extra estiver fora dessa área, você verá “Não há motoristas disponíveis nesta área temporariamente” e a reserva não continuará.",
+        "faq.a6": "Sim. A busca de endereços cobre os 50 estados. As reservas estão abertas a coletas em nossas duas áreas de atendimento — Weehawken, o norte de New Jersey e a região metropolitana de NYC, e Hollywood e o condado de Broward, na Flórida — a entrega pode ser em qualquer lugar, e o preço é baseado nas milhas do trajeto. Se a coleta ou uma parada extra estiver fora dessas áreas, você verá “Não há motoristas disponíveis nesta área temporariamente” e a reserva não continuará.",
         "faq.h2": "Bom saber.",
         "faq.q1": "Que tipos de trabalhos vocês fazem?",
         "faq.q2": "Vocês fazem mudanças completas de casa?",
@@ -2899,8 +2922,8 @@
         "about.li4": "Entregas comerciais em uma programação repetida",
         "about.li5": "Oportunidades para motoristas — proprietários-operadores ganham 80% de cada tarifa",
         "about.note": "Observação: não transportamos eletrodomésticos.",
-        "about.p1": "A GetQuickHaul oferece coleta e entrega rápida e cuidadosa de pacotes, cargas pequenas, móveis e coletas em lojas ou armazéns em Weehawken, no condado de Hudson, no norte de New Jersey e na área metropolitana da cidade de Nova York. Reserve on-line em minutos e receba um preço instantâneo antes de confirmar: $45 cobrem as primeiras 5 milhas e depois $3 por milha, porta a porta. As paradas extras custam $15 cada uma, e as entregas para a cidade de Nova York incluem uma taxa adicional de pedágio de $25. Estamos abertos das 7 AM às 7 PM todos os dias; coletas fora desse horário têm uma taxa adicional de $15 fora de horário para novos clientes.",
-        "about.p2": "Weehawken, Union City, West New York, Hoboken, Jersey City, Secaucus, North Bergen, Guttenberg e as comunidades vizinhas do condado de Hudson e do norte de New Jersey, além da região metropolitana de NYC.",
+        "about.p1": "A GetQuickHaul oferece coleta e entrega rápida e cuidadosa de pacotes, cargas pequenas, móveis e coletas em lojas ou armazéns em Weehawken, no condado de Hudson, no norte de New Jersey e na área metropolitana da cidade de Nova York — e agora Hollywood e o condado de Broward, na Flórida. Reserve on-line em minutos e receba um preço instantâneo antes de confirmar: $45 cobrem as primeiras 5 milhas e depois $3 por milha, porta a porta. As paradas extras custam $15 cada uma, e as entregas para a cidade de Nova York incluem uma taxa adicional de pedágio de $25. Estamos abertos das 7 AM às 7 PM todos os dias; coletas fora desse horário têm uma taxa adicional de $15 fora de horário para novos clientes.",
+        "about.p2": "Weehawken, Union City, West New York, Hoboken, Jersey City, Secaucus, North Bergen, Guttenberg e as comunidades vizinhas do condado de Hudson e do norte de New Jersey, além da região metropolitana de NYC — e na Flórida, Hollywood e as cidades do condado de Broward, incluindo Fort Lauderdale, Pembroke Pines, Davie e Coral Springs.",
         "footer.p": "A GetQuickHaul é um serviço operado pela AM Fix and Flip Inc.",
         "dock.aria": "Contato rápido",
         "dock.call": "Ligar agora",
@@ -2936,7 +2959,7 @@
         "js.distManualSuffix": " Informe o total de milhas do trajeto manualmente.",
         "js.distNoDrivers": "Não há motoristas disponíveis nesta área temporariamente",
         "js.distNotFound": "Não foi possível encontrar {label}.",
-        "js.distOutEstimate": "As coletas estão atualmente limitadas a Weehawken, ao norte de New Jersey e à região metropolitana de NYC.",
+        "js.distOutEstimate": "As coletas estão atualmente limitadas a Weehawken, ao norte de New Jersey e à região metropolitana de NYC, e a Hollywood e o condado de Broward, FL.",
         "js.distOutside": "Fora da área de atendimento atual",
         "js.distRouteNotFound": "Encontramos os endereços, mas não foi possível criar uma rota de carro.",
         "js.distSuccess": "{miles} milhas de trajeto calculadas. Toque em Continuar quando estiver pronto.",
@@ -3180,8 +3203,14 @@
       var calculatedRoute = '';
       var isCalculatingRoute = false;
       var outOfAreaRoute = false;
-      var serviceCenter = { lat: 40.7695, lon: -74.0204 };
-      var serviceRadiusMiles = 45;
+      // Two pickup service areas: Weehawken / North Jersey / NYC metro and
+      // Hollywood / Broward County, FL. A pickup or extra stop is in-area
+      // when it falls within the radius of either center; the drop-off may
+      // be anywhere and is priced by driving miles.
+      var serviceCenters = [
+        { lat: 40.7695, lon: -74.0204, radiusMiles: 45 },
+        { lat: 26.0112, lon: -80.1495, radiusMiles: 25 }
+      ];
       var basePrice = 45;
       var extraStopPrice = 15;
       var nycTollSurcharge = 25;
@@ -3303,12 +3332,12 @@
         return includesManhattan && includesNewJersey;
       }
 
-      function distanceFromServiceCenter(point) {
+      function distanceFromCenter(center, point) {
         var earthRadiusMiles = 3958.8;
         var toRadians = Math.PI / 180;
-        var latitudeDifference = (point.lat - serviceCenter.lat) * toRadians;
-        var longitudeDifference = (point.lon - serviceCenter.lon) * toRadians;
-        var firstLatitude = serviceCenter.lat * toRadians;
+        var latitudeDifference = (point.lat - center.lat) * toRadians;
+        var longitudeDifference = (point.lon - center.lon) * toRadians;
+        var firstLatitude = center.lat * toRadians;
         var secondLatitude = point.lat * toRadians;
         var haversine = Math.sin(latitudeDifference / 2) * Math.sin(latitudeDifference / 2) +
           Math.cos(firstLatitude) * Math.cos(secondLatitude) *
@@ -3317,7 +3346,9 @@
       }
 
       function isWithinServiceArea(point) {
-        return distanceFromServiceCenter(point) <= serviceRadiusMiles;
+        return serviceCenters.some(function (center) {
+          return distanceFromCenter(center, point) <= center.radiusMiles;
+        });
       }
 
       function wait(milliseconds) {
