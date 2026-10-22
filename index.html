@@ -179,6 +179,9 @@
     .towns li:first-child { grid-column: 1 / -1; background: var(--soft); }
     .towns li.towns-group { grid-column: 1 / -1; background: var(--soft); font-size: .95rem; letter-spacing: .01em; }
     .dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; flex: 0 0 auto; box-shadow: 0 0 0 4px rgba(246,189,50,.18); }
+    .towns-details { border: 0; padding: 0; }
+    .towns-details summary { background: var(--surface); border: 1px solid var(--line); border-radius: 5px 13px 5px 13px; padding: 16px 18px; align-items: center; }
+    .towns-details .towns { margin-top: 12px; }
 
     .quote-section { background: var(--soft); }
     .quote-intro { max-width: 760px; margin-bottom: 34px; }
@@ -792,7 +795,9 @@
           <h2 data-i18n="area.h2">Now serving two areas: Weehawken NJ and South Florida.</h2>
           <p data-i18n="area.p">Pickups are available in two service areas: Weehawken, North Jersey and the NYC metro area, and South Florida — Hollywood and Broward County, plus South Dade (Cutler Bay and Palmetto Bay). From a pickup inside either area, we can deliver anywhere — the drop-off can be any distance and is priced by driving miles. If the pickup or an extra stop is outside both areas, the app will let you know before the booking can continue.</p>
         </div>
-        <ul class="towns" aria-label="Cities served" data-i18n-aria="area.townsAria">
+        <details class="towns-details">
+          <summary><span data-i18n="area.toggle">See the cities we serve</span></summary>
+          <ul class="towns" aria-label="Cities served" data-i18n-aria="area.townsAria">
           <li><span class="dot"></span>Weehawken</li>
           <li><span class="dot"></span>Jersey City</li>
           <li><span class="dot"></span>Union City</li>
@@ -818,7 +823,8 @@
           <li><span class="dot"></span>Deerfield Beach</li>
           <li><span class="dot"></span>Cutler Bay</li>
           <li><span class="dot"></span>Palmetto Bay</li>
-        </ul>
+          </ul>
+        </details>
       </div>
     </section>
 
@@ -1786,6 +1792,7 @@
         "area.p": "Pickups are available in two service areas: Weehawken, North Jersey and the NYC metro area, and South Florida — Hollywood and Broward County, plus South Dade (Cutler Bay and Palmetto Bay). From a pickup inside either area, we can deliver anywhere — the drop-off can be any distance and is priced by driving miles. If the pickup or an extra stop is outside both areas, the app will let you know before the booking can continue.",
         "area.flGroup": "Now serving Florida — Hollywood, Broward County & South Dade",
         "area.townsAria": "Cities served",
+        "area.toggle": "See the cities we serve",
         "w.serviceArea": "Service area",
         "w.pickup": "Pickup",
         "w.dropoff": "Drop-off",
@@ -2216,6 +2223,7 @@
         "area.p": "Las recogidas están disponibles en dos zonas de servicio: Weehawken, el norte de New Jersey y el área metropolitana de NYC, y el sur de la Florida — Hollywood y el condado de Broward, además de South Dade (Cutler Bay y Palmetto Bay). Desde una recogida dentro de cualquiera de las dos zonas, podemos entregar en cualquier lugar: la entrega puede ser a cualquier distancia y el precio se basa en las millas del recorrido. Si la recogida o una parada extra está fuera de ambas zonas, la aplicación te lo indicará antes de que la reserva pueda continuar.",
         "area.flGroup": "Ahora en Florida — Hollywood, el condado de Broward y South Dade",
         "area.townsAria": "Ciudades atendidas",
+        "area.toggle": "Ver las ciudades que servimos",
         "w.serviceArea": "Área de servicio",
         "w.pickup": "Recogida",
         "w.dropoff": "Entrega",
@@ -2646,6 +2654,7 @@
         "area.p": "As coletas estão disponíveis em duas áreas de atendimento: Weehawken, o norte de New Jersey e a região metropolitana de NYC, e o sul da Flórida — Hollywood e o condado de Broward, além de South Dade (Cutler Bay e Palmetto Bay). A partir de uma coleta dentro de qualquer uma das áreas, podemos entregar em qualquer lugar — a entrega pode ser a qualquer distância e o preço é baseado nas milhas do trajeto. Se a coleta ou uma parada extra estiver fora das duas áreas, o aplicativo avisará antes que a reserva possa continuar.",
         "area.flGroup": "Agora na Flórida — Hollywood, condado de Broward e South Dade",
         "area.townsAria": "Cidades atendidas",
+        "area.toggle": "Ver as cidades que atendemos",
         "w.serviceArea": "Área de atendimento",
         "w.pickup": "Coleta",
         "w.dropoff": "Entrega",
