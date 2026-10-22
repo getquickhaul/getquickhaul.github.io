@@ -180,7 +180,12 @@
     .towns li.towns-group { grid-column: 1 / -1; background: var(--soft); font-size: .95rem; letter-spacing: .01em; }
     .dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; flex: 0 0 auto; box-shadow: 0 0 0 4px rgba(246,189,50,.18); }
     .towns-details { border: 0; padding: 0; }
-    .towns-details summary { background: var(--surface); border: 1px solid var(--line); border-radius: 5px 13px 5px 13px; padding: 16px 18px; align-items: center; }
+    .towns-details summary { background: var(--accent); color: var(--accent-ink); border: 1px solid #d9a41f; border-radius: 5px 13px 5px 13px; padding: 20px 22px; align-items: center; justify-content: flex-start; gap: 14px; font-size: 1.32rem; font-weight: 900; letter-spacing: .01em; animation: townsGlow 2.2s ease-in-out infinite; }
+    .towns-details summary::after { margin-left: auto; color: var(--accent-ink); font-size: 1.8rem; }
+    .towns-details .pulse-dot { width: 12px; height: 12px; flex: 0 0 auto; border-radius: 50%; background: var(--blue-dark); animation: townsDot 1.6s ease-in-out infinite; }
+    @keyframes townsGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(246,189,50,.55), 0 10px 24px rgba(16,37,65,.12); } 50% { box-shadow: 0 0 0 12px rgba(246,189,50,0), 0 10px 24px rgba(16,37,65,.12); } }
+    @keyframes townsDot { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.45); opacity: .55; } }
+    @media (prefers-reduced-motion: reduce) { .towns-details summary, .towns-details .pulse-dot { animation: none; } }
     .towns-details .towns { margin-top: 12px; }
 
     .quote-section { background: var(--soft); }
@@ -796,7 +801,7 @@
           <p data-i18n="area.p">Pickups are available in two service areas: Weehawken, North Jersey and the NYC metro area, and South Florida — Hollywood and Broward County, plus South Dade (Cutler Bay and Palmetto Bay). From a pickup inside either area, we can deliver anywhere — the drop-off can be any distance and is priced by driving miles. If the pickup or an extra stop is outside both areas, the app will let you know before the booking can continue.</p>
         </div>
         <details class="towns-details">
-          <summary><span data-i18n="area.toggle">See the cities we serve</span></summary>
+          <summary><span class="pulse-dot" aria-hidden="true"></span><span data-i18n="area.toggle">See the cities we serve</span></summary>
           <ul class="towns" aria-label="Cities served" data-i18n-aria="area.townsAria">
           <li><span class="dot"></span>Weehawken</li>
           <li><span class="dot"></span>Jersey City</li>
