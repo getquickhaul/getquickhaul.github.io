@@ -1743,6 +1743,7 @@
           <div class="driver-welcome" id="driver-welcome">
             <p class="eyebrow" data-i18n="drv.eyebrow">Driver application</p>
             <h2 data-i18n="drv.welcomeH">Welcome — we’re glad you’re here.</h2>
+            <p class="driver-status" id="driver-register-success" role="status" aria-live="polite" hidden></p>
             <p data-i18n="drv.welcomeP1">GetQuickHaul is a small, local delivery service based in Weehawken, New Jersey. We help neighbors and local businesses move packages and small loads by cargo van — and drivers like you are the heart of it.</p>
             <p class="driver-welcome-pay" data-i18n-html="drv.welcomePay"><strong>You keep 80% of every fare.</strong> That’s the incentive, plain and simple — on every trip, you see the full fare and your share before you decide to take it.</p>
             <p data-i18n="drv.welcomeP2">Joining is simple, and you stay in control the whole way. There are just four short stages:</p>
@@ -2544,7 +2545,10 @@
         "drv.regB3": "Get your own driver login and trip board once you’re approved",
         "drv.regB4": "Free to register — local trips only, Hudson County & North Jersey",
         "drv.regBtn": "Register & continue to application",
+        "drv.regDup": "That email is already registered — if you’re approved, use Driver login; otherwise the office will reach out.",
+        "drv.regFailed": "We couldn’t save your registration — please call (551) 233-8583.",
         "drv.regIncomplete": "Please complete every field — your password needs at least 10 characters.",
+        "drv.regOk": "Registration received. Your driver username is {username} — after you’re approved (background check), you’ll log in with it.",
         "drv.regSub": "Create your driver registration first — the full application opens right after. It takes less than a minute.",
         "drv.regTitle": "Register as a driver",
         "drv.regToLoginQ": "Already approved as a driver?",
@@ -3085,7 +3089,10 @@
         "drv.regB3": "Recibe tu propio acceso de conductor y tu tablero de viajes cuando seas aprobado",
         "drv.regB4": "Registro gratis — solo viajes locales, Hudson County y el norte de Nueva Jersey",
         "drv.regBtn": "Registrarme y continuar a la solicitud",
+        "drv.regDup": "Ese correo ya está registrado: si ya fuiste aprobado, usa el acceso para conductores; si no, la oficina se comunicará contigo.",
+        "drv.regFailed": "No pudimos guardar tu registro: llama al (551) 233-8583, por favor.",
         "drv.regIncomplete": "Completa todos los campos: tu contraseña necesita al menos 10 caracteres.",
+        "drv.regOk": "Registro recibido. Tu nombre de usuario de conductor es {username}: cuando seas aprobado (verificación de antecedentes), iniciarás sesión con él.",
         "drv.regSub": "Crea primero tu registro de conductor: la solicitud completa se abre justo después. Toma menos de un minuto.",
         "drv.regTitle": "Regístrate como conductor",
         "drv.regToLoginQ": "¿Ya fuiste aprobado como conductor?",
@@ -3626,7 +3633,10 @@
         "drv.regB3": "Receba seu próprio login de motorista e painel de viagens após a aprovação",
         "drv.regB4": "Cadastro gratuito — apenas viagens locais, Hudson County e norte de Nova Jersey",
         "drv.regBtn": "Cadastrar e continuar para a candidatura",
+        "drv.regDup": "Esse e-mail já está cadastrado — se você já foi aprovado, use o login de motorista; caso contrário, o escritório entrará em contato.",
+        "drv.regFailed": "Não conseguimos salvar o seu cadastro — ligue para (551) 233-8583, por favor.",
         "drv.regIncomplete": "Preencha todos os campos — sua senha precisa de pelo menos 10 caracteres.",
+        "drv.regOk": "Cadastro recebido. Seu nome de usuário de motorista é {username} — depois que você for aprovado (verificação de antecedentes), você entrará com ele.",
         "drv.regSub": "Crie primeiro o seu cadastro de motorista — a candidatura completa abre logo em seguida. Leva menos de um minuto.",
         "drv.regTitle": "Cadastre-se como motorista",
         "drv.regToLoginQ": "Já foi aprovado como motorista?",
@@ -3982,6 +3992,7 @@
       var driverDone = document.getElementById('driver-done');
       var driverRegister = document.getElementById('driver-register');
       var driverRegisterStatus = document.getElementById('driver-register-status');
+      var driverRegisterSuccess = document.getElementById('driver-register-success');
       var driverRegLogin = document.getElementById('driver-reg-login');
       var storyVideo = document.getElementById('story-video');
       var storyPlay = document.getElementById('story-play');
@@ -6037,12 +6048,12 @@
       // way the customer account box gates its features: a driver first
       // registers (name, email, phone, password) on the official
       // registration card, and only then do the welcome screen and the
-      // four application steps unlock. Registration is kept in this
-      // page session only — the password is never stored or sent
-      // anywhere; the name, email and phone carry into step 1 of the
-      // application so the driver never types them twice. A returning
-      // applicant who already registered in this session goes straight
-      // back to where the application opens.
+      // four application steps unlock. The registration is saved by the
+      // driver-register endpoint as a pending account; the name, email
+      // and phone also carry into step 1 of the application so the
+      // driver never types them twice. A returning applicant who
+      // already registered in this session goes straight back to where
+      // the application opens.
       var driverRegistered = false;
       function setDriverPortal(open) {
         driverPortal.hidden = !open;
@@ -6057,6 +6068,7 @@
       }
 
       if (driverRegister) {
+        var driverRegisterSubmit = driverRegister.querySelector('button[type="submit"]');
         driverRegister.addEventListener('submit', function (event) {
           event.preventDefault();
           if (!driverRegister.checkValidity()) {
@@ -6067,19 +6079,58 @@
             }
             return;
           }
-          document.getElementById('driver-name').value = clean(document.getElementById('dreg-name').value);
-          document.getElementById('driver-email').value = clean(document.getElementById('dreg-email').value);
-          document.getElementById('driver-phone').value = clean(document.getElementById('dreg-phone').value);
+          var regName = clean(document.getElementById('dreg-name').value);
+          var regPhone = clean(document.getElementById('dreg-phone').value);
+          var regEmail = clean(document.getElementById('dreg-email').value);
           var passwordField = document.getElementById('dreg-password');
-          if (passwordField) passwordField.value = '';
+          var regPassword = passwordField ? passwordField.value : '';
           if (driverRegisterStatus) {
             driverRegisterStatus.textContent = '';
             driverRegisterStatus.classList.remove('is-error');
           }
-          driverRegistered = true;
-          driverRegister.hidden = true;
-          driverWelcome.hidden = false;
-          driverWelcome.scrollIntoView({ block: 'start' });
+          if (driverRegisterSubmit) driverRegisterSubmit.disabled = true;
+          function registrationFailed() {
+            if (driverRegisterSubmit) driverRegisterSubmit.disabled = false;
+            if (driverRegisterStatus) {
+              driverRegisterStatus.textContent = t('drv.regFailed');
+              driverRegisterStatus.classList.add('is-error');
+            }
+          }
+          window.fetch('https://getquickhaul-8703.twil.io/driver-register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: regName, phone: regPhone, email: regEmail, password: regPassword })
+          }).then(function (res) {
+            return res.json().catch(function () { return {}; }).then(function (json) {
+              return { status: res.status, json: json || {} };
+            });
+          }).then(function (result) {
+            if (result.status === 201) {
+              document.getElementById('driver-name').value = regName;
+              document.getElementById('driver-email').value = regEmail;
+              document.getElementById('driver-phone').value = regPhone;
+              if (passwordField) passwordField.value = '';
+              if (driverRegisterSubmit) driverRegisterSubmit.disabled = false;
+              driverRegistered = true;
+              driverRegister.hidden = true;
+              if (driverRegisterSuccess) {
+                driverRegisterSuccess.textContent = t('drv.regOk', { username: result.json.username || '' });
+                driverRegisterSuccess.hidden = false;
+              }
+              driverWelcome.hidden = false;
+              driverWelcome.scrollIntoView({ block: 'start' });
+            } else if (result.status === 409 && result.json.error === 'email_exists') {
+              if (driverRegisterSubmit) driverRegisterSubmit.disabled = false;
+              if (driverRegisterStatus) {
+                driverRegisterStatus.textContent = t('drv.regDup');
+                driverRegisterStatus.classList.add('is-error');
+              }
+            } else {
+              registrationFailed();
+            }
+          }).catch(function () {
+            registrationFailed();
+          });
         });
       }
       if (driverRegLogin) {
