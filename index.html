@@ -644,6 +644,7 @@
     .cac-benefits { list-style: none; display: grid; gap: 11px; margin: 22px 0 0; padding: 20px 0 0; border-top: 1px solid rgba(255, 255, 255, .22); }
     .cac-benefits li { display: flex; gap: 11px; align-items: flex-start; font-size: .97rem; font-weight: 600; }
     .cac-bg-note { margin: 16px 0 0; color: #dbe9f4; font-size: .88rem; line-height: 1.5; }
+    .cac-pay-fee { display: flex; width: 100%; margin-top: 16px; }
     .cac-check { width: 22px; height: 22px; flex: 0 0 auto; display: grid; place-items: center; margin-top: 1px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); }
     .cac-check svg { width: 13px; height: 13px; }
     .cac-form-body { padding: 26px 30px 30px; }
@@ -1714,6 +1715,7 @@
                 <li><span class="cac-check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span data-i18n="drv.regB4">Free to register — local trips only, Hudson County &amp; North Jersey</span></li>
               </ul>
               <p class="cac-bg-note" data-i18n="drv.bgNote">Onboarding &amp; background check (one-time, non-refundable): a $49 onboarding fee paid when you join covers your criminal &amp; identity background check — we order it through BackgroundChecks.com (HireRight). You'll also need your NJ driving record (driver history abstract, $15 from NJMVC). Drivers with any New York history may owe extra court-record fees. No driving until you're cleared.</p>
+              <a class="btn btn-primary cac-pay-fee" href="https://buy.stripe.com/6oU9AUgCUcyvcXH1sZ00000" target="_blank" rel="noopener" data-i18n="drv.payFeeBtn">Pay the $49 onboarding fee by card</a>
             </div>
             <div class="cac-form-body">
               <div class="form-grid">
@@ -2547,6 +2549,7 @@
         "drv.regB3": "Get your own driver login and trip board once you’re approved",
         "drv.regB4": "Free to register — local trips only, Hudson County & North Jersey",
         "drv.bgNote": "Onboarding & background check (one-time, non-refundable): a $49 onboarding fee paid when you join covers your criminal & identity background check — we order it through BackgroundChecks.com (HireRight). You'll also need your NJ driving record (driver history abstract, $15 from NJMVC). Drivers with any New York history may owe extra court-record fees. No driving until you're cleared.",
+        "drv.payFeeBtn": "Pay the $49 onboarding fee by card",
         "drv.regBtn": "Register & continue to application",
         "drv.regDup": "That email is already registered — if you’re approved, use Driver login; otherwise the office will reach out.",
         "drv.regFailed": "We couldn’t save your registration — please call (551) 233-8583.",
@@ -3092,6 +3095,7 @@
         "drv.regB3": "Recibe tu propio acceso de conductor y tu tablero de viajes cuando seas aprobado",
         "drv.regB4": "Registro gratis — solo viajes locales, Hudson County y el norte de Nueva Jersey",
         "drv.bgNote": "Incorporación y verificación de antecedentes (pago único, no reembolsable): una cuota de incorporación de $49 al registrarte cubre tu verificación de antecedentes penales e identidad — la pedimos a través de BackgroundChecks.com (HireRight). También necesitarás tu historial de manejo de NJ (resumen de conductor del MVC, $15 en NJMVC). Los conductores con historial en Nueva York pueden deber tarifas judiciales adicionales. No puedes manejar hasta ser aprobado.",
+        "drv.payFeeBtn": "Paga la cuota de incorporación de $49 con tarjeta",
         "drv.regBtn": "Registrarme y continuar a la solicitud",
         "drv.regDup": "Ese correo ya está registrado: si ya fuiste aprobado, usa el acceso para conductores; si no, la oficina se comunicará contigo.",
         "drv.regFailed": "No pudimos guardar tu registro: llama al (551) 233-8583, por favor.",
@@ -3637,6 +3641,7 @@
         "drv.regB3": "Receba seu próprio login de motorista e painel de viagens após a aprovação",
         "drv.regB4": "Cadastro gratuito — apenas viagens locais, Hudson County e norte de Nova Jersey",
         "drv.bgNote": "Cadastro e verificação de antecedentes (pagamento único, não reembolsável): uma taxa de cadastro de $49 ao se registrar cobre sua verificação de antecedentes criminais e de identidade — pedimos através da BackgroundChecks.com (HireRight). Você também precisará do seu histórico de motorista de NJ (resumo do MVC, $15 no NJMVC). Motoristas com histórico em Nova York podem dever taxas judiciais extras. Nada de dirigir até ser aprovado.",
+        "drv.payFeeBtn": "Pague a taxa de cadastro de $49 com cartão",
         "drv.regBtn": "Cadastrar e continuar para a candidatura",
         "drv.regDup": "Esse e-mail já está cadastrado — se você já foi aprovado, use o login de motorista; caso contrário, o escritório entrará em contato.",
         "drv.regFailed": "Não conseguimos salvar o seu cadastro — ligue para (551) 233-8583, por favor.",
