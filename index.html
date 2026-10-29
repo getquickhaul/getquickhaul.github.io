@@ -498,6 +498,10 @@
     .driver-status { min-height: 1.5em; margin: 11px 0 0; color: var(--muted); font-size: .84rem; }
     .driver-status.is-error { color: #a43a2f; font-weight: 700; }
     @media (prefers-color-scheme: dark) { .driver-status.is-error { color: #ff9a8f; } }
+    .reg-success-banner { margin: 0 0 18px; padding: 14px 18px; border-radius: 8px; background: var(--success); color: #fff; font-weight: 700; font-size: 1rem; line-height: 1.45; }
+    .reg-success-banner[hidden] { display: none; }
+    @media (prefers-color-scheme: dark) { .reg-success-banner { color: #082a1c; } }
+    .forgot-pw { margin: 12px 0 0; color: var(--muted); font-size: .88rem; }
     .driver-grid[hidden], .driver-welcome[hidden], .driver-done[hidden] { display: none; }
     .driver-welcome { padding: 34px; background: var(--surface); color: var(--ink); border-radius: 6px 20px 6px 20px; box-shadow: var(--shadow); }
     .driver-welcome .eyebrow { color: var(--blue); }
@@ -994,6 +998,7 @@
               <span class="cac-alt"><span data-i18n="cac.toRegisterQ">New to GetQuickHaul?</span> <button type="button" id="cac-show-register" data-i18n="cac.createAccount">Create account</button></span>
             </div>
             <p class="driver-status" id="cac-login-status" role="status" aria-live="polite"></p>
+            <p class="forgot-pw" data-i18n="cac.forgotPw">Forgot your password? Call (551) 233-8583 and the office will reset it for you.</p>
           </form>
           <form class="cac-card cac-card-welcome" id="cac-register-form" hidden novalidate>
             <div class="cac-welcome">
@@ -1031,6 +1036,10 @@
                 <label for="cac-reg-password"><span data-i18n="cac.password">Password</span> <span class="hint" style="display:inline; margin:0;" data-i18n="cac.passwordHint">10+ characters</span></label>
                 <input id="cac-reg-password" type="password" autocomplete="new-password" aria-label="Password" data-i18n-aria="cac.password" required />
               </div>
+              <div class="field">
+                <label for="cac-reg-password2" data-i18n="cac.confirmPassword">Confirm password</label>
+                <input id="cac-reg-password2" type="password" autocomplete="new-password" aria-label="Confirm password" data-i18n-aria="cac.confirmPassword" required />
+              </div>
             </div>
             <div class="step-controls">
               <button class="btn btn-primary" type="submit" data-i18n="cac.createBtn">Create my free account</button>
@@ -1041,6 +1050,7 @@
             </div>
           </form>
           <div class="cac-card" id="cac-app" hidden>
+            <p class="reg-success-banner" id="cac-register-success" role="status" hidden></p>
             <div class="cac-appbar">
               <p class="cac-greeting"><span data-i18n="cac.hello">Hi,</span> <span id="cac-customer-name"></span><span class="cac-points-badge" id="cac-points-badge"></span></p>
               <button class="btn btn-secondary cac-logout" id="cac-logout" type="button" data-i18n="cac.logout">Log out</button>
@@ -1736,6 +1746,10 @@
                   <label for="dreg-password"><span data-i18n="cac.password">Password</span> <span class="hint" style="display:inline; margin:0;" data-i18n="cac.passwordHint">10+ characters</span></label>
                   <input id="dreg-password" type="password" autocomplete="new-password" minlength="10" aria-label="Password" data-i18n-aria="cac.password" required />
                 </div>
+                <div class="field">
+                  <label for="dreg-password2" data-i18n="cac.confirmPassword">Confirm password</label>
+                  <input id="dreg-password2" type="password" autocomplete="new-password" aria-label="Confirm password" data-i18n-aria="cac.confirmPassword" required />
+                </div>
               </div>
               <div class="step-controls">
                 <button class="btn btn-primary" type="submit" data-i18n="drv.regBtn">Register &amp; continue to application</button>
@@ -1748,7 +1762,7 @@
           <div class="driver-welcome" id="driver-welcome">
             <p class="eyebrow" data-i18n="drv.eyebrow">Driver application</p>
             <h2 data-i18n="drv.welcomeH">Welcome — we’re glad you’re here.</h2>
-            <p class="driver-status" id="driver-register-success" role="status" aria-live="polite" hidden></p>
+            <p class="reg-success-banner" id="driver-register-success" role="status" aria-live="polite" hidden></p>
             <p data-i18n="drv.welcomeP1">GetQuickHaul is a small, local delivery service based in Weehawken, New Jersey. We help neighbors and local businesses move packages and small loads by cargo van — and drivers like you are the heart of it.</p>
             <p class="driver-welcome-pay" data-i18n-html="drv.welcomePay"><strong>You keep 80% of every fare.</strong> That’s the incentive, plain and simple — on every trip, you see the full fare and your share before you decide to take it.</p>
             <p data-i18n="drv.welcomeP2">Joining is simple, and you stay in control the whole way. There are just four short stages:</p>
@@ -2028,6 +2042,7 @@
             </div>
             <div class="step-controls"><button class="btn btn-primary" id="dbo-login-submit" type="submit" data-i18n="dbo.signIn">Sign in</button></div>
             <p class="driver-status" id="dbo-login-status" role="status" aria-live="polite"></p>
+            <p class="forgot-pw" data-i18n="dbo.forgotPw">Forgot your password? Call (551) 233-8583 and the office will reset it for you.</p>
           </form>
           <div class="dbo-card" id="dbo-app" hidden>
             <div class="dbo-appbar">
@@ -2460,6 +2475,14 @@
         "cac.redeemedSuffix": "−{points} pts used",
         "cac.registerBtn": "Create account",
         "cac.registerFailed": "That didn't work — the email may already have an account.",
+        "cac.confirmPassword": "Confirm password",
+        "cac.forgotPw": "Forgot your password? Call (551) 233-8583 and the office will reset it for you.",
+        "cac.missingFields": "Please fill in every box",
+        "cac.pwMismatch": "Passwords don't match — check the second box",
+        "cac.pwTooShort": "Your password needs at least 10 characters",
+        "cac.registerDup": "That email already has an account — try signing in",
+        "cac.registerGeneric": "That didn't work — please try again. If it keeps happening, call (551) 233-8583",
+        "cac.registerSuccess": "Account created — you're signed in ✔",
         "cac.registerIntro": "Create your free account: book faster with saved addresses, see your bookings, and earn rewards points — 1 point per $1, every 100 points = $5 off a future trip.",
         "cac.createFreeTitle": "Create your free account",
         "cac.welcomeSub": "Join GetQuickHaul Rewards — it takes less than a minute.",
@@ -2497,6 +2520,7 @@
         "dbo.entryQ": "Already approved as a GetQuickHaul driver?",
         "dbo.fare": "Fare",
         "dbo.fromDispatch": "Dispatch",
+        "dbo.forgotPw": "Forgot your password? Call (551) 233-8583 and the office will reset it for you.",
         "dbo.fromYou": "You",
         "dbo.hello": "Hi,",
         "dbo.hideBtn": "Hide",
@@ -3007,6 +3031,14 @@
         "cac.redeemedSuffix": "−{points} pts usados",
         "cac.registerBtn": "Crear cuenta",
         "cac.registerFailed": "No funcionó — puede que ese correo ya tenga una cuenta.",
+        "cac.confirmPassword": "Confirmar contraseña",
+        "cac.forgotPw": "¿Olvidaste tu contraseña? Llama al (551) 233-8583 y la oficina la restablece por ti.",
+        "cac.missingFields": "Por favor completa todos los campos",
+        "cac.pwMismatch": "Las contraseñas no coinciden — revisa el segundo campo",
+        "cac.pwTooShort": "Tu contraseña necesita al menos 10 caracteres",
+        "cac.registerDup": "Ese correo ya tiene una cuenta — intenta iniciar sesión",
+        "cac.registerGeneric": "Algo no funcionó — inténtalo de nuevo. Si sigue pasando, llama al (551) 233-8583",
+        "cac.registerSuccess": "Cuenta creada — ya iniciaste sesión ✔",
         "cac.registerIntro": "Cree su cuenta gratis: reserve más rápido con direcciones guardadas, vea sus reservas y gane puntos — 1 punto por $1, cada 100 puntos = $5 de descuento en un viaje futuro.",
         "cac.createFreeTitle": "Cree su cuenta gratuita",
         "cac.welcomeSub": "Únase a GetQuickHaul Rewards — toma menos de un minuto.",
@@ -3044,6 +3076,7 @@
         "dbo.entryQ": "¿Ya fuiste aprobado como conductor de GetQuickHaul?",
         "dbo.fare": "Tarifa",
         "dbo.fromDispatch": "Despacho",
+        "dbo.forgotPw": "¿Olvidaste tu contraseña? Llama al (551) 233-8583 y la oficina la restablece por ti.",
         "dbo.fromYou": "Tú",
         "dbo.hello": "Hola,",
         "dbo.hideBtn": "Ocultar",
@@ -3554,6 +3587,14 @@
         "cac.redeemedSuffix": "−{points} pts usados",
         "cac.registerBtn": "Criar conta",
         "cac.registerFailed": "Não funcionou — talvez esse e-mail já tenha uma conta.",
+        "cac.confirmPassword": "Confirmar senha",
+        "cac.forgotPw": "Esqueceu sua senha? Ligue para (551) 233-8583 e o escritório a redefine para você.",
+        "cac.missingFields": "Preencha todos os campos, por favor",
+        "cac.pwMismatch": "As senhas não coincidem — verifique o segundo campo",
+        "cac.pwTooShort": "Sua senha precisa de pelo menos 10 caracteres",
+        "cac.registerDup": "Esse e-mail já tem uma conta — tente entrar",
+        "cac.registerGeneric": "Algo não funcionou — tente novamente. Se continuar, ligue para (551) 233-8583",
+        "cac.registerSuccess": "Conta criada — você já entrou ✔",
         "cac.registerIntro": "Crie sua conta grátis: reserve mais rápido com endereços salvos, veja suas reservas e ganhe pontos — 1 ponto por $1, cada 100 pontos = $5 de desconto numa viagem futura.",
         "cac.createFreeTitle": "Crie sua conta gratuita",
         "cac.welcomeSub": "Participe do GetQuickHaul Rewards — leva menos de um minuto.",
@@ -3591,6 +3632,7 @@
         "dbo.entryQ": "Já foi aprovado como motorista da GetQuickHaul?",
         "dbo.fare": "Tarifa",
         "dbo.fromDispatch": "Despacho",
+        "dbo.forgotPw": "Esqueceu sua senha? Ligue para (551) 233-8583 e o escritório a redefine para você.",
         "dbo.fromYou": "Você",
         "dbo.hello": "Olá,",
         "dbo.hideBtn": "Ocultar",
@@ -6085,30 +6127,40 @@
         var driverRegisterSubmit = driverRegister.querySelector('button[type="submit"]');
         driverRegister.addEventListener('submit', function (event) {
           event.preventDefault();
-          if (!driverRegister.checkValidity()) {
-            driverRegister.reportValidity();
+          var passwordField = document.getElementById('dreg-password');
+          var confirmField = document.getElementById('dreg-password2');
+          var regPassword = passwordField ? passwordField.value : '';
+          var regPassword2 = confirmField ? confirmField.value : '';
+          function driverRegError(message) {
             if (driverRegisterStatus) {
-              driverRegisterStatus.textContent = t('drv.regIncomplete');
+              driverRegisterStatus.textContent = message;
               driverRegisterStatus.classList.add('is-error');
             }
+          }
+          if (regPassword.length < 10) {
+            driverRegError(t('cac.pwTooShort'));
+            return;
+          }
+          if (regPassword !== regPassword2) {
+            driverRegError(t('cac.pwMismatch'));
+            return;
+          }
+          if (!driverRegister.checkValidity()) {
+            driverRegister.reportValidity();
+            driverRegError(t('drv.regIncomplete'));
             return;
           }
           var regName = clean(document.getElementById('dreg-name').value);
           var regPhone = clean(document.getElementById('dreg-phone').value);
           var regEmail = clean(document.getElementById('dreg-email').value);
-          var passwordField = document.getElementById('dreg-password');
-          var regPassword = passwordField ? passwordField.value : '';
           if (driverRegisterStatus) {
             driverRegisterStatus.textContent = '';
             driverRegisterStatus.classList.remove('is-error');
           }
           if (driverRegisterSubmit) driverRegisterSubmit.disabled = true;
-          function registrationFailed() {
+          function registrationFailed(message) {
             if (driverRegisterSubmit) driverRegisterSubmit.disabled = false;
-            if (driverRegisterStatus) {
-              driverRegisterStatus.textContent = t('drv.regFailed');
-              driverRegisterStatus.classList.add('is-error');
-            }
+            driverRegError(message || t('cac.registerGeneric'));
           }
           window.fetch('https://getquickhaul-8703.twil.io/driver-register', {
             method: 'POST',
@@ -6124,6 +6176,7 @@
               document.getElementById('driver-email').value = regEmail;
               document.getElementById('driver-phone').value = regPhone;
               if (passwordField) passwordField.value = '';
+              if (confirmField) confirmField.value = '';
               if (driverRegisterSubmit) driverRegisterSubmit.disabled = false;
               driverRegistered = true;
               driverRegister.hidden = true;
@@ -6133,12 +6186,13 @@
               }
               driverWelcome.hidden = false;
               driverWelcome.scrollIntoView({ block: 'start' });
-            } else if (result.status === 409 && result.json.error === 'email_exists') {
+            } else if (result.json.error === 'password_too_short') {
+              registrationFailed(t('cac.pwTooShort'));
+            } else if (result.json.error === 'missing_fields') {
+              registrationFailed(t('cac.missingFields'));
+            } else if (result.status === 409) {
               if (driverRegisterSubmit) driverRegisterSubmit.disabled = false;
-              if (driverRegisterStatus) {
-                driverRegisterStatus.textContent = t('drv.regDup');
-                driverRegisterStatus.classList.add('is-error');
-              }
+              driverRegError(t('drv.regDup'));
             } else {
               registrationFailed();
             }
@@ -6690,6 +6744,7 @@
       var registerForm = el('cac-register-form');
       var loginStatus = el('cac-login-status');
       var registerStatus = el('cac-register-status');
+      var registerSuccess = el('cac-register-success');
       var app = el('cac-app');
       var nameOut = el('cac-customer-name');
       var pointsBadge = el('cac-points-badge');
@@ -6838,6 +6893,7 @@
         loginForm.hidden = which !== 'login';
         registerForm.hidden = which !== 'register';
         app.hidden = true;
+        if (registerSuccess) registerSuccess.hidden = true;
         showPanel(true);
       }
       function refreshEntry() {
@@ -7245,24 +7301,45 @@
 
       registerForm.addEventListener('submit', function (ev) {
         ev.preventDefault();
+        var regPassword = el('cac-reg-password').value;
+        var regPassword2 = el('cac-reg-password2').value;
+        if (regPassword.length < 10) {
+          setStatus(registerStatus, dt('cac.pwTooShort', 'Your password needs at least 10 characters'), true);
+          return;
+        }
+        if (regPassword !== regPassword2) {
+          setStatus(registerStatus, dt('cac.pwMismatch', "Passwords don't match — check the second box"), true);
+          return;
+        }
         setStatus(registerStatus, dt('cac.loading', 'Loading…'));
         api('/customer-register', {
           method: 'POST',
           body: {
             name: el('cac-reg-name').value, phone: el('cac-reg-phone').value,
-            email: el('cac-reg-email').value, password: el('cac-reg-password').value
+            email: el('cac-reg-email').value, password: regPassword
           }
         }).then(function (r) {
           if ((r.status === 200 || r.status === 201) && r.json.token && r.json.customer) {
             storeToken(r.json.token);
             setStatus(registerStatus, '');
             el('cac-reg-password').value = '';
+            el('cac-reg-password2').value = '';
             enterApp(r.json.customer);
+            if (registerSuccess) {
+              registerSuccess.textContent = dt('cac.registerSuccess', "Account created — you're signed in ✔");
+              registerSuccess.hidden = false;
+            }
+          } else if (r.json.error === 'password_too_short') {
+            setStatus(registerStatus, dt('cac.pwTooShort', 'Your password needs at least 10 characters'), true);
+          } else if (r.json.error === 'missing_fields') {
+            setStatus(registerStatus, dt('cac.missingFields', 'Please fill in every box'), true);
+          } else if (r.status === 409) {
+            setStatus(registerStatus, dt('cac.registerDup', 'That email already has an account — try signing in'), true);
           } else {
-            setStatus(registerStatus, dt('cac.registerFailed', "That didn't work — the email may already have an account."), true);
+            setStatus(registerStatus, dt('cac.registerGeneric', "That didn't work — please try again. If it keeps happening, call (551) 233-8583"), true);
           }
         }).catch(function () {
-          setStatus(registerStatus, dt('cac.netError', "Couldn't reach the account service. Check your connection and try again."), true);
+          setStatus(registerStatus, dt('cac.registerGeneric', "That didn't work — please try again. If it keeps happening, call (551) 233-8583"), true);
         });
       });
 
