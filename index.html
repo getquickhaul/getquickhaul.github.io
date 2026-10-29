@@ -1310,10 +1310,27 @@
                   <label for="customer-email" data-i18n="form.email">Email</label>
                   <input id="customer-email" name="email" type="email" autocomplete="email" inputmode="email" required />
                 </div>
-                <div class="field">
-                  <label for="customer-billing-address" data-i18n="form.billingAddress">Billing address</label>
-                  <input id="customer-billing-address" name="billing-address" type="text" autocomplete="street-address" required />
-                </div>
+                <fieldset class="address-block">
+                  <legend data-i18n="form.billingCardAddress">Billing address for your card</legend>
+                  <div class="address-grid">
+                    <div class="field address-street">
+                      <label for="customer-billing-street" data-i18n="form.billingStreet">Street address</label>
+                      <input id="customer-billing-street" name="billing-street" type="text" autocomplete="section-billing street-address" required />
+                    </div>
+                    <div class="field">
+                      <label for="customer-billing-city" data-i18n="form.billingCity">City</label>
+                      <input id="customer-billing-city" name="billing-city" type="text" autocomplete="section-billing address-level2" required />
+                    </div>
+                    <div class="field">
+                      <label for="customer-billing-state" data-i18n="form.billingState">State</label>
+                      <input class="state-input" id="customer-billing-state" name="billing-state" type="text" autocomplete="section-billing address-level1" maxlength="2" required />
+                    </div>
+                    <div class="field">
+                      <label for="customer-billing-zip" data-i18n="form.billingZip">ZIP</label>
+                      <input id="customer-billing-zip" name="billing-zip" type="text" autocomplete="section-billing postal-code" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" required />
+                    </div>
+                  </div>
+                </fieldset>
               </div>
               <div class="step-controls">
                 <button class="btn btn-secondary step-back" type="button" data-i18n="common.back">Back</button>
@@ -2267,6 +2284,11 @@
         "form.addrHint": "Search any U.S. address, then choose the corrected match.",
         "form.asap": "As soon as possible",
         "form.billingAddress": "Billing address",
+        "form.billingCardAddress": "Billing address for your card",
+        "form.billingCity": "City",
+        "form.billingState": "State",
+        "form.billingStreet": "Street address",
+        "form.billingZip": "ZIP",
         "form.catBusiness": "Business delivery",
         "form.catChoose": "Choose a category",
         "form.catFurniture": "Furniture",
@@ -2823,6 +2845,11 @@
         "form.addrHint": "Busca cualquier dirección de EE. UU. y elige la coincidencia corregida.",
         "form.asap": "Lo antes posible",
         "form.billingAddress": "Dirección de facturación",
+        "form.billingCardAddress": "Dirección de facturación de tu tarjeta",
+        "form.billingCity": "Ciudad",
+        "form.billingState": "Estado",
+        "form.billingStreet": "Dirección (calle)",
+        "form.billingZip": "Código postal",
         "form.catBusiness": "Entrega comercial",
         "form.catChoose": "Elige una categoría",
         "form.catFurniture": "Muebles",
@@ -3379,6 +3406,11 @@
         "form.addrHint": "Busque qualquer endereço dos EUA e depois escolha a correspondência corrigida.",
         "form.asap": "O mais rápido possível",
         "form.billingAddress": "Endereço de cobrança",
+        "form.billingCardAddress": "Endereço de cobrança do seu cartão",
+        "form.billingCity": "Cidade",
+        "form.billingState": "Estado",
+        "form.billingStreet": "Endereço (rua)",
+        "form.billingZip": "CEP",
         "form.catBusiness": "Entrega comercial",
         "form.catChoose": "Escolha uma categoria",
         "form.catFurniture": "Móveis",
@@ -4129,6 +4161,15 @@
           document.getElementById(prefix + '-city').value,
           document.getElementById(prefix + '-state').value,
           document.getElementById(prefix + '-zip').value
+        );
+      }
+
+      function billingAddress() {
+        return joinedAddress(
+          document.getElementById('customer-billing-street').value,
+          document.getElementById('customer-billing-city').value,
+          document.getElementById('customer-billing-state').value,
+          document.getElementById('customer-billing-zip').value
         );
       }
 
@@ -5191,7 +5232,7 @@
           'Name: ' + clean(document.getElementById('customer-name').value),
           'Phone: ' + clean(document.getElementById('customer-phone').value),
           'Email: ' + clean(document.getElementById('customer-email').value),
-          'Billing address: ' + clean(document.getElementById('customer-billing-address').value),
+          'Billing address: ' + billingAddress(),
           'Items: ' + document.getElementById('item-category').value + ' — ' + clean(document.getElementById('items').value),
           'Pickup: ' + fullAddress('pickup')
         ];
@@ -5484,7 +5525,7 @@
           name: clean(document.getElementById('customer-name').value),
           phone: clean(document.getElementById('customer-phone').value),
           email: clean(document.getElementById('customer-email').value),
-          billingAddress: clean(document.getElementById('customer-billing-address').value)
+          billingAddress: billingAddress()
         };
         completeBooking(data, contact);
       });
@@ -6166,6 +6207,9 @@
             body: JSON.stringify({ name: regName, phone: regPhone, email: regEmail, password: regPassword })
           }).then(function (res) {
             return res.json().catch(function () { return {}; }).then(function (json) {
+              if (typeof json === 'string') {
+                try { json = JSON.parse(json); } catch (e) { json = {}; }
+              }
               return { status: res.status, json: json || {} };
             });
           }).then(function (result) {
@@ -6442,6 +6486,9 @@
           body: opts.body ? JSON.stringify(opts.body) : undefined
         }).then(function (res) {
           return res.json().catch(function () { return {}; }).then(function (json) {
+            if (typeof json === 'string') {
+              try { json = JSON.parse(json); } catch (e) { json = {}; }
+            }
             return { status: res.status, json: json || {} };
           });
         });
@@ -6830,6 +6877,9 @@
           body: opts.body ? JSON.stringify(opts.body) : undefined
         }).then(function (res) {
           return res.json().catch(function () { return {}; }).then(function (json) {
+            if (typeof json === 'string') {
+              try { json = JSON.parse(json); } catch (e) { json = {}; }
+            }
             return { status: res.status, json: json || {} };
           });
         });
