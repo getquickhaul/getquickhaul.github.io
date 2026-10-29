@@ -432,6 +432,7 @@
     .agreement-check input { width: 20px; height: 20px; min-height: 0; margin: 2px 0 0; accent-color: var(--blue-dark); }
     .agreement-check input:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
     .payment-method-heading { margin: 22px 0 9px; font-size: .92rem; font-weight: 800; }
+    .payment-due-note { margin: 0 0 4px; color: var(--ink); font-size: .92rem; font-weight: 700; }
     .payment-panels { margin-top: 16px; }
     .payment-detail { padding: 24px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
     .payment-detail[hidden] { display: none; }
@@ -1368,6 +1369,7 @@
                 </label>
               </div>
               <p class="payment-method-heading" id="payment-method-heading" data-i18n="pay.methodHeading">How would you like to pay?</p>
+              <p class="payment-due-note" data-i18n="pay.dueNote">Payment is due before unloading on cash, check, and COD bookings.</p>
               <div class="choice-grid payment-methods" role="radiogroup" aria-labelledby="payment-method-heading">
                 <label class="choice-card"><input type="radio" name="payment-method" value="Cash App" checked /><span data-i18n="pay.cashApp">Cash App</span></label>
                 <label class="choice-card"><input type="radio" name="payment-method" value="Cash" /><span data-i18n="pay.cash">Cash</span></label>
@@ -1380,19 +1382,20 @@
                   <div class="cash-mark" aria-hidden="true">$</div>
                   <h4 data-i18n="pay.cashAppH">Pay GetQuickHaul</h4>
                   <p><span data-i18n="pay.cashtag">Cash App cashtag</span><span class="cashtag">$GetQuickHaul</span></p>
+                  <p data-i18n="pay.cashAppP">Send to $GetQuickHaul — the driver confirms receipt before unloading.</p>
                   <a class="btn cashapp-btn" id="cashapp-pay" href="https://cash.app/$GetQuickHaul" target="_blank" rel="noopener noreferrer" aria-disabled="true" tabindex="-1" data-i18n="pay.cashAppBtn">Pay with Cash App</a>
                 </div>
                 <div class="payment-detail" data-payment-panel="Cash" hidden>
                   <h4 data-i18n="pay.cashH">Pay in cash</h4>
-                  <p data-i18n="pay.cashP">Have the cash ready and pay GetQuickHaul at pickup. Nothing is due until your booking is confirmed.</p>
+                  <p data-i18n="pay.cashP">Please have the cash ready. The driver collects payment before unloading.</p>
                 </div>
                 <div class="payment-detail" data-payment-panel="Cash on delivery (COD)" hidden>
                   <h4 data-i18n="pay.cod">Cash on delivery (COD)</h4>
-                  <p data-i18n="pay.codP">Pay when your items arrive. Have the total ready in cash for the driver at drop-off.</p>
+                  <p data-i18n="pay.codP">Pay the driver on arrival, before unloading.</p>
                 </div>
                 <div class="payment-detail" data-payment-panel="Check" hidden>
                   <h4 data-i18n="pay.checkH">Pay by check</h4>
-                  <p data-i18n-html="pay.checkP">Make your check payable to <strong>GetQuickHaul</strong> and hand it to the driver at pickup or delivery.</p>
+                  <p data-i18n-html="pay.checkP">Make your check payable to <strong>GetQuickHaul</strong> and hand it to the driver when he arrives — before unloading begins.</p>
                 </div>
                 <div class="payment-detail" data-payment-panel="Manual payment" hidden>
                   <h4 data-i18n="pay.manual">Manual payment</h4>
@@ -2332,14 +2335,16 @@
         "pay.cashApp": "Cash App",
         "pay.cashAppBtn": "Pay with Cash App",
         "pay.cashAppH": "Pay GetQuickHaul",
+        "pay.cashAppP": "Send to $GetQuickHaul — the driver confirms receipt before unloading.",
         "pay.cashH": "Pay in cash",
-        "pay.cashP": "Have the cash ready and pay GetQuickHaul at pickup. Nothing is due until your booking is confirmed.",
+        "pay.cashP": "Please have the cash ready. The driver collects payment before unloading.",
         "pay.cashtag": "Cash App cashtag",
         "pay.check": "Check",
         "pay.checkH": "Pay by check",
-        "pay.checkP": "Make your check payable to <strong>GetQuickHaul</strong> and hand it to the driver at pickup or delivery.",
+        "pay.checkP": "Make your check payable to <strong>GetQuickHaul</strong> and hand it to the driver when he arrives — before unloading begins.",
         "pay.cod": "Cash on delivery (COD)",
-        "pay.codP": "Pay when your items arrive. Have the total ready in cash for the driver at drop-off.",
+        "pay.codP": "Pay the driver on arrival, before unloading.",
+        "pay.dueNote": "Payment is due before unloading on cash, check, and COD bookings.",
         "pay.estPerDelivery": "Estimated per delivery",
         "pay.estPrice": "Estimated price",
         "pay.manual": "Manual payment",
@@ -2893,14 +2898,16 @@
         "pay.cashApp": "Cash App",
         "pay.cashAppBtn": "Pagar con Cash App",
         "pay.cashAppH": "Pagar a GetQuickHaul",
+        "pay.cashAppP": "Envíe a $GetQuickHaul — el conductor confirma la recepción antes de la descarga.",
         "pay.cashH": "Pagar en efectivo",
-        "pay.cashP": "Ten el efectivo listo y paga a GetQuickHaul en la recogida. No debes nada hasta que tu reserva sea confirmada.",
+        "pay.cashP": "Tenga el efectivo listo, por favor. El conductor cobra el pago antes de la descarga.",
         "pay.cashtag": "Usuario de Cash App",
         "pay.check": "Cheque",
         "pay.checkH": "Pagar con cheque",
-        "pay.checkP": "Haz tu cheque a nombre de <strong>GetQuickHaul</strong> y entrégaselo al conductor en la recogida o la entrega.",
+        "pay.checkP": "Haga su cheque a nombre de <strong>GetQuickHaul</strong> y entrégueselo al conductor cuando llegue, antes de que comience la descarga.",
         "pay.cod": "Pago en efectivo al entregar (COD)",
-        "pay.codP": "Paga cuando lleguen tus artículos. Ten el total listo en efectivo para el conductor en la entrega.",
+        "pay.codP": "Pague al conductor al llegar, antes de la descarga.",
+        "pay.dueNote": "El pago vence antes de la descarga en reservas en efectivo, cheque y contra entrega (COD).",
         "pay.estPerDelivery": "Estimado por entrega",
         "pay.estPrice": "Precio estimado",
         "pay.manual": "Pago manual",
@@ -3454,14 +3461,16 @@
         "pay.cashApp": "Cash App",
         "pay.cashAppBtn": "Pagar com o Cash App",
         "pay.cashAppH": "Pagar a GetQuickHaul",
+        "pay.cashAppP": "Envie para $GetQuickHaul — o motorista confirma o recebimento antes da descarga.",
         "pay.cashH": "Pagar em dinheiro",
-        "pay.cashP": "Tenha o dinheiro pronto e pague a GetQuickHaul na coleta. Nada é devido até que a sua reserva seja confirmada.",
+        "pay.cashP": "Tenha o dinheiro pronto, por favor. O motorista recebe o pagamento antes da descarga.",
         "pay.cashtag": "Cashtag do Cash App",
         "pay.check": "Cheque",
         "pay.checkH": "Pagar com cheque",
-        "pay.checkP": "Faça o cheque nominal a <strong>GetQuickHaul</strong> e entregue-o ao motorista na coleta ou na entrega.",
+        "pay.checkP": "Faça seu cheque nominal a <strong>GetQuickHaul</strong> e entregue ao motorista quando ele chegar — antes do início da descarga.",
         "pay.cod": "Pagamento em dinheiro na entrega (COD)",
-        "pay.codP": "Pague quando os seus itens chegarem. Tenha o valor total pronto em dinheiro para o motorista na entrega.",
+        "pay.codP": "Pague ao motorista na chegada, antes da descarga.",
+        "pay.dueNote": "O pagamento é devido antes da descarga em reservas em dinheiro, cheque e COD.",
         "pay.estPerDelivery": "Estimado por entrega",
         "pay.estPrice": "Preço estimado",
         "pay.manual": "Pagamento manual",
