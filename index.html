@@ -186,6 +186,10 @@
     .area-copy p { color: var(--muted); margin: 0; }
     .towns-panel { background: var(--surface); border: 2px solid var(--blue-dark); border-top: 6px solid var(--accent); border-radius: 6px 20px 6px 20px; box-shadow: 0 14px 38px rgba(16, 37, 65, .08); padding: 22px; }
     .towns-panel h3 { margin: 0 0 16px; font-size: 1.3rem; }
+    .towns-areas { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+    .towns-area-btn { appearance: none; font: inherit; font-weight: 700; color: var(--blue-dark); background: var(--paper); border: 1px solid var(--line); border-radius: 5px 13px 5px 13px; padding: 10px 16px; cursor: pointer; }
+    .towns-area-btn:hover { border-color: var(--blue-dark); }
+    .towns-area-btn.is-active { background: var(--blue-dark); border-color: var(--blue-dark); color: #ffffff; box-shadow: inset 0 3px 0 var(--accent); }
     .towns { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .towns li { display: flex; gap: 10px; align-items: center; background: var(--surface); border: 1px solid var(--line); padding: 16px; border-radius: 5px 13px 5px 13px; font-weight: 700; }
     .towns li:first-child { grid-column: 1 / -1; background: var(--soft); }
@@ -952,7 +956,8 @@
         </div>
         <div class="towns-panel">
           <h3 data-i18n="area.citiesH">Cities We Service</h3>
-          <ul class="towns" aria-label="Cities served" data-i18n-aria="area.townsAria">
+          <div class="towns-areas" id="towns-areas" role="group" aria-label="Service areas"></div>
+          <ul class="towns" id="towns-list" aria-label="Cities served" data-i18n-aria="area.townsAria">
             <li><span class="dot"></span>Weehawken</li>
             <li><span class="dot"></span>Jersey City</li>
             <li><span class="dot"></span>Union City</li>
@@ -2251,6 +2256,7 @@
         "area.metroLine": "Plus NYC metro & North Jersey pickups within 45 miles of Weehawken",
         "area.townsAria": "Cities served",
         "area.citiesH": "Cities We Service",
+        "area.btnNJ": "New Jersey — Hudson County",
         "w.serviceArea": "Service area",
         "w.pickup": "Pickup",
         "w.dropoff": "Drop-off",
@@ -2815,6 +2821,7 @@
         "area.metroLine": "Además, recogidas en el área metropolitana de NYC y el norte de New Jersey dentro de 45 millas de Weehawken",
         "area.townsAria": "Ciudades atendidas",
         "area.citiesH": "Ciudades atendidas",
+        "area.btnNJ": "Nueva Jersey — Condado de Hudson",
         "w.serviceArea": "Área de servicio",
         "w.pickup": "Recogida",
         "w.dropoff": "Entrega",
@@ -3379,6 +3386,7 @@
         "area.metroLine": "Além disso, coletas na região metropolitana de NYC e no norte de New Jersey dentro de 45 milhas de Weehawken",
         "area.townsAria": "Cidades atendidas",
         "area.citiesH": "Cidades atendidas",
+        "area.btnNJ": "Nova Jersey — Condado de Hudson",
         "w.serviceArea": "Área de atendimento",
         "w.pickup": "Coleta",
         "w.dropoff": "Entrega",
@@ -7505,6 +7513,73 @@
         }).catch(function () { /* stay signed out; the forms still work */ });
       }
       refreshEntry();
+    }());
+  </script>
+  <script>
+    (function () {
+      // To add an area later, append ONE entry to SERVICE_AREAS ({ id, labelKey, towns, metro }).
+      var SERVICE_AREAS = [
+        { id: 'nj-hudson', labelKey: 'area.btnNJ', towns: ['Weehawken', 'Jersey City', 'Union City', 'Hoboken', 'West New York', 'North Bergen', 'Guttenberg', 'Secaucus'], metro: true }
+      ];
+      var areasEl = document.getElementById('towns-areas');
+      var listEl = document.getElementById('towns-list');
+      if (!areasEl || !listEl || !window.GQH) return;
+      var activeId = SERVICE_AREAS[0].id;
+
+      function renderButtons() {
+        areasEl.innerHTML = '';
+        SERVICE_AREAS.forEach(function (area) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'towns-area-btn' + (area.id === activeId ? ' is-active' : '');
+          btn.textContent = window.GQH.t(area.labelKey);
+          btn.setAttribute('aria-pressed', area.id === activeId ? 'true' : 'false');
+          btn.setAttribute('data-area-id', area.id);
+          btn.addEventListener('click', function () {
+            activeId = area.id;
+            render();
+          });
+          areasEl.appendChild(btn);
+        });
+      }
+
+      function renderList() {
+        var area = SERVICE_AREAS[0];
+        SERVICE_AREAS.forEach(function (entry) { if (entry.id === activeId) area = entry; });
+        listEl.innerHTML = '';
+        area.towns.forEach(function (town) {
+          var li = document.createElement('li');
+          var dot = document.createElement('span');
+          dot.className = 'dot';
+          li.appendChild(dot);
+          li.appendChild(document.createTextNode(town));
+          listEl.appendChild(li);
+        });
+        if (area.metro) {
+          var group = document.createElement('li');
+          group.className = 'towns-group';
+          var gdot = document.createElement('span');
+          gdot.className = 'dot';
+          group.appendChild(gdot);
+          var gspan = document.createElement('span');
+          gspan.textContent = window.GQH.t('area.metroLine');
+          group.appendChild(gspan);
+          listEl.appendChild(group);
+        }
+      }
+
+      function render() {
+        renderButtons();
+        renderList();
+      }
+
+      render();
+
+      var previousOnApply = window.GQH.onApply;
+      window.GQH.onApply = function () {
+        if (typeof previousOnApply === 'function') previousOnApply();
+        render();
+      };
     }());
   </script>
 
