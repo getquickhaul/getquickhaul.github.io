@@ -1120,8 +1120,8 @@
             <div class="step-progress" aria-label="Booking progress" data-i18n-aria="book.progressAria">
               <div class="step-progress-bar" aria-hidden="true"><div class="step-progress-fill" id="step-progress-fill"></div></div>
               <ol class="step-list" id="step-list">
-                <li class="is-active"><button class="step-nav" type="button" data-go-step="0" aria-label="Review step 1, Items" data-i18n-aria="step.aria1"><span class="step-number">1</span><span data-i18n="step.items">Items</span></button></li>
-                <li><button class="step-nav" type="button" data-go-step="1" aria-label="Review step 2, Pickup" data-i18n-aria="step.aria2" disabled><span class="step-number">2</span><span data-i18n="w.pickup">Pickup</span></button></li>
+                <li class="is-active"><button class="step-nav" type="button" data-go-step="0" aria-label="Review step 1, Pickup" data-i18n-aria="step.aria1"><span class="step-number">1</span><span data-i18n="w.pickup">Pickup</span></button></li>
+                <li><button class="step-nav" type="button" data-go-step="1" aria-label="Review step 2, Items" data-i18n-aria="step.aria2" disabled><span class="step-number">2</span><span data-i18n="step.items">Items</span></button></li>
                 <li><button class="step-nav" type="button" data-go-step="2" aria-label="Review step 3, Drop-off" data-i18n-aria="step.aria3" disabled><span class="step-number">3</span><span data-i18n="w.dropoff">Drop-off</span></button></li>
                 <li><button class="step-nav" type="button" data-go-step="3" aria-label="Review step 4, Time" data-i18n-aria="step.aria4" disabled><span class="step-number">4</span><span data-i18n="step.time">Time</span></button></li>
                 <li><button class="step-nav" type="button" data-go-step="4" aria-label="Review step 5, Contact" data-i18n-aria="step.aria5" disabled><span class="step-number">5</span><span data-i18n="step.contact">Contact</span></button></li>
@@ -1129,40 +1129,10 @@
               </ol>
             </div>
 
-            <section class="quote-step" data-step="0" aria-labelledby="step-items-title">
+            <section class="quote-step" data-step="0" aria-labelledby="step-pickup-title">
               <div class="step-heading">
                 <p class="step-kicker" data-i18n="book.kicker1">Step 1 of 6</p>
-                <h3 id="step-items-title" data-i18n="s1.h3">What are you moving?</h3>
-                <p data-i18n="s1.p">Tell us what is in the load so we can confirm it fits safely in a cargo van.</p>
-              </div>
-              <div class="field">
-                <label for="item-category" data-i18n="form.itemCategory">Item category</label>
-                <select id="item-category" name="item-category" required>
-                  <option value="" data-i18n="form.catChoose">Choose a category</option>
-                  <option value="Packages or boxes" data-i18n="form.catPackages">Packages or boxes</option>
-                  <option value="Furniture" data-i18n="form.catFurniture">Furniture</option>
-                  <option value="Business delivery" data-i18n="form.catBusiness">Business delivery</option>
-                  <option value="Mixed small load" data-i18n="form.catMixed">Mixed small load</option>
-                  <option value="Other" data-i18n="form.catOther">Other</option>
-                </select>
-              </div>
-              <div class="field" style="margin-top: 18px;">
-                <label for="items" data-i18n="form.itemDesc">Item description</label>
-                <textarea id="items" name="items" placeholder="Include quantity, approximate size, weight and any special handling." data-i18n-ph="form.itemsPh" required></textarea>
-              </div>
-              <div class="photo-field">
-                <label for="item-photos"><span data-i18n="form.addPhotos">Add photos</span> <span class="hint" style="display:inline; margin:0;" data-i18n="common.optional">(optional)</span></label>
-                <input id="item-photos" name="item-photos" type="file" accept="image/*" multiple />
-                <small class="hint" id="photo-hint" data-i18n="js.photoHintDefault">Select up to 4 photos. You will attach them to the text message after your quote opens.</small>
-                <div class="photo-preview" id="photo-preview" aria-live="polite"></div>
-              </div>
-              <div class="step-controls"><button class="btn btn-primary step-next" type="button" data-i18n="common.continue">Continue</button></div>
-            </section>
-
-            <section class="quote-step" data-step="1" aria-labelledby="step-pickup-title" hidden>
-              <div class="step-heading">
-                <p class="step-kicker" data-i18n="book.kicker2">Step 2 of 6</p>
-                <h3 id="step-pickup-title" data-i18n="s2.h3">Where is the pickup?</h3>
+                <h3 id="step-pickup-title" data-i18n="s2.h3">Where is the pick up?</h3>
                 <p data-i18n="s2.p">Enter the full pickup address.</p>
               </div>
               <div class="address-grid">
@@ -1189,10 +1159,37 @@
                   <input id="pickup-zip" name="pickup-zip" type="text" autocomplete="section-pickup postal-code" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" required />
                 </div>
               </div>
-              <div class="step-controls">
-                <button class="btn btn-secondary step-back" type="button" data-i18n="common.back">Back</button>
-                <button class="btn btn-primary step-next" type="button" data-i18n="common.continue">Continue</button>
+              <div class="step-controls"><button class="btn btn-primary step-next" type="button" data-i18n="common.continue">Continue</button></div>
+            </section>
+
+            <section class="quote-step" data-step="1" aria-labelledby="step-items-title" hidden>
+              <div class="step-heading">
+                <p class="step-kicker" data-i18n="book.kicker2">Step 2 of 6</p>
+                <h3 id="step-items-title" data-i18n="s1.h3">What are we picking up?</h3>
+                <p data-i18n="s1.p">Tell us what is in the load so we can confirm it fits safely in a cargo van.</p>
               </div>
+              <div class="field">
+                <label for="item-category" data-i18n="form.itemCategory">Item category</label>
+                <select id="item-category" name="item-category" required>
+                  <option value="" data-i18n="form.catChoose">Choose a category</option>
+                  <option value="Packages or boxes" data-i18n="form.catPackages">Packages or boxes</option>
+                  <option value="Furniture" data-i18n="form.catFurniture">Furniture</option>
+                  <option value="Business delivery" data-i18n="form.catBusiness">Business delivery</option>
+                  <option value="Mixed small load" data-i18n="form.catMixed">Mixed small load</option>
+                  <option value="Other" data-i18n="form.catOther">Other</option>
+                </select>
+              </div>
+              <div class="field" style="margin-top: 18px;">
+                <label for="items" data-i18n="form.itemDesc">Item description</label>
+                <textarea id="items" name="items" placeholder="Include quantity, approximate size, weight and any special handling." data-i18n-ph="form.itemsPh" required></textarea>
+              </div>
+              <div class="photo-field">
+                <label for="item-photos"><span data-i18n="form.addPhotos">Add photos</span> <span class="hint" style="display:inline; margin:0;" data-i18n="common.optional">(optional)</span></label>
+                <input id="item-photos" name="item-photos" type="file" accept="image/*" multiple />
+                <small class="hint" id="photo-hint" data-i18n="js.photoHintDefault">Select up to 4 photos. You will attach them to the text message after your quote opens.</small>
+                <div class="photo-preview" id="photo-preview" aria-live="polite"></div>
+              </div>
+              <div class="step-controls"><button class="btn btn-secondary step-back" type="button" data-i18n="common.back">Back</button><button class="btn btn-primary step-next" type="button" data-i18n="common.continue">Continue</button></div>
             </section>
 
             <section class="quote-step" data-step="2" aria-labelledby="step-dropoff-title" hidden>
@@ -1367,11 +1364,9 @@
               <p class="payment-method-heading" id="payment-method-heading" data-i18n="pay.methodHeading">How would you like to pay?</p>
               <p class="payment-due-note" data-i18n="pay.dueNote">Payment is due before unloading on cash, check, and COD bookings.</p>
               <div class="choice-grid payment-methods" role="radiogroup" aria-labelledby="payment-method-heading">
+                <label class="choice-card"><input type="radio" name="payment-method" value="Card / Debit card" /><span data-i18n="pay.card">Card / Debit card</span></label>
                 <label class="choice-card"><input type="radio" name="payment-method" value="Cash App" checked /><span data-i18n="pay.cashApp">Cash App</span></label>
-                <label class="choice-card"><input type="radio" name="payment-method" value="Cash" /><span data-i18n="pay.cash">Cash</span></label>
                 <label class="choice-card"><input type="radio" name="payment-method" value="Cash on delivery (COD)" /><span data-i18n="pay.cod">Cash on delivery (COD)</span></label>
-                <label class="choice-card"><input type="radio" name="payment-method" value="Check" /><span data-i18n="pay.check">Check</span></label>
-                <label class="choice-card"><input type="radio" name="payment-method" value="Manual payment" /><span data-i18n="pay.manual">Manual payment</span></label>
               </div>
               <div class="payment-panels">
                 <div class="payment-card" data-payment-panel="Cash App">
@@ -1381,21 +1376,13 @@
                   <p data-i18n="pay.cashAppP">Send to $GetQuickHaul — the driver confirms receipt before unloading.</p>
                   <a class="btn cashapp-btn" id="cashapp-pay" href="https://cash.app/$GetQuickHaul" target="_blank" rel="noopener noreferrer" aria-disabled="true" tabindex="-1" data-i18n="pay.cashAppBtn">Pay with Cash App</a>
                 </div>
-                <div class="payment-detail" data-payment-panel="Cash" hidden>
-                  <h4 data-i18n="pay.cashH">Pay in cash</h4>
-                  <p data-i18n="pay.cashP">Please have the cash ready. The driver collects payment before unloading.</p>
+                <div class="payment-detail" data-payment-panel="Card / Debit card" hidden>
+                  <h4 data-i18n="pay.cardH">Pay by card or debit card</h4>
+                  <p data-i18n="pay.cardP">Submit your booking and GetQuickHaul will send you a secure Stripe payment link for your exact trip total. Pay by card or debit card before your trip — nothing is charged now.</p>
                 </div>
                 <div class="payment-detail" data-payment-panel="Cash on delivery (COD)" hidden>
                   <h4 data-i18n="pay.cod">Cash on delivery (COD)</h4>
-                  <p data-i18n="pay.codP">Pay the driver on arrival, before unloading.</p>
-                </div>
-                <div class="payment-detail" data-payment-panel="Check" hidden>
-                  <h4 data-i18n="pay.checkH">Pay by check</h4>
-                  <p data-i18n-html="pay.checkP">Make your check payable to <strong>GetQuickHaul</strong> and hand it to the driver when he arrives — before unloading begins.</p>
-                </div>
-                <div class="payment-detail" data-payment-panel="Manual payment" hidden>
-                  <h4 data-i18n="pay.manual">Manual payment</h4>
-                  <p data-i18n-html="pay.manualP">Prefer to arrange payment another way? Choose manual payment and GetQuickHaul will set up the payment details with you when your booking is confirmed. Questions? Call <a href="tel:+15512338583">(551) 233-8583</a>.</p>
+                  <p data-i18n="pay.codP">Pay the driver on arrival, before unloading — cash or check, with checks payable to GetQuickHaul.</p>
                 </div>
               </div>
               <div class="step-controls">
@@ -1409,8 +1396,8 @@
             <div class="step-progress review-progress" aria-label="Review a booking step" data-i18n-aria="book.reviewProgressAria">
               <div class="step-progress-bar" aria-hidden="true"><div class="step-progress-fill"></div></div>
               <ol class="step-list">
-                <li><button class="step-nav review-step-nav" type="button" data-go-step="0" aria-label="Review step 1, Items" data-i18n-aria="step.aria1"><span class="step-number">1</span><span data-i18n="step.items">Items</span></button></li>
-                <li><button class="step-nav review-step-nav" type="button" data-go-step="1" aria-label="Review step 2, Pickup" data-i18n-aria="step.aria2"><span class="step-number">2</span><span data-i18n="w.pickup">Pickup</span></button></li>
+                <li><button class="step-nav review-step-nav" type="button" data-go-step="0" aria-label="Review step 1, Pickup" data-i18n-aria="step.aria1"><span class="step-number">1</span><span data-i18n="w.pickup">Pickup</span></button></li>
+                <li><button class="step-nav review-step-nav" type="button" data-go-step="1" aria-label="Review step 2, Items" data-i18n-aria="step.aria2"><span class="step-number">2</span><span data-i18n="step.items">Items</span></button></li>
                 <li><button class="step-nav review-step-nav" type="button" data-go-step="2" aria-label="Review step 3, Drop-off" data-i18n-aria="step.aria3"><span class="step-number">3</span><span data-i18n="w.dropoff">Drop-off</span></button></li>
                 <li><button class="step-nav review-step-nav" type="button" data-go-step="3" aria-label="Review step 4, Time" data-i18n-aria="step.aria4"><span class="step-number">4</span><span data-i18n="step.time">Time</span></button></li>
                 <li><button class="step-nav review-step-nav" type="button" data-go-step="4" aria-label="Review step 5, Contact" data-i18n-aria="step.aria5"><span class="step-number">5</span><span data-i18n="step.contact">Contact</span></button></li>
@@ -1530,7 +1517,7 @@
             </div>
 
             <div class="phone-section">
-              <h3 data-i18n="phone.secItems">What is being moved</h3>
+              <h3 data-i18n="phone.secItems">What we are picking up</h3>
               <div class="field">
                 <label for="phone-item-category" data-i18n="form.itemCategory">Item category</label>
                 <select id="phone-item-category" required>
@@ -1632,11 +1619,9 @@
             <div class="phone-section">
               <h3 data-i18n="phone.secPayNotes">Payment &amp; notes</h3>
               <div class="choice-grid payment-methods" role="radiogroup" aria-label="Payment method">
+                <label class="choice-card"><input type="radio" name="phone-payment-method" value="Card / Debit card" /><span data-i18n="pay.card">Card / Debit card</span></label>
                 <label class="choice-card"><input type="radio" name="phone-payment-method" value="Cash App" checked /><span data-i18n="pay.cashApp">Cash App</span></label>
-                <label class="choice-card"><input type="radio" name="phone-payment-method" value="Cash" /><span data-i18n="pay.cash">Cash</span></label>
                 <label class="choice-card"><input type="radio" name="phone-payment-method" value="Cash on delivery (COD)" /><span data-i18n="pay.cod">Cash on delivery (COD)</span></label>
-                <label class="choice-card"><input type="radio" name="phone-payment-method" value="Check" /><span data-i18n="pay.check">Check</span></label>
-                <label class="choice-card"><input type="radio" name="phone-payment-method" value="Manual payment" /><span data-i18n="pay.manual">Manual payment</span></label>
               </div>
               <div class="field" style="margin-top: 18px;">
                 <label for="phone-notes"><span data-i18n="phone.notes">Notes</span> <span class="hint" style="display:inline; margin:0;" data-i18n="common.optional">(optional)</span></label>
@@ -2235,8 +2220,8 @@
         "book.progressAria": "Booking progress",
         "book.rateNote": "Door-to-door pricing: <strong>$45 for the first 5 miles, then $3 per additional mile.</strong> A $25 NYC toll surcharge applies when a route crosses the Hudson to or from Manhattan. Pickups before 7 AM or after 7 PM have a $15 after-hours surge.",
         "book.reviewProgressAria": "Review a booking step",
-        "step.aria1": "Review step 1, Items",
-        "step.aria2": "Review step 2, Pickup",
+        "step.aria1": "Review step 1, Pickup",
+        "step.aria2": "Review step 2, Items",
         "step.aria3": "Review step 3, Drop-off",
         "step.aria4": "Review step 4, Time",
         "step.aria5": "Review step 5, Contact",
@@ -2245,9 +2230,9 @@
         "step.items": "Items",
         "step.payment": "Payment",
         "step.time": "Time",
-        "s1.h3": "What are you moving?",
+        "s1.h3": "What are we picking up?",
         "s1.p": "Tell us what is in the load so we can confirm it fits safely in a cargo van.",
-        "s2.h3": "Where is the pickup?",
+        "s2.h3": "Where is the pick up?",
         "s2.p": "Enter the full pickup address.",
         "s3.h3": "Where is it going?",
         "s3.p": "Enter the final drop-off and any stops. We’ll calculate the driving distance when you continue.",
@@ -2304,6 +2289,9 @@
         "pay.agreementH": "Delivery agreement",
         "pay.agreementP1": "GetQuickHaul does not transport appliances; illegal or stolen goods; controlled substances; firearms or ammunition; hazardous, flammable or explosive materials; or anything unsafe to carry. We may inspect or refuse any load.",
         "pay.agreementP2": "You confirm that you own the items or have permission to ship them, that your description is accurate, and that all items are safely packed. You are responsible for undisclosed or prohibited contents and for loss or damage caused by improper packing, an item’s inherent condition, inaccurate information, or events beyond our reasonable control. Nothing here limits rights or responsibilities that cannot legally be limited.",
+        "pay.card": "Card / Debit card",
+        "pay.cardH": "Pay by card or debit card",
+        "pay.cardP": "Submit your booking and GetQuickHaul will send you a secure Stripe payment link for your exact trip total. Pay by card or debit card before your trip — nothing is charged now.",
         "pay.cash": "Cash",
         "pay.cashApp": "Cash App",
         "pay.cashAppBtn": "Pay with Cash App",
@@ -2316,12 +2304,10 @@
         "pay.checkH": "Pay by check",
         "pay.checkP": "Make your check payable to <strong>GetQuickHaul</strong> and hand it to the driver when he arrives — before unloading begins.",
         "pay.cod": "Cash on delivery (COD)",
-        "pay.codP": "Pay the driver on arrival, before unloading.",
+        "pay.codP": "Pay the driver on arrival, before unloading — cash or check, with checks payable to GetQuickHaul.",
         "pay.dueNote": "Payment is due before unloading on cash, check, and COD bookings.",
         "pay.estPerDelivery": "Estimated per delivery",
         "pay.estPrice": "Estimated price",
-        "pay.manual": "Manual payment",
-        "pay.manualP": "Prefer to arrange payment another way? Choose manual payment and GetQuickHaul will set up the payment details with you when your booking is confirmed. Questions? Call <a href=\"tel:+15512338583\">(551) 233-8583</a>.",
         "pay.methodHeading": "How would you like to pay?",
         "pay.seeEstimate": "See my estimate",
         "pay.summaryAria": "Trip total before payment",
@@ -2379,7 +2365,7 @@
         "phone.notesPh": "Gate codes, drop-off contact, floor or elevator, anything the driver should know.",
         "phone.rateNote": "Same door-to-door pricing as the website: <strong>$45 for the first 5 miles, then $3 per additional mile.</strong> A $25 NYC toll surcharge applies on Hudson crossings to or from Manhattan, and $15 for pickups before 7 AM or after 7 PM.",
         "phone.secCustomer": "Customer",
-        "phone.secItems": "What is being moved",
+        "phone.secItems": "What we are picking up",
         "phone.secPayNotes": "Payment & notes",
         "phone.secWhen": "Date & time",
         "phone.submit": "Create phone order",
@@ -2710,11 +2696,11 @@
         "js.mileSuffix": " miles",
         "js.mileSuffixOne": " mile",
         "js.outOfAreaBtn": "Text us this route anyway",
+        "js.payInstrCard": "You chose card / debit card — after GetQuickHaul confirms your booking, we will send you a secure Stripe payment link for your exact trip total so you can pay before your trip.",
         "js.payInstrCash": "You chose cash — have the total ready and pay GetQuickHaul at pickup.",
         "js.payInstrCashApp": "After GetQuickHaul confirms the job, pay with Cash App at $GetQuickHaul.",
         "js.payInstrCheck": "You chose check — make it payable to GetQuickHaul and hand it over at pickup or delivery.",
         "js.payInstrCod": "You chose cash on delivery (COD) — have the total ready in cash when your items are delivered.",
-        "js.payInstrManual": "You chose manual payment — GetQuickHaul will arrange the payment details with you when confirming your booking.",
         "js.phCalculated": "Calculated automatically",
         "js.phEnterMiles": "Enter total miles",
         "js.phoneCalc": "Calculate price",
@@ -2795,8 +2781,8 @@
         "book.progressAria": "Progreso de la reserva",
         "book.rateNote": "Precio puerta a puerta: <strong>$45 por las primeras 5 millas y luego $3 por milla adicional.</strong> Se aplica un recargo de $25 por peaje de NYC cuando una ruta cruza el Hudson hacia o desde Manhattan. Las recogidas antes de las 7 AM o después de las 7 PM tienen un recargo de $15 fuera de horario.",
         "book.reviewProgressAria": "Revisar un paso de la reserva",
-        "step.aria1": "Revisar paso 1, Artículos",
-        "step.aria2": "Revisar paso 2, Recogida",
+        "step.aria1": "Revisar paso 1, Recogida",
+        "step.aria2": "Revisar paso 2, Artículos",
         "step.aria3": "Revisar paso 3, Entrega",
         "step.aria4": "Revisar paso 4, Hora",
         "step.aria5": "Revisar paso 5, Contacto",
@@ -2805,7 +2791,7 @@
         "step.items": "Artículos",
         "step.payment": "Pago",
         "step.time": "Hora",
-        "s1.h3": "¿Qué vas a transportar?",
+        "s1.h3": "¿Qué vamos a recoger?",
         "s1.p": "Cuéntanos qué lleva la carga para confirmar que cabe de forma segura en una furgoneta de carga.",
         "s2.h3": "¿Dónde es la recogida?",
         "s2.p": "Ingresa la dirección completa de recogida.",
@@ -2864,6 +2850,9 @@
         "pay.agreementH": "Acuerdo de entrega",
         "pay.agreementP1": "GetQuickHaul no transporta electrodomésticos; artículos ilegales o robados; sustancias controladas; armas de fuego o municiones; materiales peligrosos, inflamables o explosivos; ni nada que no sea seguro transportar. Podemos inspeccionar o rechazar cualquier carga.",
         "pay.agreementP2": "Confirmas que los artículos son tuyos o que tienes permiso para enviarlos, que tu descripción es exacta y que todos los artículos están empacados de forma segura. Eres responsable del contenido no declarado o prohibido y de las pérdidas o daños causados por un embalaje inadecuado, el estado propio de un artículo, información inexacta o eventos fuera de nuestro control razonable. Nada de lo aquí indicado limita derechos o responsabilidades que no puedan limitarse legalmente.",
+        "pay.card": "Tarjeta de crédito / débito",
+        "pay.cardH": "Pagar con tarjeta de crédito o débito",
+        "pay.cardP": "Envía tu reserva y GetQuickHaul te enviará un enlace de pago seguro de Stripe por el total exacto de tu viaje. Paga con tarjeta de crédito o débito antes de tu viaje; no se hace ningún cargo ahora.",
         "pay.cash": "Efectivo",
         "pay.cashApp": "Cash App",
         "pay.cashAppBtn": "Pagar con Cash App",
@@ -2876,12 +2865,10 @@
         "pay.checkH": "Pagar con cheque",
         "pay.checkP": "Haga su cheque a nombre de <strong>GetQuickHaul</strong> y entrégueselo al conductor cuando llegue, antes de que comience la descarga.",
         "pay.cod": "Pago en efectivo al entregar (COD)",
-        "pay.codP": "Pague al conductor al llegar, antes de la descarga.",
+        "pay.codP": "Paga al conductor al llegar, antes de descargar — efectivo o cheque, con los cheques a nombre de GetQuickHaul.",
         "pay.dueNote": "El pago vence antes de la descarga en reservas en efectivo, cheque y contra entrega (COD).",
         "pay.estPerDelivery": "Estimado por entrega",
         "pay.estPrice": "Precio estimado",
-        "pay.manual": "Pago manual",
-        "pay.manualP": "¿Prefieres acordar el pago de otra manera? Elige pago manual y GetQuickHaul coordinará los detalles de pago contigo cuando se confirme tu reserva. ¿Preguntas? Llama al <a href=\"tel:+15512338583\">(551) 233-8583</a>.",
         "pay.methodHeading": "¿Cómo te gustaría pagar?",
         "pay.seeEstimate": "Ver mi estimado",
         "pay.summaryAria": "Total del viaje antes del pago",
@@ -2939,7 +2926,7 @@
         "phone.notesPh": "Códigos de acceso, contacto en la entrega, piso o ascensor, todo lo que el conductor debe saber.",
         "phone.rateNote": "El mismo precio puerta a puerta del sitio web: <strong>$45 por las primeras 5 millas y luego $3 por milla adicional.</strong> Se aplica un recargo de $25 por peaje de NYC en los cruces del Hudson hacia o desde Manhattan, y $15 para recogidas antes de las 7 AM o después de las 7 PM.",
         "phone.secCustomer": "Cliente",
-        "phone.secItems": "Qué se va a transportar",
+        "phone.secItems": "Qué vamos a recoger",
         "phone.secPayNotes": "Pago y notas",
         "phone.secWhen": "Fecha y hora",
         "phone.submit": "Crear pedido por teléfono",
@@ -3270,11 +3257,11 @@
         "js.mileSuffix": " millas",
         "js.mileSuffixOne": " milla",
         "js.outOfAreaBtn": "Envíanos esta ruta por texto de todos modos",
+        "js.payInstrCard": "Elegiste tarjeta de crédito / débito: cuando GetQuickHaul confirme tu reserva, te enviaremos un enlace de pago seguro de Stripe por el total exacto de tu viaje para que pagues antes de tu viaje.",
         "js.payInstrCash": "Elegiste efectivo: ten el total listo y paga a GetQuickHaul en la recogida.",
         "js.payInstrCashApp": "Cuando GetQuickHaul confirme el trabajo, paga con Cash App a $GetQuickHaul.",
         "js.payInstrCheck": "Elegiste cheque: hazlo a nombre de GetQuickHaul y entrégalo en la recogida o la entrega.",
         "js.payInstrCod": "Elegiste pago en efectivo al entregar (COD): ten el total listo en efectivo cuando se entreguen tus artículos.",
-        "js.payInstrManual": "Elegiste pago manual: GetQuickHaul coordinará los detalles de pago contigo al confirmar tu reserva.",
         "js.phCalculated": "Calculado automáticamente",
         "js.phEnterMiles": "Ingresa el total de millas",
         "js.phoneCalc": "Calcular precio",
@@ -3355,8 +3342,8 @@
         "book.progressAria": "Progresso da reserva",
         "book.rateNote": "Preço porta a porta: <strong>$45 pelas primeiras 5 milhas e depois $3 por milha adicional.</strong> Aplica-se uma taxa adicional de pedágio de NYC de $25 quando uma rota cruza o Hudson de ou para Manhattan. Coletas antes das 7 AM ou depois das 7 PM têm uma taxa adicional de $15 fora de horário.",
         "book.reviewProgressAria": "Revisar uma etapa da reserva",
-        "step.aria1": "Revisar a etapa 1, Itens",
-        "step.aria2": "Revisar a etapa 2, Coleta",
+        "step.aria1": "Revisar a etapa 1, Coleta",
+        "step.aria2": "Revisar a etapa 2, Itens",
         "step.aria3": "Revisar a etapa 3, Entrega",
         "step.aria4": "Revisar a etapa 4, Horário",
         "step.aria5": "Revisar a etapa 5, Contato",
@@ -3365,7 +3352,7 @@
         "step.items": "Itens",
         "step.payment": "Pagamento",
         "step.time": "Horário",
-        "s1.h3": "O que você vai transportar?",
+        "s1.h3": "O que vamos buscar?",
         "s1.p": "Conte-nos o que há na carga para que possamos confirmar que ela cabe com segurança em uma van de carga.",
         "s2.h3": "Onde fica a coleta?",
         "s2.p": "Informe o endereço completo de coleta.",
@@ -3424,6 +3411,9 @@
         "pay.agreementH": "Acordo de entrega",
         "pay.agreementP1": "A GetQuickHaul não transporta eletrodomésticos; mercadorias ilegais ou roubadas; substâncias controladas; armas de fogo ou munição; materiais perigosos, inflamáveis ou explosivos; nem qualquer coisa que não seja segura de transportar. Podemos inspecionar ou recusar qualquer carga.",
         "pay.agreementP2": "Você confirma que é o proprietário dos itens ou que tem permissão para enviá-los, que a sua descrição é precisa e que todos os itens estão embalados com segurança. Você é responsável por conteúdos não declarados ou proibidos e por perdas ou danos causados por embalagem inadequada, pela condição inerente de um item, por informações imprecisas ou por eventos fora do nosso controle razoável. Nada aqui limita direitos ou responsabilidades que não possam ser limitados por lei.",
+        "pay.card": "Cartão de crédito / débito",
+        "pay.cardH": "Pagar com cartão de crédito ou débito",
+        "pay.cardP": "Envie a sua reserva e a GetQuickHaul enviará um link de pagamento seguro da Stripe com o valor exato da sua viagem. Pague com cartão de crédito ou débito antes da viagem — nada é cobrado agora.",
         "pay.cash": "Dinheiro",
         "pay.cashApp": "Cash App",
         "pay.cashAppBtn": "Pagar com o Cash App",
@@ -3436,12 +3426,10 @@
         "pay.checkH": "Pagar com cheque",
         "pay.checkP": "Faça seu cheque nominal a <strong>GetQuickHaul</strong> e entregue ao motorista quando ele chegar — antes do início da descarga.",
         "pay.cod": "Pagamento em dinheiro na entrega (COD)",
-        "pay.codP": "Pague ao motorista na chegada, antes da descarga.",
+        "pay.codP": "Pague ao motorista na chegada, antes de descarregar — dinheiro ou cheque, com os cheques nominais a GetQuickHaul.",
         "pay.dueNote": "O pagamento é devido antes da descarga em reservas em dinheiro, cheque e COD.",
         "pay.estPerDelivery": "Estimado por entrega",
         "pay.estPrice": "Preço estimado",
-        "pay.manual": "Pagamento manual",
-        "pay.manualP": "Prefere combinar o pagamento de outra forma? Escolha o pagamento manual e a GetQuickHaul acertará os detalhes do pagamento com você quando a sua reserva for confirmada. Dúvidas? Ligue para <a href=\"tel:+15512338583\">(551) 233-8583</a>.",
         "pay.methodHeading": "Como você gostaria de pagar?",
         "pay.seeEstimate": "Ver minha estimativa",
         "pay.summaryAria": "Total da viagem antes do pagamento",
@@ -3499,7 +3487,7 @@
         "phone.notesPh": "Códigos de portão, contato na entrega, andar ou elevador, tudo o que o motorista precisa saber.",
         "phone.rateNote": "O mesmo preço porta a porta do site: <strong>$45 pelas primeiras 5 milhas e depois $3 por milha adicional.</strong> Aplica-se uma taxa adicional de pedágio de NYC de $25 nas travessias do Hudson de ou para Manhattan, e $15 para coletas antes das 7 AM ou depois das 7 PM.",
         "phone.secCustomer": "Cliente",
-        "phone.secItems": "O que será transportado",
+        "phone.secItems": "O que vamos buscar",
         "phone.secPayNotes": "Pagamento e observações",
         "phone.secWhen": "Data e hora",
         "phone.submit": "Criar pedido por telefone",
@@ -3830,11 +3818,11 @@
         "js.mileSuffix": " milhas",
         "js.mileSuffixOne": " milha",
         "js.outOfAreaBtn": "Enviar esta rota por mensagem de texto mesmo assim",
+        "js.payInstrCard": "Você escolheu cartão de crédito / débito — depois que a GetQuickHaul confirmar a sua reserva, enviaremos um link de pagamento seguro da Stripe com o valor exato da sua viagem para você pagar antes da viagem.",
         "js.payInstrCash": "Você escolheu dinheiro — tenha o valor total pronto e pague a GetQuickHaul na coleta.",
         "js.payInstrCashApp": "Depois que a GetQuickHaul confirmar o serviço, pague com o Cash App em $GetQuickHaul.",
         "js.payInstrCheck": "Você escolheu cheque — faça-o nominal a GetQuickHaul e entregue-o na coleta ou na entrega.",
         "js.payInstrCod": "Você escolheu pagamento em dinheiro na entrega (COD) — tenha o valor total pronto em dinheiro quando os seus itens forem entregues.",
-        "js.payInstrManual": "Você escolheu o pagamento manual — a GetQuickHaul acertará os detalhes do pagamento com você ao confirmar a sua reserva.",
         "js.phCalculated": "Calculado automaticamente",
         "js.phEnterMiles": "Informe o total de milhas",
         "js.phoneCalc": "Calcular preço",
@@ -4342,10 +4330,10 @@
       }
 
       function paymentInstructions(method) {
-        if (method === 'Cash') return t('js.payInstrCash');
+        if (method === 'Card / Debit card') return t('js.payInstrCard');
         if (method === 'Cash on delivery (COD)') return t('js.payInstrCod');
-        if (method === 'Check') return t('js.payInstrCheck');
-        if (method === 'Manual payment') return t('js.payInstrManual');
+        // Legacy values from bookings shared before the payment cleanup are pay-the-driver methods — they read as COD now.
+        if (method === 'Cash' || method === 'Check') return t('js.payInstrCod');
         return t('js.payInstrCashApp');
       }
 
@@ -5104,11 +5092,11 @@
 
       function paymentMethodLabel(value) {
         var labels = {
+          'Card / Debit card': t('pay.card'),
           'Cash App': t('pay.cashApp'),
           'Cash': t('pay.cash'),
           'Cash on delivery (COD)': t('pay.cod'),
-          'Check': t('pay.check'),
-          'Manual payment': t('pay.manual')
+          'Check': t('pay.check')
         };
         return labels[value] || value;
       }
