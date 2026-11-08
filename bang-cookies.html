@@ -21,6 +21,15 @@
   .lead { font-size: 17px; }
   .acct { background: #f7f9fb; border-left: 4px solid #f5b921; padding: 14px 18px; margin: 22px 0; }
   .acct p { margin: 4px 0; }
+  .howit { margin: 22px 0; }
+  .howit h2 { color: #18395d; font-size: 19px; margin: 0 0 10px; }
+  .steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+  .step { background: #f7f9fb; border: 2px solid #e3ebf3; border-radius: 10px; padding: 12px 14px; font-size: 15px; line-height: 1.45; }
+  .step .n { display: inline-block; background: #d32f26; color: #fff; font-weight: 800; border-radius: 50%; width: 24px; height: 24px; line-height: 24px; text-align: center; margin-right: 6px; font-size: 14px; }
+  .warm { margin: 12px 0 0; font-size: 16px; }
+  .help { background: #f7f9fb; border-left: 4px solid #18395d; padding: 14px 18px; margin: 26px 0 0; }
+  .help p { margin: 4px 0; }
   form { margin-top: 8px; }
   fieldset { border: 0; padding: 0; margin: 0 0 22px; }
   legend, .flabel { display: block; color: #18395d; font-weight: 800; font-size: 17px; margin: 0 0 8px; }
@@ -74,6 +83,16 @@
     <p><strong>Account billing — nothing to pay now.</strong></p>
     <p>Routes booked here go on your Bang Cookies account and are billed weekly,
     same as always. No payment, no card, no price quote at booking.</p>
+  </div>
+
+  <div class="howit">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step"><span class="n">1</span>Tap where it's going</div>
+      <div class="step"><span class="n">2</span>Pick the day &amp; time</div>
+      <div class="step"><span class="n">3</span>Tap Book. Done — we get it instantly.</div>
+    </div>
+    <p class="warm">New here? Your first booking takes about a minute — and we're right here if you need a hand. 🙂</p>
   </div>
 
   <form id="route-form" novalidate>
@@ -148,6 +167,10 @@
     <p>Sorry about that — the booking didn't reach us. Please try once more, or
     reach us right now and we'll book it for you:</p>
     <a class="cta cta-call" href="tel:+15512338583">Call or text (551) 233-8583</a>
+  </div>
+
+  <div class="help">
+    <p><strong>Questions?</strong> Text us anytime at <a href="sms:+15512338583">(551) 233-8583</a> — we'll walk you through it, step by step.</p>
   </div>
 </main>
 <footer>
