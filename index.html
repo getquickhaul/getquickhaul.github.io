@@ -735,6 +735,9 @@
     .review-btn { display: inline-flex; align-items: center; gap: 9px; padding: 11px 22px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-weight: 800; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 0 rgba(133, 92, 0, .18); }
     .review-btn svg { width: 19px; height: 19px; flex: none; }
     .review-btn:hover { filter: brightness(1.06); }
+    .share-btn { display: inline-flex; align-items: center; gap: 9px; padding: 10px 22px; border-radius: 999px; background: #fff; color: var(--ink); border: 2px solid var(--line); font-family: inherit; font-weight: 800; font-size: 1rem; cursor: pointer; }
+    .share-btn svg { width: 18px; height: 18px; flex: none; }
+    .share-btn:hover { border-color: var(--accent); }
     .nj-accent { color: #c22f22; font-weight: 800; }
     @media (prefers-color-scheme: dark) { .nj-accent { color: #ff8a7a; } }
     .social-links { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -2188,6 +2191,7 @@
       </nav>
       <a class="footer-phone" href="tel:+15512338583">(551) 233-8583</a>
       <a class="review-btn" href="review.html" aria-label="Leave a review for GetQuickHaul"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><span>Leave a Review</span></a>
+      <button class="share-btn" id="share-review" type="button" aria-label="Share the GetQuickHaul review page"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg><span>Share</span></button>
     </div>
   </footer>
 
@@ -7630,5 +7634,36 @@
     }());
   </script>
 
-  </body>
+    <script>
+    (function () {
+      var shareBtn = document.getElementById('share-review');
+      if (!shareBtn) return;
+      var shareData = {
+        title: 'GetQuickHaul',
+        text: 'Please leave GetQuickHaul a quick review \u2014 it takes about a minute:',
+        url: 'https://getquickhaulnj.com/review'
+      };
+      function smsFallback() {
+        window.location.href = 'sms:?&body=' + encodeURIComponent(shareData.text + ' ' + shareData.url);
+      }
+      shareBtn.addEventListener('click', function () {
+        if (navigator.share) {
+          navigator.share(shareData).catch(function () {});
+          return;
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(shareData.url).then(function () {
+            var label = shareBtn.querySelector('span');
+            if (!label) return;
+            var old = label.textContent;
+            label.textContent = 'Link copied!';
+            setTimeout(function () { label.textContent = old; }, 2000);
+          }).catch(smsFallback);
+        } else {
+          smsFallback();
+        }
+      });
+    })();
+  </script>
+</body>
 </html>
