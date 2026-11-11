@@ -392,6 +392,9 @@
     .lang-sep { color: var(--muted); font-weight: 700; }
     .utility-actions { display: flex; align-items: center; gap: 10px 20px; flex-wrap: wrap; justify-content: flex-end; }
     .driver-cta-header { display: inline-flex; align-items: center; min-height: 38px; padding: 8px 15px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-size: .92rem; font-weight: 800; text-decoration: none; white-space: nowrap; box-shadow: 0 4px 0 rgba(133, 92, 0, .18); }
+    .utility-login { display: flex; align-items: center; gap: 6px 18px; flex-wrap: wrap; }
+    .login-link { background: none; border: 0; padding: 6px 2px; font-family: "DM Sans", sans-serif; font-size: .92rem; font-weight: 800; color: var(--blue); cursor: pointer; border-bottom: 2px solid var(--line); white-space: nowrap; }
+    .login-link:hover { color: var(--ink); border-bottom-color: var(--accent); }
     .phone-link { font-weight: 800; text-decoration: none; color: var(--blue); border-bottom: 2px solid var(--line); }
     body.phone-view #main > :not(#phone-order),
     body.phone-view footer,
@@ -837,6 +840,10 @@
       <div class="location">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.7" stroke="currentColor" stroke-width="2"/></svg>
         <span data-i18n="hdr.location">Weehawken, NJ</span>
+      </div>
+      <div class="utility-login">
+        <button class="login-link" id="hdr-customer-login" type="button" data-i18n="hdr.customerLogin">Customer login</button>
+        <button class="login-link" id="hdr-driver-login" type="button" data-i18n="hdr.driverLogin">Driver login</button>
       </div>
       <div class="utility-actions">
         <div class="lang-toggle" role="group" aria-label="Language / Idioma">
@@ -1498,6 +1505,7 @@
               </dl>
               <p class="confirmation-backup-label" data-i18n-html="conf.backupLabel">Already sent — these are just extra copies<span>Optional: send the same booking again by text or email, for example to attach photos of your items. You don’t need to do this for your booking to count.</span></p>
               <div class="confirmation-actions">
+                <button class="btn btn-primary" id="confirmation-home" type="button" data-i18n="conf.goHome">Back to home</button>
                 <a class="btn btn-secondary" id="confirmation-text" href="#instant-quote" data-i18n="conf.textBtn">Text us an extra copy</a>
                 <a class="btn btn-secondary" id="confirmation-email" href="mailto:getquickhaul@gmail.com" data-i18n="conf.emailBtn">Email us an extra copy</a>
                 <button class="btn btn-secondary" id="new-quote" type="button" data-i18n="conf.newQuote">Start a new quote</button>
@@ -2208,6 +2216,8 @@
         "hdr.driveCta": "Drive with GetQuickHaul",
         "hdr.location": "Weehawken, NJ",
         "hdr.phoneOrders": "Phone orders",
+        "hdr.customerLogin": "Customer login",
+        "hdr.driverLogin": "Driver login",
         "hero.call": "Call GetQuickHaul",
         "hero.cartoonAria": "Become a driver — open the driver application",
         "hero.cartoonSub": "Own a van or truck? Register to start your driver application",
@@ -2372,6 +2382,7 @@
         "conf.intro": "You’re done — your booking was sent automatically and you don’t need to send anything else. This page is your receipt: keep your booking reference above, and screenshot or bookmark this page to keep your trip summary.",
         "conf.kicker": "Booking received",
         "conf.newQuote": "Start a new quote",
+        "conf.goHome": "Back to home",
         "conf.next1": "GetQuickHaul reviews your trip details.",
         "conf.next2": "We call or text you at the number you gave us to confirm your pickup.",
         "conf.next3": "If you don’t hear back shortly, call <a href=\"tel:+15512338583\">(551) 233-8583</a> and give your booking reference.",
@@ -2773,6 +2784,8 @@
         "hdr.driveCta": "Conduce con GetQuickHaul",
         "hdr.location": "Weehawken, NJ",
         "hdr.phoneOrders": "Pedidos por teléfono",
+        "hdr.customerLogin": "Acceso clientes",
+        "hdr.driverLogin": "Acceso conductores",
         "hero.call": "Llamar a GetQuickHaul",
         "hero.cartoonAria": "Conviértete en conductor: abre la solicitud para conductores",
         "hero.cartoonSub": "¿Tienes una furgoneta o un camión? Regístrate para iniciar tu solicitud de conductor",
@@ -2937,6 +2950,7 @@
         "conf.intro": "Ya terminaste: tu reserva se envió automáticamente y no necesitas enviar nada más. Esta página es tu recibo: guarda tu referencia de reserva de arriba y haz una captura de pantalla o guarda esta página en favoritos para conservar el resumen de tu viaje.",
         "conf.kicker": "Reserva recibida",
         "conf.newQuote": "Iniciar una nueva cotización",
+        "conf.goHome": "Volver al inicio",
         "conf.next1": "GetQuickHaul revisa los detalles de tu viaje.",
         "conf.next2": "Te llamamos o te enviamos un mensaje al número que nos diste para confirmar tu recogida.",
         "conf.next3": "Si no recibes respuesta pronto, llama al <a href=\"tel:+15512338583\">(551) 233-8583</a> e indica tu referencia de reserva.",
@@ -3338,6 +3352,8 @@
         "hdr.driveCta": "Dirija com a GetQuickHaul",
         "hdr.location": "Weehawken, NJ",
         "hdr.phoneOrders": "Pedidos por telefone",
+        "hdr.customerLogin": "Acesso do cliente",
+        "hdr.driverLogin": "Acesso do motorista",
         "hero.call": "Ligar para a GetQuickHaul",
         "hero.cartoonAria": "Torne-se um motorista — abra a candidatura de motorista",
         "hero.cartoonSub": "Tem uma van ou um caminhão? Cadastre-se para começar sua candidatura de motorista",
@@ -3502,6 +3518,7 @@
         "conf.intro": "Pronto — a sua reserva foi enviada automaticamente e você não precisa enviar mais nada. Esta página é o seu recibo: guarde a sua referência de reserva acima e faça uma captura de tela ou salve esta página nos favoritos para manter o resumo da sua viagem.",
         "conf.kicker": "Reserva recebida",
         "conf.newQuote": "Começar um novo orçamento",
+        "conf.goHome": "Voltar ao início",
         "conf.next1": "A GetQuickHaul revisa os detalhes da sua viagem.",
         "conf.next2": "Ligamos ou enviamos uma mensagem para o número que você informou para confirmar a sua coleta.",
         "conf.next3": "Se não tiver resposta em breve, ligue para <a href=\"tel:+15512338583\">(551) 233-8583</a> e informe a sua referência de reserva.",
@@ -6016,6 +6033,16 @@
         window.location.reload();
       });
 
+      var confirmationHome = document.getElementById('confirmation-home');
+      if (confirmationHome) {
+        confirmationHome.addEventListener('click', function () {
+          try {
+            window.history.replaceState(null, '', window.location.pathname);
+          } catch (historyError) {}
+          window.location.reload();
+        });
+      }
+
       cashAppPay.addEventListener('click', function (event) {
         if (deliveryAgreement.checked) return;
         event.preventDefault();
@@ -6307,6 +6334,14 @@
           setDriverPortal(false);
           var dboOpen = document.getElementById('dbo-open');
           if (dboOpen) dboOpen.click();
+        });
+      }
+      var hdrDriverLogin = document.getElementById('hdr-driver-login');
+      if (hdrDriverLogin) {
+        hdrDriverLogin.addEventListener('click', function () {
+          setDriverPortal(false);
+          var dboOpenBtn = document.getElementById('dbo-open');
+          if (dboOpenBtn) dboOpenBtn.click();
         });
       }
 
@@ -7334,6 +7369,11 @@
       // ---------- events ----------
       if (openLoginBtn) openLoginBtn.addEventListener('click', function () {
         if (state.customer) { showPanel(panel.hidden); enterApp(state.customer); }
+        else showAuth('login');
+      });
+      var hdrCustomerLogin = el('hdr-customer-login');
+      if (hdrCustomerLogin) hdrCustomerLogin.addEventListener('click', function () {
+        if (state.customer) { showPanel(true); enterApp(state.customer); }
         else showAuth('login');
       });
       if (openRegisterBtn) openRegisterBtn.addEventListener('click', function () {
