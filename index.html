@@ -1411,6 +1411,7 @@
                 <label class="choice-card"><input type="radio" name="payment-method" value="Card / Debit card" /><span data-i18n="pay.card">Card / Debit card</span></label>
                 <label class="choice-card"><input type="radio" name="payment-method" value="Cash App" checked /><span data-i18n="pay.cashApp">Cash App</span></label>
                 <label class="choice-card"><input type="radio" name="payment-method" value="Cash on delivery (COD)" /><span data-i18n="pay.cod">Cash on delivery (COD)</span></label>
+                <label class="choice-card"><input type="radio" name="payment-method" value="On account (business)" /><span data-i18n="pay.account">On account (business)</span></label>
               </div>
               <div class="payment-panels">
                 <div class="payment-card" data-payment-panel="Cash App">
@@ -1427,6 +1428,11 @@
                 <div class="payment-detail" data-payment-panel="Cash on delivery (COD)" hidden>
                   <h4 data-i18n="pay.cod">Cash on delivery (COD)</h4>
                   <p data-i18n="pay.codP">Pay the driver on arrival, before unloading — cash or check, with checks payable to GetQuickHaul.</p>
+                </div>
+                <div class="payment-detail" data-payment-panel="On account (business)" hidden>
+                  <h4 data-i18n="pay.accountH">Business account billing</h4>
+                  <p data-i18n="pay.accountP">For approved business accounts only. Book now and we add the trip to your weekly account invoice — no payment due at the door. If your business doesn't have an account yet, apply first: it takes about two minutes, and we review applications within one business day.</p>
+                  <a class="btn btn-secondary" href="business-account.html" data-i18n="pay.accountBtn">Apply for a business account</a>
                 </div>
               </div>
               <div class="step-controls">
@@ -1667,6 +1673,7 @@
                 <label class="choice-card"><input type="radio" name="phone-payment-method" value="Card / Debit card" /><span data-i18n="pay.card">Card / Debit card</span></label>
                 <label class="choice-card"><input type="radio" name="phone-payment-method" value="Cash App" checked /><span data-i18n="pay.cashApp">Cash App</span></label>
                 <label class="choice-card"><input type="radio" name="phone-payment-method" value="Cash on delivery (COD)" /><span data-i18n="pay.cod">Cash on delivery (COD)</span></label>
+                <label class="choice-card"><input type="radio" name="phone-payment-method" value="On account (business)" /><span data-i18n="pay.account">On account (business)</span></label>
               </div>
               <div class="field" style="margin-top: 18px;">
                 <label for="phone-notes"><span data-i18n="phone.notes">Notes</span> <span class="hint" style="display:inline; margin:0;" data-i18n="common.optional">(optional)</span></label>
@@ -2361,6 +2368,10 @@
         "pay.checkH": "Pay by check",
         "pay.checkP": "Make your check payable to <strong>GetQuickHaul</strong> and hand it to the driver when he arrives — before unloading begins.",
         "pay.cod": "Cash on delivery (COD)",
+        "pay.account": "On account (business)",
+        "pay.accountH": "Business account billing",
+        "pay.accountP": "For approved business accounts only. Book now and we add the trip to your weekly account invoice — no payment due at the door. If your business doesn't have an account yet, apply first: it takes about two minutes, and we review applications within one business day.",
+        "pay.accountBtn": "Apply for a business account",
         "pay.codP": "Pay the driver on arrival, before unloading — cash or check, with checks payable to GetQuickHaul.",
         "pay.dueNote": "Payment is due before unloading on cash, check, and COD bookings.",
         "pay.estPerDelivery": "Estimated per delivery",
@@ -2760,6 +2771,7 @@
         "js.payInstrCashApp": "After GetQuickHaul confirms the job, pay with Cash App at $GetQuickHaul.",
         "js.payInstrCheck": "You chose check — make it payable to GetQuickHaul and hand it over at pickup or delivery.",
         "js.payInstrCod": "You chose cash on delivery (COD) — have the total ready in cash when your items are delivered.",
+        "js.payInstrAccount": "You chose on account (business) — this trip goes on your weekly account invoice; nothing is due at the door. If your account is not approved yet, our office will contact you before the trip to arrange payment.",
         "js.phCalculated": "Calculated automatically",
         "js.phEnterMiles": "Enter total miles",
         "js.phoneCalc": "Calculate price",
@@ -2929,6 +2941,10 @@
         "pay.checkH": "Pagar con cheque",
         "pay.checkP": "Haga su cheque a nombre de <strong>GetQuickHaul</strong> y entrégueselo al conductor cuando llegue, antes de que comience la descarga.",
         "pay.cod": "Pago en efectivo al entregar (COD)",
+        "pay.account": "A cuenta (empresas)",
+        "pay.accountH": "Facturación a cuenta para empresas",
+        "pay.accountP": "Solo para cuentas de empresa aprobadas. Reserva ahora y agregamos el viaje a tu factura semanal de cuenta — sin pago al momento de la entrega. Si tu empresa aún no tiene cuenta, solicítala primero: toma unos dos minutos y revisamos las solicitudes dentro de un día laborable.",
+        "pay.accountBtn": "Solicitar una cuenta de empresa",
         "pay.codP": "Paga al conductor al llegar, antes de descargar — efectivo o cheque, con los cheques a nombre de GetQuickHaul.",
         "pay.dueNote": "El pago vence antes de la descarga en reservas en efectivo, cheque y contra entrega (COD).",
         "pay.estPerDelivery": "Estimado por entrega",
@@ -3328,6 +3344,7 @@
         "js.payInstrCashApp": "Cuando GetQuickHaul confirme el trabajo, paga con Cash App a $GetQuickHaul.",
         "js.payInstrCheck": "Elegiste cheque: hazlo a nombre de GetQuickHaul y entrégalo en la recogida o la entrega.",
         "js.payInstrCod": "Elegiste pago en efectivo al entregar (COD): ten el total listo en efectivo cuando se entreguen tus artículos.",
+        "js.payInstrAccount": "Elegiste a cuenta (empresas): este viaje va a tu factura semanal de cuenta; no se debe nada al momento de la entrega. Si tu cuenta aún no está aprobada, nuestra oficina te contactará antes del viaje para coordinar el pago.",
         "js.phCalculated": "Calculado automáticamente",
         "js.phEnterMiles": "Ingresa el total de millas",
         "js.phoneCalc": "Calcular precio",
@@ -3497,6 +3514,10 @@
         "pay.checkH": "Pagar com cheque",
         "pay.checkP": "Faça seu cheque nominal a <strong>GetQuickHaul</strong> e entregue ao motorista quando ele chegar — antes do início da descarga.",
         "pay.cod": "Pagamento em dinheiro na entrega (COD)",
+        "pay.account": "Em conta (empresas)",
+        "pay.accountH": "Faturamento em conta para empresas",
+        "pay.accountP": "Somente para contas empresariais aprovadas. Reserve agora e adicionamos a viagem à sua fatura semanal da conta — sem pagamento na entrega. Se sua empresa ainda não tem conta, solicite primeiro: leva cerca de dois minutos e analisamos as solicitações em até um dia útil.",
+        "pay.accountBtn": "Solicitar uma conta empresarial",
         "pay.codP": "Pague ao motorista na chegada, antes de descarregar — dinheiro ou cheque, com os cheques nominais a GetQuickHaul.",
         "pay.dueNote": "O pagamento é devido antes da descarga em reservas em dinheiro, cheque e COD.",
         "pay.estPerDelivery": "Estimado por entrega",
@@ -3896,6 +3917,7 @@
         "js.payInstrCashApp": "Depois que a GetQuickHaul confirmar o serviço, pague com o Cash App em $GetQuickHaul.",
         "js.payInstrCheck": "Você escolheu cheque — faça-o nominal a GetQuickHaul e entregue-o na coleta ou na entrega.",
         "js.payInstrCod": "Você escolheu pagamento em dinheiro na entrega (COD) — tenha o valor total pronto em dinheiro quando os seus itens forem entregues.",
+        "js.payInstrAccount": "Você escolheu em conta (empresas) — esta viagem entra na sua fatura semanal da conta; nada é devido na entrega. Se sua conta ainda não estiver aprovada, nosso escritório entrará em contato antes da viagem para combinar o pagamento.",
         "js.phCalculated": "Calculado automaticamente",
         "js.phEnterMiles": "Informe o total de milhas",
         "js.phoneCalc": "Calcular preço",
@@ -4457,6 +4479,7 @@
 
       function paymentInstructions(method) {
         if (method === 'Card / Debit card') return t('js.payInstrCard');
+        if (method === 'On account (business)') return t('js.payInstrAccount');
         if (method === 'Cash on delivery (COD)') return t('js.payInstrCod');
         // Legacy values from bookings shared before the payment cleanup are pay-the-driver methods — they read as COD now.
         if (method === 'Cash' || method === 'Check') return t('js.payInstrCod');
@@ -5227,6 +5250,7 @@
           'Cash App': t('pay.cashApp'),
           'Cash': t('pay.cash'),
           'Cash on delivery (COD)': t('pay.cod'),
+          'On account (business)': t('pay.account'),
           'Check': t('pay.check')
         };
         return labels[value] || value;
