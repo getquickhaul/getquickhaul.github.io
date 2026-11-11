@@ -4140,6 +4140,7 @@
       var furthestDriverStep = 0;
       var currentStep = 0;
       var furthestStep = 0;
+      var stepNavPrimed = false;
       var stopCounter = 0;
       var previewUrls = [];
       var geocodeCache = {};
@@ -4990,6 +4991,11 @@
         progressFill.style.width = (((currentStep + 1) / steps.length) * 100) + '%';
         if (currentStep === 2) scheduleRouteCalculation();
         if (currentStep === 5) updateQuote();
+        if (stepNavPrimed) {
+          var progressHead = document.querySelector('.step-progress');
+          if (progressHead) progressHead.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        stepNavPrimed = true;
       }
 
       function openStepForReview(index) {
