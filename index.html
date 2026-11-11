@@ -732,6 +732,9 @@
     .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 22px; }
     footer p { margin: 0; font-size: .79rem; }
     .footer-phone { font-weight: 800; color: var(--ink); text-decoration: none; }
+    .review-btn { display: inline-flex; align-items: center; gap: 9px; padding: 11px 22px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-weight: 800; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 0 rgba(133, 92, 0, .18); }
+    .review-btn svg { width: 19px; height: 19px; flex: none; }
+    .review-btn:hover { filter: brightness(1.06); }
     .nj-accent { color: #c22f22; font-weight: 800; }
     @media (prefers-color-scheme: dark) { .nj-accent { color: #ff8a7a; } }
     .social-links { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -2184,7 +2187,7 @@
         </a>
       </nav>
       <a class="footer-phone" href="tel:+15512338583">(551) 233-8583</a>
-      <a class="footer-phone" href="review.html">Leave a Review</a>
+      <a class="review-btn" href="review.html" aria-label="Leave a review for GetQuickHaul"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><span>Leave a Review</span></a>
     </div>
   </footer>
 
