@@ -7604,7 +7604,7 @@
     (function () {
       // To add an area later, append ONE entry to SERVICE_AREAS ({ id, labelKey, towns, metro }).
       var SERVICE_AREAS = [
-        { id: 'nj-hudson', labelKey: 'area.btnNJ', towns: ['Weehawken', 'Jersey City', 'Union City', 'Hoboken', 'West New York', 'North Bergen', 'Guttenberg', 'Secaucus'], metro: true }
+        { id: 'nj-hudson', labelKey: 'area.btnNJ', towns: ['Weehawken', 'Jersey City', 'Union City', 'Hoboken', 'West New York', 'North Bergen', 'Guttenberg', 'Secaucus'], metro: true, townHref: 'delivery-{slug}-nj.html' }
       ];
       var areasEl = document.getElementById('towns-areas');
       var listEl = document.getElementById('towns-list');
@@ -7637,7 +7637,14 @@
           var dot = document.createElement('span');
           dot.className = 'dot';
           li.appendChild(dot);
-          li.appendChild(document.createTextNode(town));
+          if (area.townHref) {
+            var link = document.createElement('a');
+            link.href = area.townHref.replace('{slug}', town.toLowerCase().replace(/\s+/g, '-'));
+            link.textContent = town;
+            li.appendChild(link);
+          } else {
+            li.appendChild(document.createTextNode(town));
+          }
           listEl.appendChild(li);
         });
         if (area.metro) {
