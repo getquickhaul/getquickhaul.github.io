@@ -396,6 +396,7 @@
     body.phone-view #main > :not(#phone-order),
     body.phone-view footer,
     body.phone-view .mobile-dock { display: none; }
+    body.dock-hidden .mobile-dock { display: none; }
     .phone-order { padding: 54px 0 82px; }
     .phone-order[hidden] { display: none; }
     .phone-order-shell { max-width: 820px; margin: 0 auto; }
@@ -6337,6 +6338,16 @@
       setPaymentAvailability();
       updatePaymentPanels();
       showDistanceEstimate();
+      var dockWatchSections = ['instant-quote', 'drive'].map(function (id) { return document.getElementById(id); }).filter(Boolean);
+      if (dockWatchSections.length && 'IntersectionObserver' in window) {
+        var dockVisible = {};
+        var dockObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) { dockVisible[entry.target.id] = entry.isIntersecting; });
+          var anyVisible = Object.keys(dockVisible).some(function (key) { return dockVisible[key]; });
+          document.body.classList.toggle('dock-hidden', anyVisible);
+        }, { threshold: 0.05 });
+        dockWatchSections.forEach(function (section) { dockObserver.observe(section); });
+      }
       showStep(0);
       var driverAgeCutoff = new Date();
       driverAgeCutoff.setFullYear(driverAgeCutoff.getFullYear() - 21);
