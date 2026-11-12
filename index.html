@@ -5468,7 +5468,20 @@
       setupAddressAutocomplete('dropoff');
 
       showEstimate.addEventListener('click', function () {
-        if (!validateStep(steps[currentStep]) || !form.checkValidity()) return;
+        if (!validateStep(steps[currentStep])) return;
+        if (!form.checkValidity()) {
+          // Never sit silent: jump to the first field that needs attention
+          // (it may live on an earlier step) and let the browser name it.
+          var firstInvalid = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea')).find(function (control) { return !control.checkValidity(); });
+          if (firstInvalid) {
+            var ownerStep = firstInvalid.closest('.quote-step');
+            var ownerIndex = ownerStep ? steps.indexOf(ownerStep) : -1;
+            if (ownerIndex >= 0 && ownerIndex !== currentStep) showStep(ownerIndex);
+            firstInvalid.reportValidity();
+            firstInvalid.focus();
+          }
+          return;
+        }
         updateQuote();
         form.hidden = true;
         review.hidden = false;
@@ -6245,7 +6258,18 @@
       }
 
       driverSubmit.addEventListener('click', function () {
-        if (!validateDriverStep(driverSteps[currentDriverStep]) || !driverForm.checkValidity()) return;
+        if (!validateDriverStep(driverSteps[currentDriverStep])) return;
+        if (!driverForm.checkValidity()) {
+          var firstInvalid = Array.prototype.slice.call(driverForm.querySelectorAll('input, select, textarea')).find(function (control) { return !control.checkValidity(); });
+          if (firstInvalid) {
+            var ownerStep = firstInvalid.closest('.driver-step');
+            var ownerIndex = ownerStep ? driverSteps.indexOf(ownerStep) : -1;
+            if (ownerIndex >= 0 && ownerIndex !== currentDriverStep) showDriverStep(ownerIndex);
+            firstInvalid.reportValidity();
+            firstInvalid.focus();
+          }
+          return;
+        }
         dispatchDriverApplication();
         driverSubmit.disabled = true;
         driverSubmit.textContent = t('js.driverSent');
