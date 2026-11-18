@@ -180,5 +180,42 @@
     window.scrollTo(0, 0);
   }
 </script>
+
+<script>
+  (function () {
+    var form = document.getElementById('biz-form');
+    if (!form) return;
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var honey = form.querySelector('[name="_honey"]');
+      function showThanks() {
+        var t = document.getElementById('thanks');
+        if (t) t.hidden = false;
+        form.hidden = true;
+        window.scrollTo(0, 0);
+      }
+      if (honey && honey.value) { showThanks(); return; }
+      var btn = form.querySelector('button[type="submit"], button.submit');
+      var btnText = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending\u2026'; }
+      var data = {};
+      new FormData(form).forEach(function (v, k) {
+        if (k === '_honey' || k === '_next') return;
+        data[k] = v;
+      });
+      fetch('https://formsubmit.co/ajax/getquickhaul@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(function (r) {
+        if (!r.ok) throw new Error('bad status');
+        showThanks();
+      }).catch(function () {
+        if (btn) { btn.disabled = false; btn.textContent = btnText; }
+        form.submit();
+      });
+    });
+  })();
+</script>
 </body>
 </html>
