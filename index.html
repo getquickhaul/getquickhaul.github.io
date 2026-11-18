@@ -594,6 +594,8 @@
     .dbo-entry .btn { cursor: pointer; font: 800 1rem/1.2 "DM Sans", sans-serif; }
     #dbo-panel[hidden] { display: none; }
     .dbo-panel { margin-top: 26px; }
+    .dbo-forgot-wrap { margin-top: 12px; text-align: center; }
+    .dbo-forgot-wrap .dbo-intro { text-align: left; margin-top: 10px; }
     .dbo-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; }
     .dbo-bar h3 { margin: 0; color: #fff; font-size: 1.5rem; }
     .dbo-card { padding: 30px; background: var(--surface); color: var(--ink); border-radius: 6px 20px 6px 20px; box-shadow: var(--shadow); }
@@ -2057,6 +2059,24 @@
               </div>
             </div>
             <div class="step-controls"><button class="btn btn-primary" id="dbo-login-submit" type="submit" data-i18n="dbo.signIn">Sign in</button></div>
+            <div class="dbo-forgot-wrap">
+              <button class="login-link" id="dbo-forgot-toggle" type="button" data-i18n="dbo.forgot">Forgot password?</button>
+              <div id="dbo-forgot-panel" hidden>
+                <p class="dbo-intro" data-i18n="dbo.forgotIntro">Enter your username and the phone number on your driver file. The office will verify it&rsquo;s you and text a new temporary password to that phone.</p>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="dbo-forgot-user" data-i18n="dbo.username">Username</label>
+                    <input id="dbo-forgot-user" type="text" autocomplete="username" aria-label="Username" data-i18n-aria="dbo.username" />
+                  </div>
+                  <div class="field">
+                    <label for="dbo-forgot-phone" data-i18n="dbo.phone">Phone number</label>
+                    <input id="dbo-forgot-phone" type="tel" autocomplete="tel" aria-label="Phone number" data-i18n-aria="dbo.phone" />
+                  </div>
+                </div>
+                <div class="step-controls"><button class="btn btn-secondary" id="dbo-forgot-send" type="button" data-i18n="dbo.forgotSend">Send reset request</button></div>
+                <p class="driver-status" id="dbo-forgot-status" role="status" aria-live="polite"></p>
+              </div>
+            </div>
             <p class="driver-status" id="dbo-login-status" role="status" aria-live="polite"></p>
           </form>
           <div class="dbo-card" id="dbo-app" hidden>
@@ -2585,6 +2605,13 @@
         "dbo.refresh": "Refresh",
         "dbo.send": "Send",
         "dbo.signIn": "Sign in",
+        "dbo.forgot": "Forgot password?",
+        "dbo.forgotIntro": "Enter your username and the phone number on your driver file. The office will verify it's you and text a new temporary password to that phone.",
+        "dbo.phone": "Phone number",
+        "dbo.forgotSend": "Send reset request",
+        "dbo.forgotSent": "Request sent — the office will text your new password to the phone on your file.",
+        "dbo.forgotFail": "Couldn't send the request. Call the office at (551) 233-8583 and we'll reset it for you.",
+        "dbo.forgotNeed": "Enter your username and phone number so the office can verify it's you.",
         "dbo.title": "Driver back office",
         "dbo.tripAccepted": "Accepted",
         "dbo.tripDone": "Done",
@@ -3165,6 +3192,13 @@
         "dbo.refresh": "Actualizar",
         "dbo.send": "Enviar",
         "dbo.signIn": "Iniciar sesión",
+        "dbo.forgot": "¿Olvidaste tu contraseña?",
+        "dbo.forgotIntro": "Escribe tu nombre de usuario y el número de teléfono que está en tu archivo de conductor. La oficina verificará que eres tú y te enviará una contraseña temporal nueva por mensaje de texto.",
+        "dbo.phone": "Número de teléfono",
+        "dbo.forgotSend": "Enviar solicitud",
+        "dbo.forgotSent": "Solicitud enviada — la oficina te enviará tu nueva contraseña al teléfono de tu archivo.",
+        "dbo.forgotFail": "No se pudo enviar la solicitud. Llama a la oficina al (551) 233-8583 y te la restablecemos.",
+        "dbo.forgotNeed": "Escribe tu nombre de usuario y tu teléfono para que la oficina pueda verificar que eres tú.",
         "dbo.title": "Panel del conductor",
         "dbo.tripAccepted": "Aceptado",
         "dbo.tripDone": "Completado",
@@ -3745,6 +3779,13 @@
         "dbo.refresh": "Atualizar",
         "dbo.send": "Enviar",
         "dbo.signIn": "Entrar",
+        "dbo.forgot": "Esqueceu a senha?",
+        "dbo.forgotIntro": "Digite seu nome de usuário e o número de telefone que está no seu cadastro de motorista. O escritório vai confirmar que é você e enviar uma nova senha temporária por mensagem de texto.",
+        "dbo.phone": "Número de telefone",
+        "dbo.forgotSend": "Enviar solicitação",
+        "dbo.forgotSent": "Solicitação enviada — o escritório enviará sua nova senha para o telefone do seu cadastro.",
+        "dbo.forgotFail": "Não foi possível enviar a solicitação. Ligue para o escritório em (551) 233-8583 e redefinimos para você.",
+        "dbo.forgotNeed": "Digite seu nome de usuário e telefone para o escritório confirmar que é você.",
         "dbo.title": "Painel do motorista",
         "dbo.tripAccepted": "Aceita",
         "dbo.tripDone": "Concluída",
@@ -6817,6 +6858,40 @@
           setStatus(loginStatus, dt('dbo.netError', "Couldn't reach the driver service. Check your connection and try again."), true);
         });
       });
+
+      var forgotToggle = document.getElementById('dbo-forgot-toggle');
+      var forgotPanel = document.getElementById('dbo-forgot-panel');
+      var forgotSend = document.getElementById('dbo-forgot-send');
+      var forgotStatus = document.getElementById('dbo-forgot-status');
+      if (forgotToggle && forgotPanel) {
+        forgotToggle.addEventListener('click', function () {
+          forgotPanel.hidden = !forgotPanel.hidden;
+        });
+      }
+      if (forgotSend) {
+        forgotSend.addEventListener('click', function () {
+          var fu = (document.getElementById('dbo-forgot-user').value || '').trim();
+          var fp = (document.getElementById('dbo-forgot-phone').value || '').trim();
+          if (!fu || !fp) {
+            setStatus(forgotStatus, dt('dbo.forgotNeed', "Enter your username and phone number so the office can verify it's you."), true);
+            return;
+          }
+          forgotSend.disabled = true;
+          setStatus(forgotStatus, dt('dbo.loading', 'Loading…'));
+          fetch('https://formsubmit.co/ajax/getquickhaul@gmail.com', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ _subject: 'Driver password reset request (GetQuickHaul)', _template: 'table', request_type: 'driver-password-reset', username: fu, phone: fp })
+          }).then(function (r) {
+            if (!r.ok) throw new Error('send failed');
+            setStatus(forgotStatus, dt('dbo.forgotSent', 'Request sent — the office will text your new password to the phone on your file.'));
+            forgotPanel.hidden = true;
+          }).catch(function () {
+            forgotSend.disabled = false;
+            setStatus(forgotStatus, dt('dbo.forgotFail', "Couldn't send the request. Call the office at (551) 233-8583 and we'll reset it for you."), true);
+          });
+        });
+      }
 
       chpwForm.addEventListener('submit', function (ev) {
         ev.preventDefault();
