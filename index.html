@@ -1273,7 +1273,6 @@
                 </div>
                 <a class="btn btn-secondary out-of-area-text" id="out-of-area-text" href="sms:+15512338583" hidden data-i18n="js.outOfAreaBtn">Text us this route anyway</a>
                 <strong class="distance-estimate" id="distance-estimate"></strong>
-                <p class="rate-note" data-i18n-html="book.rateNote">Door-to-door pricing: <strong>$45 for the first 5 miles, then $3 per additional mile.</strong> A $25 NYC toll surcharge applies when a route crosses the Hudson to or from Manhattan. Pickups before 7 AM or after 7 PM have a $15 after-hours surge.</p>
                 <small class="distance-credit" id="distance-credit" data-i18n-html="book.distCredit">Address matching uses OpenStreetMap and Esri; route data comes from <a href="http://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> and OSRM. If an address can’t be found, you can enter miles manually.</small>
               </div>
               <input id="stops" name="stops" type="hidden" value="2" />
@@ -1528,12 +1527,6 @@
           </aside>
         </div>
 
-        <div class="price-guide" aria-labelledby="price-guide-title">
-          <div class="price-guide-head">
-            <h3 id="price-guide-title" data-i18n="guide.h3">Price by distance</h3>
-            <p data-i18n="guide.p">Door-to-door service is $45 for the first 5 miles, then $3 per additional mile. Extra stops remain $15 each. Add $25 when the route crosses the Hudson to or from Manhattan, and $15 for pickups before 7 AM or after 7 PM.</p>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -2266,6 +2259,8 @@
         "area.townsAria": "Cities served",
         "area.citiesH": "Cities We Serve in Your Area",
         "area.btnNJ": "New Jersey — Hudson County",
+        "area.btnFLS": "Florida — Miami · Broward",
+        "area.btnFLO": "Florida — Orlando · Kissimmee",
         "area.growthNote": "Growing city by city — when a new local driver registers and clears, their city opens for pickups. The more customers book, the more drivers join, and the more cities open. Neighbors Helping Neighbors — be part of the movement.",
         "w.serviceArea": "Service area",
         "w.pickup": "Pickup",
@@ -2843,6 +2838,8 @@
         "area.townsAria": "Ciudades atendidas",
         "area.citiesH": "Ciudades que servimos en tu \u00e1rea",
         "area.btnNJ": "Nueva Jersey — Condado de Hudson",
+        "area.btnFLS": "Florida — Miami · Broward",
+        "area.btnFLO": "Florida — Orlando · Kissimmee",
         "area.growthNote": "Creciendo ciudad por ciudad — cuando un nuevo conductor local se registra y es aprobado, su ciudad se abre para recogidas. Cuantos más clientes reservan, más conductores se unen y más ciudades se abren. Vecinos Ayudando a Vecinos — sé parte del movimiento.",
         "w.serviceArea": "Área de servicio",
         "w.pickup": "Recogida",
@@ -3420,6 +3417,8 @@
         "area.townsAria": "Cidades atendidas",
         "area.citiesH": "Cidades que atendemos na sua \u00e1rea",
         "area.btnNJ": "Nova Jersey — Condado de Hudson",
+        "area.btnFLS": "Florida — Miami · Broward",
+        "area.btnFLO": "Florida — Orlando · Kissimmee",
         "area.growthNote": "Crescendo cidade por cidade — quando um novo motorista local se cadastra e é aprovado, sua cidade se abre para coletas. Quanto mais clientes reservam, mais motoristas entram e mais cidades se abrem. Vizinhos Ajudando Vizinhos — faça parte do movimento.",
         "w.serviceArea": "Área de atendimento",
         "w.pickup": "Coleta",
@@ -7639,7 +7638,9 @@
     (function () {
       // To add an area later, append ONE entry to SERVICE_AREAS ({ id, labelKey, towns, metro }).
       var SERVICE_AREAS = [
-        { id: 'nj-hudson', labelKey: 'area.btnNJ', towns: ['Weehawken', 'Jersey City', 'Union City', 'Hoboken', 'West New York', 'North Bergen', 'Guttenberg', 'Secaucus'], metro: true, townHref: 'delivery-{slug}-nj.html' }
+        { id: 'nj-hudson', labelKey: 'area.btnNJ', center: [40.7695, -74.0204], towns: ['Weehawken', 'Jersey City', 'Union City', 'Hoboken', 'West New York', 'North Bergen', 'Guttenberg', 'Secaucus'], metro: true, townHref: 'delivery-{slug}-nj.html' },
+        { id: 'fl-south', labelKey: 'area.btnFLS', center: [26.0112, -80.1495], towns: ['Miami', 'Hollywood', 'Fort Lauderdale', 'Hialeah', 'Pembroke Pines', 'Miramar', 'Coral Gables', 'Homestead'], metro: false },
+        { id: 'fl-orlando', labelKey: 'area.btnFLO', center: [28.3545, -81.3933], towns: ['Orlando', 'Kissimmee', 'Winter Park', 'Altamonte Springs', 'Sanford', 'Oviedo'], metro: false }
       ];
       var areasEl = document.getElementById('towns-areas');
       var listEl = document.getElementById('towns-list');
@@ -7701,6 +7702,28 @@
       }
 
       render();
+
+      // Show the visitor their own area first: pick the SERVICE_AREAS entry
+      // nearest to the device location. Guarded — any failure or denial
+      // simply keeps the default area, and the buttons always let the
+      // visitor switch by hand.
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (pos) {
+          var best = null;
+          var bestScore = Infinity;
+          SERVICE_AREAS.forEach(function (area) {
+            if (!area.center) return;
+            var dLat = pos.coords.latitude - area.center[0];
+            var dLon = pos.coords.longitude - area.center[1];
+            var score = dLat * dLat + dLon * dLon;
+            if (score < bestScore) { bestScore = score; best = area; }
+          });
+          if (best && best.id !== activeId) {
+            activeId = best.id;
+            render();
+          }
+        }, function () {}, { timeout: 4000, maximumAge: 600000 });
+      }
 
       var previousOnApply = window.GQH.onApply;
       window.GQH.onApply = function () {
