@@ -136,12 +136,10 @@
     .btn-cartoon.is-playing .cartoon-van-bob { animation: cartoon-bob 6s linear infinite; }
     .btn-cartoon.is-playing .cartoon-wheel { animation: cartoon-spin 6s linear infinite; }
     @keyframes cartoon-drive {
-      0% { transform: translate(16px, -4px); opacity: 0; }
+      0% { transform: translate(-470px, -4px); opacity: 0; }
       5% { opacity: 1; }
-      52% { transform: translate(452px, -4px); opacity: 1; }
-      84% { transform: translate(452px, -4px); opacity: 1; }
-      93% { transform: translate(452px, -4px); opacity: 0; }
-      94%, 100% { transform: translate(16px, -4px); opacity: 0; }
+      52%, 84% { transform: translate(0, -4px); opacity: 1; }
+      93%, 100% { transform: translate(0, -4px); opacity: 0; }
     }
     @keyframes cartoon-trail {
       0% { transform: scaleX(0); }
