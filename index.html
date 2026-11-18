@@ -205,6 +205,7 @@
     .towns-panel h3.towns-toggle[aria-expanded="true"] { margin: 0 0 16px; }
     .towns-panel h3.towns-toggle[aria-expanded="true"]::after { transform: rotate(180deg); }
     .towns-body[hidden] { display: none; }
+    .national-line { font-weight: 700; color: var(--blue-dark); background: #fdf3d7; border-left: 5px solid var(--accent); border-radius: 8px; padding: 10px 14px; margin: 0 0 16px; line-height: 1.45; }
     .towns-areas { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
     .towns-area-btn { appearance: none; font: inherit; font-weight: 700; color: var(--blue-dark); background: var(--paper); border: 1px solid var(--line); border-radius: 5px 13px 5px 13px; padding: 10px 16px; cursor: pointer; }
     .towns-area-btn:hover { border-color: var(--blue-dark); }
@@ -995,6 +996,7 @@
         <div class="towns-panel">
           <h3 class="towns-toggle" id="towns-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="towns-body" data-i18n="area.citiesH">Cities We Serve in Your Area</h3>
           <div class="towns-body" id="towns-body" hidden>
+          <p class="national-line" data-i18n="area.nationalLine">GetQuickHaul is NATIONAL — GetQuickHaul.net. These are the cities open today, and more cities are opening soon across the country. Don't see yours? Book your trip anyway — pickups are open across the U.S. while we grow.</p>
           <div class="towns-areas" id="towns-areas" role="group" aria-label="Service areas"></div>
           <ul class="towns" id="towns-list" aria-label="Cities served" data-i18n-aria="area.townsAria">
             <li><span class="dot"></span><a href="delivery-weehawken-nj.html">Weehawken</a></li>
@@ -2278,6 +2280,7 @@
         "area.h2": "Pickups in your area. Delivery anywhere.",
         "area.p": "Enter your pickup and drop-off and see your price before you book. We pick up in every city where a GetQuickHaul driver is on the road — and from there, we can deliver anywhere, priced by driving miles. If your pickup area isn't open yet, the booking will tell you right away — and new cities open as drivers register and clear.",
         "area.metroLine": "Plus pickups across the NYC metro & North Jersey — and more cities opening soon across the country",
+        "area.nationalLine": "GetQuickHaul is NATIONAL — GetQuickHaul.net. These are the cities open today, and more cities are opening soon across the country. Don't see yours? Book your trip anyway — pickups are open across the U.S. while we grow.",
         "fair.banner": "LIVE Driver Launch Night — Thursday, Nov 19, 7 PM ET · Jacob presents, then answers YOUR questions live on YouTube & Instagram",
         "fair.cta": "Event details",
         "area.townsAria": "Cities served",
@@ -2854,6 +2857,7 @@
         "area.h2": "Recogidas en tu área. Entregas a cualquier lugar.",
         "area.p": "Ingresa tu recogida y tu entrega y mira tu precio antes de reservar. Recogemos en cada ciudad donde un conductor de GetQuickHaul está en la calle — y desde ahí, podemos entregar en cualquier lugar, con precio por millas recorridas. Si tu zona de recogida aún no está abierta, la reserva te lo dirá de inmediato — y nuevas ciudades se abren a medida que los conductores se registran y son aprobados.",
         "area.metroLine": "Además, recogidas en toda el área metropolitana de NYC y el norte de New Jersey — y más ciudades abrirán pronto en todo el país",
+        "area.nationalLine": "GetQuickHaul es NACIONAL — GetQuickHaul.net. Estas son las ciudades abiertas hoy, y más ciudades abrirán pronto en todo el país. ¿No ves la tuya? Reserva tu viaje igual — las recogidas están abiertas en todo EE. UU. mientras crecemos.",
         "fair.banner": "Noche de Lanzamiento para Conductores EN VIVO — jueves 19 de noviembre, 7 PM ET · Jacob presenta y responde TUS preguntas en vivo en YouTube e Instagram",
         "fair.cta": "Detalles del evento",
         "area.townsAria": "Ciudades atendidas",
@@ -3430,6 +3434,7 @@
         "area.h2": "Coletas na sua área. Entregas para qualquer lugar.",
         "area.p": "Informe sua coleta e sua entrega e veja seu preço antes de reservar. Coletamos em todas as cidades onde um motorista da GetQuickHaul está na rua — e de lá, podemos entregar em qualquer lugar, com preço por milhas rodadas. Se a sua área de coleta ainda não estiver aberta, a reserva avisará na hora — e novas cidades são abertas conforme os motoristas se cadastram e são aprovados.",
         "area.metroLine": "Além disso, coletas em toda a região metropolitana de NYC e no norte de New Jersey — e mais cidades abrirão em breve em todo o país",
+        "area.nationalLine": "A GetQuickHaul é NACIONAL — GetQuickHaul.net. Estas são as cidades abertas hoje, e mais cidades abrirão em breve em todo o país. Não vê a sua? Reserve sua viagem mesmo assim — as coletas estão abertas em todos os EUA enquanto crescemos.",
         "fair.banner": "Noite de Lançamento para Motoristas AO VIVO — quinta-feira, 19 de novembro, 7 PM ET · Jacob apresenta e responde SUAS perguntas ao vivo no YouTube e Instagram",
         "fair.cta": "Detalhes do evento",
         "area.townsAria": "Cidades atendidas",
