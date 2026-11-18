@@ -196,6 +196,7 @@
     .service p { color: var(--muted); margin: 0; }
 
     .area-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: start; }
+    .area-grid.no-panel { grid-template-columns: 1fr; }
     .area-copy h2 { margin-bottom: 20px; }
     .area-copy p { color: var(--muted); margin: 0; }
     .towns-panel { background: var(--surface); border: 2px solid var(--blue-dark); border-top: 6px solid var(--accent); border-radius: 6px 20px 6px 20px; box-shadow: 0 14px 38px rgba(16, 37, 65, .08); padding: 22px; }
@@ -985,30 +986,13 @@
     </section>
 
     <section id="area">
-      <div class="wrap area-grid">
+      <div class="wrap area-grid no-panel">
         <div class="area-copy">
           <p class="eyebrow" data-i18n="w.serviceArea">Service area</p>
           <h2 data-i18n="area.h2">Pickups in your area. Delivery anywhere.</h2>
           <p data-i18n="area.p">Enter your pickup and drop-off and see your price before you book. We pick up in every city where a GetQuickHaul driver is on the road — and from there, we can deliver anywhere, priced by driving miles. If your pickup area isn't open yet, the booking will tell you right away — and new cities open as drivers register and clear.</p>
         </div>
-        <div class="towns-panel">
-          <h3 class="towns-toggle" id="towns-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="towns-body" data-i18n="area.citiesH">Cities We Serve in Your Area</h3>
-          <div class="towns-body" id="towns-body" hidden>
-          <div class="towns-areas" id="towns-areas" role="group" aria-label="Service areas"></div>
-          <ul class="towns" id="towns-list" aria-label="Cities served" data-i18n-aria="area.townsAria">
-            <li><span class="dot"></span><a href="delivery-weehawken-nj.html">Weehawken</a></li>
-            <li><span class="dot"></span><a href="delivery-jersey-city-nj.html">Jersey City</a></li>
-            <li><span class="dot"></span><a href="delivery-union-city-nj.html">Union City</a></li>
-            <li><span class="dot"></span><a href="delivery-hoboken-nj.html">Hoboken</a></li>
-            <li><span class="dot"></span><a href="delivery-west-new-york-nj.html">West New York</a></li>
-            <li><span class="dot"></span><a href="delivery-north-bergen-nj.html">North Bergen</a></li>
-            <li><span class="dot"></span><a href="delivery-guttenberg-nj.html">Guttenberg</a></li>
-            <li><span class="dot"></span><a href="delivery-secaucus-nj.html">Secaucus</a></li>
-            <li class="towns-group"><span class="dot"></span><span data-i18n="area.metroLine">Plus pickups across the NYC metro &amp; North Jersey — and more cities opening soon across the country</span></li>
-          </ul>
-          <p class="note" data-i18n="area.growthNote">Growing city by city — when a new local driver registers and clears, their city opens for pickups. The more customers book, the more drivers join, and the more cities open. Neighbors Helping Neighbors — be part of the movement.</p>
-          </div>
-        </div>
+        
       </div>
     </section>
 
