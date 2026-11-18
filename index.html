@@ -1031,6 +1031,33 @@
               <button class="btn btn-primary" type="submit" data-i18n="cac.signIn">Sign in</button>
               <span class="cac-alt"><span data-i18n="cac.toRegisterQ">New to GetQuickHaul?</span> <button type="button" id="cac-show-register" data-i18n="cac.createAccount">Create account</button></span>
             </div>
+            <div class="dbo-forgot-wrap">
+              <button class="login-link" id="cac-forgot-toggle" type="button" data-i18n="cac.forgot">Forgot password?</button>
+              <div id="cac-forgot-panel" hidden>
+                <p class="cac-intro" data-i18n="cac.forgotIntro">Enter your account email and we&rsquo;ll send you a 6-digit reset code. The code expires in 30 minutes.</p>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="cac-forgot-email" data-i18n="cac.email">Email</label>
+                    <input id="cac-forgot-email" type="email" autocomplete="email" inputmode="email" aria-label="Email" data-i18n-aria="cac.email" />
+                  </div>
+                </div>
+                <div class="step-controls"><button class="btn btn-secondary" id="cac-forgot-send" type="button" data-i18n="cac.forgotSend">Email me a reset code</button></div>
+                <div id="cac-reset-step2" hidden>
+                  <div class="form-grid">
+                    <div class="field">
+                      <label for="cac-reset-code" data-i18n="cac.resetCode">Reset code</label>
+                      <input id="cac-reset-code" type="text" inputmode="numeric" autocomplete="one-time-code" aria-label="Reset code" data-i18n-aria="cac.resetCode" />
+                    </div>
+                    <div class="field">
+                      <label for="cac-reset-newpw" data-i18n="cac.newPw">New password (10+ characters)</label>
+                      <input id="cac-reset-newpw" type="password" autocomplete="new-password" aria-label="New password" data-i18n-aria="cac.newPw" />
+                    </div>
+                  </div>
+                  <div class="step-controls"><button class="btn btn-primary" id="cac-reset-confirm" type="button" data-i18n="cac.resetSet">Set new password</button></div>
+                </div>
+                <p class="driver-status" id="cac-forgot-status" role="status" aria-live="polite"></p>
+              </div>
+            </div>
             <p class="driver-status" id="cac-login-status" role="status" aria-live="polite"></p>
           </form>
           <form class="cac-card cac-card-welcome" id="cac-register-form" hidden novalidate>
@@ -2563,6 +2590,16 @@
         "cac.saveFailed": "That didn't save — try again.",
         "cac.saveProfile": "Save changes",
         "cac.signIn": "Sign in",
+        "cac.forgot": "Forgot password?",
+        "cac.forgotIntro": "Enter your account email and we'll send you a 6-digit reset code. The code expires in 30 minutes.",
+        "cac.forgotSend": "Email me a reset code",
+        "cac.resetCode": "Reset code",
+        "cac.newPw": "New password (10+ characters)",
+        "cac.resetSet": "Set new password",
+        "cac.codeSent": "If an account exists for that email, a reset code is on its way. Enter it below with your new password.",
+        "cac.resetDone": "Password updated — sign in with your new password.",
+        "cac.resetBadCode": "That code didn't work — check it, or request a new code.",
+        "cac.resetNeed": "Enter your account email first.",
         "cac.signInBtn": "Sign in",
         "cac.title": "Your GetQuickHaul account",
         "cac.toLoginQ": "Already have an account?",
@@ -3150,6 +3187,16 @@
         "cac.saveFailed": "No se guardó — inténtelo de nuevo.",
         "cac.saveProfile": "Guardar cambios",
         "cac.signIn": "Iniciar sesión",
+        "cac.forgot": "¿Olvidaste tu contraseña?",
+        "cac.forgotIntro": "Escribe el correo de tu cuenta y te enviaremos un código de 6 dígitos para restablecerla. El código vence en 30 minutos.",
+        "cac.forgotSend": "Enviarme el código",
+        "cac.resetCode": "Código",
+        "cac.newPw": "Contraseña nueva (10+ caracteres)",
+        "cac.resetSet": "Guardar contraseña nueva",
+        "cac.codeSent": "Si existe una cuenta con ese correo, el código ya va en camino. Escríbelo abajo con tu contraseña nueva.",
+        "cac.resetDone": "Contraseña actualizada — inicia sesión con tu contraseña nueva.",
+        "cac.resetBadCode": "Ese código no funcionó — revísalo o pide uno nuevo.",
+        "cac.resetNeed": "Primero escribe el correo de tu cuenta.",
         "cac.signInBtn": "Iniciar sesión",
         "cac.title": "Su cuenta de GetQuickHaul",
         "cac.toLoginQ": "¿Ya tiene una cuenta?",
@@ -3737,6 +3784,16 @@
         "cac.saveFailed": "Não salvou — tente de novo.",
         "cac.saveProfile": "Salvar alterações",
         "cac.signIn": "Entrar",
+        "cac.forgot": "Esqueceu a senha?",
+        "cac.forgotIntro": "Digite o e-mail da sua conta e enviaremos um código de 6 dígitos para redefini-la. O código vence em 30 minutos.",
+        "cac.forgotSend": "Enviar o código",
+        "cac.resetCode": "Código",
+        "cac.newPw": "Nova senha (10+ caracteres)",
+        "cac.resetSet": "Salvar nova senha",
+        "cac.codeSent": "Se existe uma conta com esse e-mail, o código já está a caminho. Digite-o abaixo com sua nova senha.",
+        "cac.resetDone": "Senha atualizada — entre com sua nova senha.",
+        "cac.resetBadCode": "Esse código não funcionou — confira ou peça um novo.",
+        "cac.resetNeed": "Primeiro digite o e-mail da sua conta.",
         "cac.signInBtn": "Entrar",
         "cac.title": "Sua conta GetQuickHaul",
         "cac.toLoginQ": "Já tem uma conta?",
@@ -7553,6 +7610,79 @@
           setStatus(loginStatus, dt('cac.netError', "Couldn't reach the account service. Check your connection and try again."), true);
         });
       });
+
+      var cacForgotToggle = el('cac-forgot-toggle');
+      var cacForgotPanel = el('cac-forgot-panel');
+      var cacForgotStatus = el('cac-forgot-status');
+      if (cacForgotToggle && cacForgotPanel) {
+        cacForgotToggle.addEventListener('click', function () {
+          cacForgotPanel.hidden = !cacForgotPanel.hidden;
+          if (!cacForgotPanel.hidden) {
+            var fe = el('cac-forgot-email');
+            var le = el('cac-login-email');
+            if (fe && le && !fe.value) fe.value = le.value;
+          }
+        });
+      }
+      var cacForgotSend = el('cac-forgot-send');
+      if (cacForgotSend) {
+        cacForgotSend.addEventListener('click', function () {
+          var email = (el('cac-forgot-email').value || '').trim();
+          if (!email) {
+            setStatus(cacForgotStatus, dt('cac.resetNeed', 'Enter your account email first.'), true);
+            return;
+          }
+          cacForgotSend.disabled = true;
+          setStatus(cacForgotStatus, dt('cac.loading', 'Loading…'));
+          api('/customer-reset-request', { method: 'POST', body: { email: email } }).then(function (r) {
+            cacForgotSend.disabled = false;
+            if (r.status === 200) {
+              el('cac-reset-step2').hidden = false;
+              setStatus(cacForgotStatus, dt('cac.codeSent', 'If an account exists for that email, a reset code is on its way. Enter it below with your new password.'));
+            } else {
+              setStatus(cacForgotStatus, dt('cac.resetBadCode', "That code didn't work — check it, or request a new code."), true);
+            }
+          }).catch(function () {
+            cacForgotSend.disabled = false;
+            setStatus(cacForgotStatus, dt('cac.netError', "Couldn't reach the account service. Check your connection and try again."), true);
+          });
+        });
+      }
+      var cacResetConfirm = el('cac-reset-confirm');
+      if (cacResetConfirm) {
+        cacResetConfirm.addEventListener('click', function () {
+          var email2 = (el('cac-forgot-email').value || '').trim();
+          var code = (el('cac-reset-code').value || '').trim();
+          var newPw = el('cac-reset-newpw').value || '';
+          if (newPw.length < 10) {
+            setStatus(cacForgotStatus, dt('cac.pwTooShort', 'Your password needs at least 10 characters'), true);
+            return;
+          }
+          if (!email2 || !code) {
+            setStatus(cacForgotStatus, dt('cac.resetBadCode', "That code didn't work — check it, or request a new code."), true);
+            return;
+          }
+          cacResetConfirm.disabled = true;
+          setStatus(cacForgotStatus, dt('cac.loading', 'Loading…'));
+          api('/customer-reset-confirm', { method: 'POST', body: { email: email2, code: code, newPassword: newPw } }).then(function (r) {
+            cacResetConfirm.disabled = false;
+            if (r.status === 200) {
+              setStatus(cacForgotStatus, dt('cac.resetDone', 'Password updated — sign in with your new password.'));
+              el('cac-login-email').value = email2;
+              el('cac-reset-newpw').value = '';
+              el('cac-reset-code').value = '';
+              cacForgotPanel.hidden = true;
+            } else if (r.json && r.json.error === 'password_too_short') {
+              setStatus(cacForgotStatus, dt('cac.pwTooShort', 'Your password needs at least 10 characters'), true);
+            } else {
+              setStatus(cacForgotStatus, dt('cac.resetBadCode', "That code didn't work — check it, or request a new code."), true);
+            }
+          }).catch(function () {
+            cacResetConfirm.disabled = false;
+            setStatus(cacForgotStatus, dt('cac.netError', "Couldn't reach the account service. Check your connection and try again."), true);
+          });
+        });
+      }
 
       registerForm.addEventListener('submit', function (ev) {
         ev.preventDefault();
