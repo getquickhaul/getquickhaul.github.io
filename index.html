@@ -229,6 +229,7 @@
     .address-block { grid-column: 1 / -1; min-width: 0; margin: 0; padding: 0; border: 0; }
     .address-block legend { width: 100%; margin: 0 0 11px; padding: 0 0 8px; border-bottom: 1px solid var(--line); font-family: "Roboto Slab", serif; font-size: 1.08rem; font-weight: 700; }
     .address-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(84px, .55fr) minmax(105px, .65fr); gap: 14px; }
+    .address-grid .field.split-field { display: none; }
     .address-street { grid-column: 1 / -1; }
     .autocomplete-field { position: relative; z-index: 3; }
     .autocomplete-menu { position: absolute; z-index: 30; top: calc(100% + 5px); right: 0; left: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); box-shadow: 0 14px 34px rgba(16, 37, 65, .18); }
@@ -1200,17 +1201,17 @@
                   <small class="hint" data-i18n="form.addrHint">Search any U.S. address, then choose the corrected match.</small>
                   <div class="autocomplete-menu" id="pickup-suggestions" role="listbox" aria-label="Pickup address suggestions" data-i18n-aria="form.pickupSuggAria" hidden></div>
                 </div>
-                <div class="field">
+                <div class="field split-field">
                   <label for="pickup-city" data-i18n="form.city">City</label>
-                  <input id="pickup-city" name="pickup-city" type="text" autocomplete="section-pickup address-level2" required />
+                  <input id="pickup-city" name="pickup-city" type="text" autocomplete="section-pickup address-level2" />
                 </div>
-                <div class="field">
+                <div class="field split-field">
                   <label for="pickup-state" data-i18n="form.state">State</label>
-                  <input class="state-input" id="pickup-state" name="pickup-state" type="text" autocomplete="section-pickup address-level1" maxlength="2" required />
+                  <input class="state-input" id="pickup-state" name="pickup-state" type="text" autocomplete="section-pickup address-level1" maxlength="2" />
                 </div>
-                <div class="field">
+                <div class="field split-field">
                   <label for="pickup-zip" data-i18n="form.zip">ZIP code</label>
-                  <input id="pickup-zip" name="pickup-zip" type="text" autocomplete="section-pickup postal-code" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" required />
+                  <input id="pickup-zip" name="pickup-zip" type="text" autocomplete="section-pickup postal-code" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" />
                 </div>
               </div>
               <div class="step-controls"><button class="btn btn-primary step-next" type="button" data-i18n="common.continue">Continue</button></div>
@@ -1263,17 +1264,17 @@
                   <small class="hint" data-i18n="form.addrHint">Search any U.S. address, then choose the corrected match.</small>
                   <div class="autocomplete-menu" id="dropoff-suggestions" role="listbox" aria-label="Drop-off address suggestions" data-i18n-aria="form.dropoffSuggAria" hidden></div>
                 </div>
-                <div class="field">
+                <div class="field split-field">
                   <label for="dropoff-city" data-i18n="form.city">City</label>
-                  <input id="dropoff-city" name="dropoff-city" type="text" autocomplete="section-dropoff address-level2" required />
+                  <input id="dropoff-city" name="dropoff-city" type="text" autocomplete="section-dropoff address-level2" />
                 </div>
-                <div class="field">
+                <div class="field split-field">
                   <label for="dropoff-state" data-i18n="form.state">State</label>
-                  <input class="state-input" id="dropoff-state" name="dropoff-state" type="text" autocomplete="section-dropoff address-level1" maxlength="2" required />
+                  <input class="state-input" id="dropoff-state" name="dropoff-state" type="text" autocomplete="section-dropoff address-level1" maxlength="2" />
                 </div>
-                <div class="field">
+                <div class="field split-field">
                   <label for="dropoff-zip" data-i18n="form.zip">ZIP code</label>
-                  <input id="dropoff-zip" name="dropoff-zip" type="text" autocomplete="section-dropoff postal-code" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" required />
+                  <input id="dropoff-zip" name="dropoff-zip" type="text" autocomplete="section-dropoff postal-code" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" />
                 </div>
               </div>
               <div class="extra-stops" id="extra-stops"></div>
@@ -4797,20 +4798,17 @@
           zip.value = corrected.zip.split('-')[0];
           invalidateCalculatedDistance();
           closeMenu();
-          zip.focus();
+          var stepNext = street.closest('.quote-step') ? street.closest('.quote-step').querySelector('.step-next') : null;
+          if (stepNext) stepNext.focus();
           scheduleRouteCalculation();
         }
 
         function useAddressAsTyped() {
-          var nextIncomplete = [city, state, zip].find(function (input) { return !input.checkValidity(); });
           invalidateCalculatedDistance();
           closeMenu();
-          if (nextIncomplete) nextIncomplete.focus();
-          else {
-            var continueButton = street.closest('.quote-step').querySelector('.step-next');
-            if (continueButton) continueButton.focus();
-            scheduleRouteCalculation();
-          }
+          var continueButton = street.closest('.quote-step').querySelector('.step-next');
+          if (continueButton) continueButton.focus();
+          scheduleRouteCalculation();
         }
 
         function renderUnavailable(id) {
@@ -5128,9 +5126,9 @@
           '<div class="extra-stop-head"><legend>' + t('js.extraStopN', { n: stopCounter }) + '</legend><button class="remove-stop" type="button">' + t('common.remove') + '</button></div>' +
           '<div class="address-grid">' +
             '<div class="field address-street"><label for="extra-street-' + stopCounter + '">' + t('form.street') + '</label><input class="extra-street" id="extra-street-' + stopCounter + '" type="text" required /></div>' +
-            '<div class="field"><label for="extra-city-' + stopCounter + '">' + t('form.city') + '</label><input class="extra-city" id="extra-city-' + stopCounter + '" type="text" required /></div>' +
-            '<div class="field"><label for="extra-state-' + stopCounter + '">' + t('form.state') + '</label><input class="extra-state state-input" id="extra-state-' + stopCounter + '" type="text" maxlength="2" required /></div>' +
-            '<div class="field"><label for="extra-zip-' + stopCounter + '">' + t('form.zip') + '</label><input class="extra-zip" id="extra-zip-' + stopCounter + '" type="text" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" required /></div>' +
+            '<div class="field split-field"><label for="extra-city-' + stopCounter + '">' + t('form.city') + '</label><input class="extra-city" id="extra-city-' + stopCounter + '" type="text" /></div>' +
+            '<div class="field split-field"><label for="extra-state-' + stopCounter + '">' + t('form.state') + '</label><input class="extra-state state-input" id="extra-state-' + stopCounter + '" type="text" maxlength="2" /></div>' +
+            '<div class="field split-field"><label for="extra-zip-' + stopCounter + '">' + t('form.zip') + '</label><input class="extra-zip" id="extra-zip-' + stopCounter + '" type="text" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" /></div>' +
           '</div>';
         stop.querySelector('.remove-stop').addEventListener('click', function () {
           stop.remove();
