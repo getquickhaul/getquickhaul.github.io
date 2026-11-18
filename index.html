@@ -4229,7 +4229,12 @@
       // extra stop is in-area when it falls within that radius; the
       // drop-off may be anywhere and is priced by driving miles.
       var serviceCenters = [
-        { lat: 40.7695, lon: -74.0204, radiusMiles: 45 }
+        { lat: 40.7695, lon: -74.0204, radiusMiles: 45 },
+        // Open nationwide for app-launch testing (Manuel, Nov 17, 2026):
+        // pickups may start anywhere in the continental US and every
+        // booking is reviewed by the office in dispatch. Remove this
+        // entry to return to per-area gating.
+        { lat: 39.8283, lon: -98.5795, radiusMiles: 2600 }
       ];
       var basePrice = 45;
       var extraStopPrice = 15;
