@@ -786,7 +786,7 @@
       .sister-card .btn { grid-column: 1 / -1; }
       .footer-inner { align-items: flex-start; flex-direction: column; }
       footer { padding-bottom: 108px; }
-      .mobile-dock { position: fixed; z-index: 20; left: 12px; right: 12px; bottom: calc(10px + env(safe-area-inset-bottom)); display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow); }
+      .mobile-dock { position: fixed; z-index: 20; left: 12px; right: 12px; bottom: calc(10px + env(safe-area-inset-bottom)); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 8px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow); }
       .mobile-dock .btn { min-height: 46px; padding: 8px; font-size: .93rem; }
     }
     @media (max-width: 470px) {
@@ -2201,6 +2201,7 @@
 
   <div class="mobile-dock" aria-label="Quick contact" data-i18n-aria="dock.aria">
     <a class="btn btn-primary" href="tel:+15512338583" data-i18n="dock.call">Call now</a>
+    <a class="btn btn-secondary" href="register.html" data-i18n="dock.register">Register free</a>
     <a class="btn btn-secondary" href="#instant-quote" data-i18n="quote.instant">Instant quote</a>
   </div>
 
@@ -2711,6 +2712,7 @@
         "footer.p": "GetQuickHaul is a service operated by AM Fix and Flip Inc.",
         "dock.aria": "Quick contact",
         "dock.call": "Call now",
+        "dock.register": "Register free",
         "js.acFinding": "Finding matching addresses…",
         "js.acNoHouse": "No verified match was found for that house number. Check the number and street direction, then try again.",
         "js.acNoSuggestion": "No suggestion found. You can keep this address and continue, or add the ZIP and try again.",
@@ -3290,6 +3292,7 @@
         "footer.p": "GetQuickHaul es un servicio operado por AM Fix and Flip Inc.",
         "dock.aria": "Contacto rápido",
         "dock.call": "Llamar ahora",
+        "dock.register": "Regístrate gratis",
         "js.acFinding": "Buscando direcciones coincidentes…",
         "js.acNoHouse": "No se encontró una coincidencia verificada para ese número de casa. Revisa el número y el sentido de la calle e inténtalo de nuevo.",
         "js.acNoSuggestion": "No se encontró ninguna sugerencia. Puedes mantener esta dirección y continuar, o agregar el código postal e intentarlo de nuevo.",
@@ -3869,6 +3872,7 @@
         "footer.p": "A GetQuickHaul é um serviço operado pela AM Fix and Flip Inc.",
         "dock.aria": "Contato rápido",
         "dock.call": "Ligar agora",
+        "dock.register": "Cadastre-se grátis",
         "js.acFinding": "Procurando endereços correspondentes…",
         "js.acNoHouse": "Nenhuma correspondência verificada foi encontrada para esse número. Verifique o número e o sentido da rua e tente de novo.",
         "js.acNoSuggestion": "Nenhuma sugestão foi encontrada. Você pode manter este endereço e continuar, ou adicionar o código postal (ZIP) e tentar de novo.",
