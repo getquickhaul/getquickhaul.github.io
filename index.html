@@ -588,59 +588,11 @@
     .documents-note p + p { margin-top: 8px; }
 
 
-    /* Driver back office (login + trip board) — staging addition */
+    /* Driver login entry (drivers section) + shared forgot-password wrap */
     .dbo-entry { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.22); color: #dbe9f4; font-weight: 700; }
     .dbo-entry .btn { cursor: pointer; font: 800 1rem/1.2 "DM Sans", sans-serif; }
-    #dbo-panel[hidden] { display: none; }
-    .dbo-panel { margin-top: 26px; }
     .dbo-forgot-wrap { margin-top: 12px; text-align: center; }
     .dbo-forgot-wrap .dbo-intro { text-align: left; margin-top: 10px; }
-    .dbo-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; }
-    .dbo-bar h3 { margin: 0; color: #fff; font-size: 1.5rem; }
-    .dbo-card { padding: 30px; background: var(--surface); color: var(--ink); border-radius: 6px 20px 6px 20px; box-shadow: var(--shadow); }
-    .dbo-intro { margin: 0 0 20px; color: var(--muted); max-width: 620px; }
-    .dbo-card .step-controls { display: flex; margin-top: 20px; }
-    .dbo-card .step-controls .btn { width: auto; cursor: pointer; font: 800 1rem/1.2 "DM Sans", sans-serif; min-height: 56px; padding: 14px 24px; }
-    #dbo-app[hidden] { display: none; }
-    .dbo-appbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
-    .dbo-greeting { margin: 0; font: 700 1.35rem/1.25 "Roboto Slab", serif; }
-    .dbo-greeting .dbo-area { display: block; margin-top: 3px; color: var(--muted); font: 600 .9rem/1.4 "DM Sans", sans-serif; }
-    .dbo-logout { cursor: pointer; }
-    .dbo-chpw { margin-top: 22px; padding: 20px 22px; border: 1px solid var(--accent); border-radius: 8px; background: var(--soft); }
-    .dbo-chpw[hidden] { display: none; }
-    .dbo-chpw h4 { margin: 0 0 8px; font: 700 1.1rem/1.25 "Roboto Slab", serif; }
-    .dbo-chpw p { margin: 0 0 16px; color: var(--muted); font-size: .92rem; }
-    .dbo-cols { display: grid; grid-template-columns: 1.15fr .85fr; gap: 30px; margin-top: 24px; align-items: start; }
-    .dbo-subhead { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
-    .dbo-cols h4 { margin: 0 0 14px; font: 700 1.12rem/1.25 "Roboto Slab", serif; }
-    .dbo-subhead h4 { margin: 0; }
-    .dbo-refresh { padding: 8px 13px; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); color: var(--ink); font: 800 .85rem/1.2 "DM Sans", sans-serif; cursor: pointer; }
-    .dbo-empty { margin: 0; padding: 16px 18px; border: 1px dashed var(--line); border-radius: 8px; color: var(--muted); font-size: .92rem; }
-    .dbo-empty[hidden] { display: none; }
-    .dbo-trip { padding: 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
-    .dbo-trip + .dbo-trip { margin-top: 14px; }
-    .dbo-trip.is-new { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(246,189,50,.25); }
-    .dbo-trip-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 8px; }
-    .dbo-ref { font: 700 1.02rem/1.3 "Roboto Slab", serif; }
-    .dbo-pill { padding: 4px 10px; border-radius: 999px; font-size: .75rem; font-weight: 800; letter-spacing: .03em; text-transform: uppercase; }
-    .dbo-pill-new { background: var(--accent); color: var(--accent-ink); }
-    .dbo-pill-accepted { background: var(--blue-dark); color: #fff; }
-    .dbo-pill-done { background: var(--success); color: #fff; }
-    .dbo-route { margin: 0 0 10px; font-weight: 700; overflow-wrap: anywhere; }
-    .dbo-meta { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; color: var(--muted); font-size: .9rem; }
-    .dbo-meta strong { color: var(--ink); }
-    .dbo-trip-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
-    .dbo-trip-actions .btn { min-height: 46px; padding: 10px 16px; font-size: .92rem; cursor: pointer; }
-    .dbo-thread { display: grid; gap: 10px; max-height: 380px; overflow-y: auto; padding: 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
-    .dbo-thread:empty { display: none; }
-    .dbo-msg { max-width: 88%; padding: 10px 13px; border-radius: 10px; font-size: .93rem; overflow-wrap: anywhere; }
-    .dbo-msg p { margin: 0; white-space: pre-wrap; }
-    .dbo-msg .dbo-msg-from { display: block; margin-bottom: 3px; font-size: .72rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; opacity: .75; }
-    .dbo-msg-driver { justify-self: end; background: var(--blue-dark); color: #fff; }
-    .dbo-msg-dispatch { justify-self: start; background: var(--soft); color: var(--ink); }
-    .dbo-msgform { display: grid; gap: 10px; margin-top: 14px; }
-    .dbo-msgform .btn { width: auto; justify-self: end; cursor: pointer; min-height: 46px; padding: 10px 18px; font-size: .92rem; }
-    .dbo-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
     .cac-entry { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-bottom: 22px; padding: 16px 20px; background: var(--soft); border: 1px solid var(--line); border-radius: 8px; color: var(--ink-2); font-weight: 700; }
     .cac-entry .btn { cursor: pointer; font: 800 .95rem/1.2 "DM Sans", sans-serif; min-height: 46px; padding: 10px 18px; }
     .cac-entry .cac-signedin-note { color: var(--muted); font-weight: 600; font-size: .92rem; }
@@ -678,6 +630,7 @@
     .cac-card .step-controls .btn { width: auto; cursor: pointer; font: 800 1rem/1.2 "DM Sans", sans-serif; min-height: 56px; padding: 14px 24px; }
     .cac-alt { color: var(--muted); font-size: .92rem; font-weight: 600; }
     .cac-alt button { border: 0; background: none; padding: 0; color: var(--blue); font: inherit; font-weight: 800; cursor: pointer; text-decoration: underline; }
+    .cac-alt a { border: 0; background: none; padding: 0; color: var(--blue); font: inherit; font-weight: 800; cursor: pointer; text-decoration: underline; }
     #cac-app[hidden] { display: none; }
     .cac-appbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
     .cac-greeting { margin: 0; font: 700 1.35rem/1.25 "Roboto Slab", serif; }
@@ -718,7 +671,6 @@
     .cac-rewards-preview[hidden] { display: none; }
     @media (max-width: 820px) { .cac-cols { grid-template-columns: 1fr; } .cac-card { padding: 24px 18px; } }
 
-    @media (max-width: 820px) { .dbo-cols { grid-template-columns: 1fr; } .dbo-card { padding: 24px 18px; } }
     .faq { background: var(--surface); }
     .faq-grid { display: grid; grid-template-columns: .65fr 1.35fr; gap: 60px; }
     .faq h2 { position: sticky; top: 25px; align-self: start; }
@@ -854,7 +806,7 @@
     <div class="wrap utility-inner">
       <div class="utility-login">
         <button class="login-link" id="hdr-customer-login" type="button" data-i18n="hdr.customerLogin">Customer login</button>
-        <button class="login-link" id="hdr-driver-login" type="button" data-i18n="hdr.driverLogin">Driver login</button>
+        <a class="login-link" id="hdr-driver-login" href="driver-office.html" data-i18n="hdr.driverLogin">Driver login</a>
         <a class="login-link" href="ambassadors.html" data-i18n="hdr.ambassadors">Ambassadors</a>
       </div>
       <div class="utility-actions">
@@ -1744,7 +1696,7 @@
           </button>
           <div class="dbo-entry">
             <span data-i18n="dbo.entryQ">Already approved as a GetQuickHaul driver?</span>
-            <button class="btn btn-secondary" id="dbo-open" type="button" aria-expanded="false" aria-controls="dbo-panel" data-i18n="dbo.loginBtn">Driver login</button>
+            <a class="btn btn-secondary" href="driver-office.html" data-i18n="dbo.loginBtn">Driver login</a>
           </div>
         </div>
         <div id="driver-portal" hidden>
@@ -1796,7 +1748,7 @@
               </div>
               <div class="step-controls">
                 <button class="btn btn-primary" type="submit" data-i18n="drv.regBtn">Register &amp; continue to application</button>
-                <span class="cac-alt"><span data-i18n="drv.regToLoginQ">Already approved as a driver?</span> <button type="button" id="driver-reg-login" data-i18n="dbo.loginBtn">Driver login</button></span>
+                <span class="cac-alt"><span data-i18n="drv.regToLoginQ">Already approved as a driver?</span> <a href="driver-office.html" id="driver-reg-login" data-i18n="dbo.loginBtn">Driver login</a></span>
               </div>
               <a class="btn btn-primary cac-pay-fee" href="https://buy.stripe.com/6oU9AUgCUcyvcXH1sZ00000" target="_blank" rel="noopener" data-i18n="drv.payFeeBtn">Pay the $49 onboarding fee by card</a>
               <p class="cac-privacy"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg><span data-i18n="cac.privacyNote">Your details stay private — we never sell your information.</span></p>
@@ -2065,88 +2017,6 @@
             <p class="driver-done-sign" data-i18n-html="drv.doneSign">Thanks for wanting to drive with us. We’re a small local team, and we appreciate every driver who raises a hand.<br />— The GetQuickHaul team</p>
           </div>
         </form>
-          </div>
-        </div>
-        <div class="dbo-panel" id="dbo-panel" hidden>
-          <div class="dbo-bar">
-            <h3 data-i18n="dbo.title">Driver back office</h3>
-            <button class="driver-close" id="dbo-close" type="button" data-i18n="dbo.hideBtn">Hide</button>
-          </div>
-          <form class="dbo-card" id="dbo-login-form" novalidate>
-            <p class="dbo-intro" data-i18n="dbo.loginIntro">Sign in with the username and password GetQuickHaul gave you when your application was approved. Your trips, pay and messages with dispatch live here.</p>
-            <div class="form-grid">
-              <div class="field">
-                <label for="dbo-username" data-i18n="dbo.username">Username</label>
-                <input id="dbo-username" name="dbo-username" type="text" autocomplete="username" aria-label="Username" data-i18n-aria="dbo.username" required />
-              </div>
-              <div class="field">
-                <label for="dbo-password" data-i18n="dbo.password">Password</label>
-                <input id="dbo-password" name="dbo-password" type="password" autocomplete="current-password" aria-label="Password" data-i18n-aria="dbo.password" required />
-              </div>
-            </div>
-            <div class="step-controls"><button class="btn btn-primary" id="dbo-login-submit" type="submit" data-i18n="dbo.signIn">Sign in</button></div>
-            <div class="dbo-forgot-wrap">
-              <button class="login-link" id="dbo-forgot-toggle" type="button" data-i18n="dbo.forgot">Forgot password?</button>
-              <div id="dbo-forgot-panel" hidden>
-                <p class="dbo-intro" data-i18n="dbo.forgotIntro">Enter your username and the phone number on your driver file. The office will verify it&rsquo;s you and text a new temporary password to that phone.</p>
-                <div class="form-grid">
-                  <div class="field">
-                    <label for="dbo-forgot-user" data-i18n="dbo.username">Username</label>
-                    <input id="dbo-forgot-user" type="text" autocomplete="username" aria-label="Username" data-i18n-aria="dbo.username" />
-                  </div>
-                  <div class="field">
-                    <label for="dbo-forgot-phone" data-i18n="dbo.phone">Phone number</label>
-                    <input id="dbo-forgot-phone" type="tel" autocomplete="tel" aria-label="Phone number" data-i18n-aria="dbo.phone" />
-                  </div>
-                </div>
-                <div class="step-controls"><button class="btn btn-secondary" id="dbo-forgot-send" type="button" data-i18n="dbo.forgotSend">Send reset request</button></div>
-                <p class="driver-status" id="dbo-forgot-status" role="status" aria-live="polite"></p>
-              </div>
-            </div>
-            <p class="driver-status" id="dbo-login-status" role="status" aria-live="polite"></p>
-          </form>
-          <div class="dbo-card" id="dbo-app" hidden>
-            <div class="dbo-appbar">
-              <p class="dbo-greeting"><span data-i18n="dbo.hello">Hi,</span> <span id="dbo-driver-name"></span><span class="dbo-area" id="dbo-driver-area"></span></p>
-              <button class="btn btn-secondary dbo-logout" id="dbo-logout" type="button" data-i18n="dbo.logout">Log out</button>
-            </div>
-            <form class="dbo-chpw" id="dbo-chpw" hidden novalidate>
-              <h4 data-i18n="dbo.chpwTitle">Set your own password</h4>
-              <p data-i18n="dbo.chpwIntro">You signed in with a temporary password. Choose your own before you continue — you'll use it every time you sign in.</p>
-              <div class="form-grid">
-                <div class="field">
-                  <label for="dbo-current-pw" data-i18n="dbo.currentPw">Current password</label>
-                  <input id="dbo-current-pw" type="password" autocomplete="current-password" aria-label="Current password" data-i18n-aria="dbo.currentPw" required />
-                </div>
-                <div class="field">
-                  <label for="dbo-new-pw" data-i18n="dbo.newPw">New password (10+ characters)</label>
-                  <input id="dbo-new-pw" type="password" autocomplete="new-password" aria-label="New password" data-i18n-aria="dbo.newPw" required />
-                </div>
-              </div>
-              <div class="step-controls"><button class="btn btn-primary" type="submit" data-i18n="dbo.chpwBtn">Save new password</button></div>
-              <p class="driver-status" id="dbo-chpw-status" role="status" aria-live="polite"></p>
-            </form>
-            <div class="dbo-cols">
-              <div class="dbo-trips-wrap">
-                <div class="dbo-subhead">
-                  <h4 data-i18n="dbo.tripsH">Your trips</h4>
-                  <button class="dbo-refresh" id="dbo-refresh" type="button" data-i18n="dbo.refresh">Refresh</button>
-                </div>
-                <p class="dbo-empty" id="dbo-trips-empty" data-i18n="dbo.noTrips" hidden>No trips yet. When a booking comes in for your area, it will appear here — and we'll email you too.</p>
-                <div id="dbo-trips"></div>
-                <p class="driver-status" id="dbo-trips-status" role="status" aria-live="polite"></p>
-              </div>
-              <div class="dbo-msgs-wrap">
-                <h4 data-i18n="dbo.msgsH">Messages with dispatch</h4>
-                <div class="dbo-thread" id="dbo-thread"></div>
-                <form class="dbo-msgform" id="dbo-msg-form" novalidate>
-                  <label class="dbo-sr" for="dbo-msg-input" data-i18n="dbo.msgsH">Messages with dispatch</label>
-                  <textarea id="dbo-msg-input" rows="2" maxlength="1000" placeholder="Write a message to dispatch…" data-i18n-ph="dbo.msgPh"></textarea>
-                  <button class="btn btn-primary" type="submit" data-i18n="dbo.send">Send</button>
-                </form>
-                <p class="driver-status" id="dbo-msg-status" role="status" aria-live="polite"></p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -2607,55 +2477,8 @@
         "cac.typeEarn": "Earned",
         "cac.typeRedeem": "Redeemed",
         "cac.usePoints": "Use my points on this trip",
-        "dbo.accept": "Accept trip",
-        "dbo.actionFailed": "That didn't go through — tap Refresh and try again.",
-        "dbo.areaLine": "Your area: {area}",
-        "dbo.chpwBtn": "Save new password",
-        "dbo.chpwDone": "Password updated. Use it the next time you sign in.",
-        "dbo.chpwFailed": "That didn't work — check your current password and try again.",
-        "dbo.chpwIntro": "You signed in with a temporary password. Choose your own before you continue — you'll use it every time you sign in.",
-        "dbo.chpwTitle": "Set your own password",
-        "dbo.complete": "Mark done",
-        "dbo.currentPw": "Current password",
         "dbo.entryQ": "Already approved as a GetQuickHaul driver?",
-        "dbo.fare": "Fare",
-        "dbo.fromDispatch": "Dispatch",
-        "dbo.forgotPw": "Forgot your password? Call (551) 233-8583 and the office will reset it for you.",
-        "dbo.fromYou": "You",
-        "dbo.hello": "Hi,",
-        "dbo.hideBtn": "Hide",
-        "dbo.inactive": "This account is not active. Please contact GetQuickHaul.",
-        "dbo.loading": "Loading…",
         "dbo.loginBtn": "Driver login",
-        "dbo.loginFailed": "Sign-in failed — check your username and password.",
-        "dbo.loginIntro": "Sign in with the username and password GetQuickHaul gave you when your application was approved. Your trips, pay and messages with dispatch live here.",
-        "dbo.logout": "Log out",
-        "dbo.miles": "Miles",
-        "dbo.msgFailed": "Message didn't send — try again.",
-        "dbo.msgPh": "Write a message to dispatch…",
-        "dbo.msgsH": "Messages with dispatch",
-        "dbo.netError": "Couldn't reach the driver service. Check your connection and try again.",
-        "dbo.newPw": "New password (10+ characters)",
-        "dbo.noTrips": "No trips yet. When a booking comes in for your area, it will appear here — and we'll email you too.",
-        "dbo.password": "Password",
-        "dbo.refresh": "Refresh",
-        "dbo.send": "Send",
-        "dbo.signIn": "Sign in",
-        "dbo.forgot": "Forgot password?",
-        "dbo.forgotIntro": "Enter your username and the phone number on your driver file. The office will verify it's you and text a new temporary password to that phone.",
-        "dbo.phone": "Phone number",
-        "dbo.forgotSend": "Send reset request",
-        "dbo.forgotSent": "Request sent — the office will text your new password to the phone on your file.",
-        "dbo.forgotFail": "Couldn't send the request. Call the office at (551) 233-8583 and we'll reset it for you.",
-        "dbo.forgotNeed": "Enter your username and phone number so the office can verify it's you.",
-        "dbo.title": "Driver back office",
-        "dbo.tripAccepted": "Accepted",
-        "dbo.tripDone": "Done",
-        "dbo.tripNew": "New",
-        "dbo.tripsH": "Your trips",
-        "dbo.username": "Username",
-        "dbo.when": "When",
-        "dbo.yourPay": "Your pay (80%)",
         "drv.dtDriver": "Driver",
         "drv.dtVehicle": "Vehicle",
         "drv.email": "Email",
@@ -3204,55 +3027,8 @@
         "cac.typeEarn": "Ganados",
         "cac.typeRedeem": "Canjeados",
         "cac.usePoints": "Usar mis puntos en este viaje",
-        "dbo.accept": "Aceptar el viaje",
-        "dbo.actionFailed": "No se pudo completar: toca Actualizar e inténtalo de nuevo.",
-        "dbo.areaLine": "Tu zona: {area}",
-        "dbo.chpwBtn": "Guardar la nueva contraseña",
-        "dbo.chpwDone": "Contraseña actualizada. Úsala la próxima vez que inicies sesión.",
-        "dbo.chpwFailed": "No funcionó: revisa tu contraseña actual e inténtalo de nuevo.",
-        "dbo.chpwIntro": "Iniciaste sesión con una contraseña temporal. Elige la tuya antes de continuar: la usarás cada vez que entres.",
-        "dbo.chpwTitle": "Crea tu propia contraseña",
-        "dbo.complete": "Marcar completado",
-        "dbo.currentPw": "Contraseña actual",
         "dbo.entryQ": "¿Ya fuiste aprobado como conductor de GetQuickHaul?",
-        "dbo.fare": "Tarifa",
-        "dbo.fromDispatch": "Despacho",
-        "dbo.forgotPw": "¿Olvidaste tu contraseña? Llama al (551) 233-8583 y la oficina la restablece por ti.",
-        "dbo.fromYou": "Tú",
-        "dbo.hello": "Hola,",
-        "dbo.hideBtn": "Ocultar",
-        "dbo.inactive": "Esta cuenta no está activa. Comunícate con GetQuickHaul.",
-        "dbo.loading": "Cargando…",
         "dbo.loginBtn": "Acceso para conductores",
-        "dbo.loginFailed": "No pudimos iniciar sesión: revisa tu usuario y contraseña.",
-        "dbo.loginIntro": "Inicia sesión con el usuario y la contraseña que GetQuickHaul te dio cuando tu solicitud fue aprobada. Aquí viven tus viajes, tu pago y tus mensajes con despacho.",
-        "dbo.logout": "Cerrar sesión",
-        "dbo.miles": "Millas",
-        "dbo.msgFailed": "El mensaje no se envió: inténtalo de nuevo.",
-        "dbo.msgPh": "Escribe un mensaje a despacho…",
-        "dbo.msgsH": "Mensajes con despacho",
-        "dbo.netError": "No pudimos contactar el servicio de conductores. Revisa tu conexión e inténtalo de nuevo.",
-        "dbo.newPw": "Nueva contraseña (10+ caracteres)",
-        "dbo.noTrips": "Todavía no tienes viajes. Cuando llegue una reserva para tu zona, aparecerá aquí — y también te avisaremos por correo.",
-        "dbo.password": "Contraseña",
-        "dbo.refresh": "Actualizar",
-        "dbo.send": "Enviar",
-        "dbo.signIn": "Iniciar sesión",
-        "dbo.forgot": "¿Olvidaste tu contraseña?",
-        "dbo.forgotIntro": "Escribe tu nombre de usuario y el número de teléfono que está en tu archivo de conductor. La oficina verificará que eres tú y te enviará una contraseña temporal nueva por mensaje de texto.",
-        "dbo.phone": "Número de teléfono",
-        "dbo.forgotSend": "Enviar solicitud",
-        "dbo.forgotSent": "Solicitud enviada — la oficina te enviará tu nueva contraseña al teléfono de tu archivo.",
-        "dbo.forgotFail": "No se pudo enviar la solicitud. Llama a la oficina al (551) 233-8583 y te la restablecemos.",
-        "dbo.forgotNeed": "Escribe tu nombre de usuario y tu teléfono para que la oficina pueda verificar que eres tú.",
-        "dbo.title": "Panel del conductor",
-        "dbo.tripAccepted": "Aceptado",
-        "dbo.tripDone": "Completado",
-        "dbo.tripNew": "Nuevo",
-        "dbo.tripsH": "Tus viajes",
-        "dbo.username": "Usuario",
-        "dbo.when": "Cuándo",
-        "dbo.yourPay": "Tu pago (80%)",
         "drv.dtDriver": "Conductor",
         "drv.dtVehicle": "Vehículo",
         "drv.email": "Correo electrónico",
@@ -3801,55 +3577,8 @@
         "cac.typeEarn": "Ganhos",
         "cac.typeRedeem": "Resgatados",
         "cac.usePoints": "Usar meus pontos nesta viagem",
-        "dbo.accept": "Aceitar a viagem",
-        "dbo.actionFailed": "Não foi possível concluir — toque em Atualizar e tente de novo.",
-        "dbo.areaLine": "Sua área: {area}",
-        "dbo.chpwBtn": "Salvar a nova senha",
-        "dbo.chpwDone": "Senha atualizada. Use-a no próximo acesso.",
-        "dbo.chpwFailed": "Não funcionou — confira sua senha atual e tente de novo.",
-        "dbo.chpwIntro": "Você entrou com uma senha temporária. Escolha a sua antes de continuar — você a usará em todos os acessos.",
-        "dbo.chpwTitle": "Crie sua própria senha",
-        "dbo.complete": "Marcar como concluída",
-        "dbo.currentPw": "Senha atual",
         "dbo.entryQ": "Já foi aprovado como motorista da GetQuickHaul?",
-        "dbo.fare": "Tarifa",
-        "dbo.fromDispatch": "Despacho",
-        "dbo.forgotPw": "Esqueceu sua senha? Ligue para (551) 233-8583 e o escritório a redefine para você.",
-        "dbo.fromYou": "Você",
-        "dbo.hello": "Olá,",
-        "dbo.hideBtn": "Ocultar",
-        "dbo.inactive": "Esta conta não está ativa. Fale com a GetQuickHaul.",
-        "dbo.loading": "Carregando…",
         "dbo.loginBtn": "Acesso do motorista",
-        "dbo.loginFailed": "Não foi possível entrar — confira seu usuário e senha.",
-        "dbo.loginIntro": "Entre com o usuário e a senha que a GetQuickHaul te deu quando sua candidatura foi aprovada. Suas viagens, seu pagamento e suas mensagens com o despacho ficam aqui.",
-        "dbo.logout": "Sair",
-        "dbo.miles": "Milhas",
-        "dbo.msgFailed": "A mensagem não foi enviada — tente de novo.",
-        "dbo.msgPh": "Escreva uma mensagem para o despacho…",
-        "dbo.msgsH": "Mensagens com o despacho",
-        "dbo.netError": "Não foi possível alcançar o serviço do motorista. Verifique sua conexão e tente de novo.",
-        "dbo.newPw": "Nova senha (10+ caracteres)",
-        "dbo.noTrips": "Nenhuma viagem ainda. Quando uma reserva chegar para a sua área, ela aparecerá aqui — e também avisaremos por e-mail.",
-        "dbo.password": "Senha",
-        "dbo.refresh": "Atualizar",
-        "dbo.send": "Enviar",
-        "dbo.signIn": "Entrar",
-        "dbo.forgot": "Esqueceu a senha?",
-        "dbo.forgotIntro": "Digite seu nome de usuário e o número de telefone que está no seu cadastro de motorista. O escritório vai confirmar que é você e enviar uma nova senha temporária por mensagem de texto.",
-        "dbo.phone": "Número de telefone",
-        "dbo.forgotSend": "Enviar solicitação",
-        "dbo.forgotSent": "Solicitação enviada — o escritório enviará sua nova senha para o telefone do seu cadastro.",
-        "dbo.forgotFail": "Não foi possível enviar a solicitação. Ligue para o escritório em (551) 233-8583 e redefinimos para você.",
-        "dbo.forgotNeed": "Digite seu nome de usuário e telefone para o escritório confirmar que é você.",
-        "dbo.title": "Painel do motorista",
-        "dbo.tripAccepted": "Aceita",
-        "dbo.tripDone": "Concluída",
-        "dbo.tripNew": "Nova",
-        "dbo.tripsH": "Suas viagens",
-        "dbo.username": "Usuário",
-        "dbo.when": "Quando",
-        "dbo.yourPay": "Seu pagamento (80%)",
         "drv.dtDriver": "Motorista",
         "drv.dtVehicle": "Veículo",
         "drv.email": "E-mail",
@@ -6499,21 +6228,6 @@
           });
         });
       }
-      if (driverRegLogin) {
-        driverRegLogin.addEventListener('click', function () {
-          setDriverPortal(false);
-          var dboOpen = document.getElementById('dbo-open');
-          if (dboOpen) dboOpen.click();
-        });
-      }
-      var hdrDriverLogin = document.getElementById('hdr-driver-login');
-      if (hdrDriverLogin) {
-        hdrDriverLogin.addEventListener('click', function () {
-          setDriverPortal(false);
-          var dboOpenBtn = document.getElementById('dbo-open');
-          if (dboOpenBtn) dboOpenBtn.click();
-        });
-      }
 
       driverStart.addEventListener('click', function () {
         if (!driverRegistered) {
@@ -6630,392 +6344,6 @@
 
       if (window.location.hash === '#phone-order') showPhoneOrder();
       if (window.location.hash === '#drive') setDriverPortal(true);
-    }());
-  </script>
-  <script>
-    /* ==================================================================
-       GetQuickHaul driver back office — login, trip board, messages.
-       Talks to the driver endpoints on the same Twilio Functions
-       service that runs /dispatch. The session token lives in
-       sessionStorage only (gone when the tab closes). Every step is
-       guarded: if the service is unreachable, the rest of the page is
-       unaffected and the driver just sees a friendly status line.
-       ================================================================== */
-    (function () {
-      var DBO_API_BASE = 'https://getquickhaul-8703.twil.io';
-      var TOKEN_KEY = 'gqh-driver-token';
-
-      function el(id) { return document.getElementById(id); }
-      var openBtn = el('dbo-open');
-      var panel = el('dbo-panel');
-      if (!openBtn || !panel) return;
-      var closeBtn = el('dbo-close');
-      var loginForm = el('dbo-login-form');
-      var loginStatus = el('dbo-login-status');
-      var usernameInput = el('dbo-username');
-      var passwordInput = el('dbo-password');
-      var app = el('dbo-app');
-      var nameOut = el('dbo-driver-name');
-      var areaOut = el('dbo-driver-area');
-      var logoutBtn = el('dbo-logout');
-      var chpwForm = el('dbo-chpw');
-      var chpwStatus = el('dbo-chpw-status');
-      var currentPwInput = el('dbo-current-pw');
-      var newPwInput = el('dbo-new-pw');
-      var tripsBox = el('dbo-trips');
-      var tripsEmpty = el('dbo-trips-empty');
-      var tripsStatus = el('dbo-trips-status');
-      var refreshBtn = el('dbo-refresh');
-      var threadBox = el('dbo-thread');
-      var msgForm = el('dbo-msg-form');
-      var msgInput = el('dbo-msg-input');
-      var msgStatus = el('dbo-msg-status');
-
-      var state = { token: '', driver: null, trips: [], messages: [] };
-
-      function t(key, vars) {
-        return (window.GQH && window.GQH.t) ? window.GQH.t(key, vars) : key;
-      }
-      function dt(key, fallback) {
-        var s = t(key);
-        return (s === key || !s) ? fallback : s;
-      }
-      function setStatus(node, text, isError) {
-        if (!node) return;
-        node.textContent = text || '';
-        node.classList.toggle('is-error', !!isError);
-      }
-      function money(v) {
-        var n = typeof v === 'number' ? v : parseFloat(v);
-        return isFinite(n) ? '$' + n.toFixed(2) : '';
-      }
-      function storeToken(token) {
-        state.token = token || '';
-        try {
-          if (token) window.sessionStorage.setItem(TOKEN_KEY, token);
-          else window.sessionStorage.removeItem(TOKEN_KEY);
-        } catch (e) { /* private mode — token lives in memory only */ }
-      }
-      function readStoredToken() {
-        try { return window.sessionStorage.getItem(TOKEN_KEY) || ''; } catch (e) { return ''; }
-      }
-
-      function api(path, opts) {
-        opts = opts || {};
-        var headers = { 'Content-Type': 'application/json' };
-        if (state.token) headers['Authorization'] = 'Bearer ' + state.token;
-        return window.fetch(DBO_API_BASE + path, {
-          method: opts.method || 'GET',
-          headers: headers,
-          body: opts.body ? JSON.stringify(opts.body) : undefined
-        }).then(function (res) {
-          return res.json().catch(function () { return {}; }).then(function (json) {
-            if (typeof json === 'string') {
-              try { json = JSON.parse(json); } catch (e) { json = {}; }
-            }
-            return { status: res.status, json: json || {} };
-          });
-        });
-      }
-
-      // ---------- views ----------
-      function showPanel(show) {
-        panel.hidden = !show;
-        openBtn.setAttribute('aria-expanded', show ? 'true' : 'false');
-        if (show) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-      function enterApp(driver) {
-        state.driver = driver;
-        loginForm.hidden = true;
-        app.hidden = false;
-        nameOut.textContent = driver.name || driver.username || '';
-        areaOut.textContent = dt('dbo.areaLine', 'Your area: {area}').split('{area}').join(driver.area || '');
-        chpwForm.hidden = !driver.mustChangePw;
-        loadTrips();
-        loadMessages();
-      }
-      function exitApp() {
-        storeToken('');
-        state.driver = null;
-        state.trips = [];
-        state.messages = [];
-        app.hidden = true;
-        loginForm.hidden = false;
-        if (passwordInput) passwordInput.value = '';
-        if (currentPwInput) currentPwInput.value = '';
-        if (newPwInput) newPwInput.value = '';
-        setStatus(loginStatus, '');
-      }
-
-      // ---------- trips ----------
-      function pillFor(status) {
-        if (status === 'accepted') return { cls: 'dbo-pill-accepted', label: dt('dbo.tripAccepted', 'Accepted') };
-        if (status === 'done') return { cls: 'dbo-pill-done', label: dt('dbo.tripDone', 'Done') };
-        return { cls: 'dbo-pill-new', label: dt('dbo.tripNew', 'New') };
-      }
-      function metaRow(label, value, strong) {
-        var li = document.createElement('li');
-        li.textContent = label + ': ';
-        if (strong) {
-          var s = document.createElement('strong');
-          s.textContent = value;
-          li.appendChild(s);
-        } else {
-          li.appendChild(document.createTextNode(value));
-        }
-        return li;
-      }
-      function renderTrips() {
-        tripsBox.innerHTML = '';
-        tripsEmpty.hidden = state.trips.length > 0;
-        state.trips.forEach(function (trip) {
-          var card = document.createElement('article');
-          card.className = 'dbo-trip' + (trip.status === 'new' ? ' is-new' : '');
-          var head = document.createElement('div');
-          head.className = 'dbo-trip-head';
-          var ref = document.createElement('span');
-          ref.className = 'dbo-ref';
-          ref.textContent = trip.ref || '';
-          var pill = pillFor(trip.status);
-          var pillNode = document.createElement('span');
-          pillNode.className = 'dbo-pill ' + pill.cls;
-          pillNode.textContent = pill.label;
-          head.appendChild(ref);
-          head.appendChild(pillNode);
-          card.appendChild(head);
-          var route = document.createElement('p');
-          route.className = 'dbo-route';
-          route.textContent = (trip.pickup || '') + (trip.dropoff ? ' → ' + trip.dropoff : '');
-          card.appendChild(route);
-          var meta = document.createElement('ul');
-          meta.className = 'dbo-meta';
-          if (trip.dateTime) meta.appendChild(metaRow(dt('dbo.when', 'When'), trip.dateTime, false));
-          if (trip.miles !== null && trip.miles !== undefined && trip.miles !== '') {
-            meta.appendChild(metaRow(dt('dbo.miles', 'Miles'), String(trip.miles), false));
-          }
-          if (trip.total !== null && trip.total !== undefined) {
-            meta.appendChild(metaRow(dt('dbo.fare', 'Fare'), money(trip.total), false));
-          }
-          if (trip.driverPay !== null && trip.driverPay !== undefined) {
-            meta.appendChild(metaRow(dt('dbo.yourPay', 'Your pay (80%)'), money(trip.driverPay), true));
-          }
-          card.appendChild(meta);
-          if (trip.status === 'new' || trip.status === 'accepted') {
-            var actions = document.createElement('div');
-            actions.className = 'dbo-trip-actions';
-            if (trip.status === 'new') {
-              var acceptBtn = document.createElement('button');
-              acceptBtn.type = 'button';
-              acceptBtn.className = 'btn btn-primary';
-              acceptBtn.textContent = dt('dbo.accept', 'Accept trip');
-              acceptBtn.addEventListener('click', function () { tripAction(trip.ref, 'accept'); });
-              actions.appendChild(acceptBtn);
-            } else {
-              var doneBtn = document.createElement('button');
-              doneBtn.type = 'button';
-              doneBtn.className = 'btn btn-primary';
-              doneBtn.textContent = dt('dbo.complete', 'Mark done');
-              doneBtn.addEventListener('click', function () { tripAction(trip.ref, 'complete'); });
-              actions.appendChild(doneBtn);
-            }
-            card.appendChild(actions);
-          }
-          tripsBox.appendChild(card);
-        });
-      }
-      function loadTrips() {
-        if (!state.token) return;
-        api('/driver-trips').then(function (r) {
-          if (r.status === 200 && r.json.trips) {
-            state.trips = r.json.trips;
-            setStatus(tripsStatus, '');
-            renderTrips();
-          } else if (r.status === 401) {
-            exitApp();
-          }
-        }).catch(function () {
-          setStatus(tripsStatus, dt('dbo.netError', "Couldn't reach the driver service. Check your connection and try again."), true);
-        });
-      }
-      function tripAction(ref, action) {
-        setStatus(tripsStatus, dt('dbo.loading', 'Loading…'));
-        api('/driver-trip-action', { method: 'POST', body: { ref: ref, action: action } }).then(function (r) {
-          if (r.status === 200) {
-            setStatus(tripsStatus, '');
-            loadTrips();
-          } else {
-            setStatus(tripsStatus, dt('dbo.actionFailed', "That didn't go through — tap Refresh and try again."), true);
-          }
-        }).catch(function () {
-          setStatus(tripsStatus, dt('dbo.netError', "Couldn't reach the driver service. Check your connection and try again."), true);
-        });
-      }
-
-      // ---------- messages ----------
-      function renderMessages() {
-        threadBox.innerHTML = '';
-        state.messages.forEach(function (msg) {
-          var bubble = document.createElement('div');
-          bubble.className = 'dbo-msg ' + (msg.from === 'driver' ? 'dbo-msg-driver' : 'dbo-msg-dispatch');
-          var from = document.createElement('span');
-          from.className = 'dbo-msg-from';
-          from.textContent = msg.from === 'driver' ? dt('dbo.fromYou', 'You') : dt('dbo.fromDispatch', 'Dispatch');
-          var text = document.createElement('p');
-          text.textContent = msg.text || '';
-          bubble.appendChild(from);
-          bubble.appendChild(text);
-          threadBox.appendChild(bubble);
-        });
-        threadBox.scrollTop = threadBox.scrollHeight;
-      }
-      function loadMessages() {
-        if (!state.token) return;
-        api('/driver-messages').then(function (r) {
-          if (r.status === 200 && r.json.messages) {
-            state.messages = r.json.messages;
-            renderMessages();
-          }
-        }).catch(function () { /* thread simply stays as-is */ });
-      }
-
-      // ---------- events ----------
-      openBtn.addEventListener('click', function () { showPanel(panel.hidden); });
-      closeBtn.addEventListener('click', function () { showPanel(false); });
-      if (refreshBtn) refreshBtn.addEventListener('click', function () { loadTrips(); loadMessages(); });
-      if (logoutBtn) logoutBtn.addEventListener('click', exitApp);
-
-      loginForm.addEventListener('submit', function (ev) {
-        ev.preventDefault();
-        var username = (usernameInput.value || '').trim();
-        var password = passwordInput.value || '';
-        if (!username || !password) {
-          setStatus(loginStatus, dt('dbo.loginFailed', 'Sign-in failed — check your username and password.'), true);
-          return;
-        }
-        setStatus(loginStatus, dt('dbo.loading', 'Loading…'));
-        // Login is unauthenticated: send without any stored token.
-        var saved = state.token;
-        state.token = '';
-        api('/driver-login', { method: 'POST', body: { username: username, password: password } }).then(function (r) {
-          if (r.status === 200 && r.json.token) {
-            storeToken(r.json.token);
-            setStatus(loginStatus, '');
-            enterApp(r.json.driver || {});
-          } else {
-            state.token = saved;
-            if (r.status === 403) {
-              setStatus(loginStatus, dt('dbo.inactive', 'This account is not active. Please contact GetQuickHaul.'), true);
-            } else {
-              setStatus(loginStatus, dt('dbo.loginFailed', 'Sign-in failed — check your username and password.'), true);
-            }
-          }
-        }).catch(function () {
-          state.token = saved;
-          setStatus(loginStatus, dt('dbo.netError', "Couldn't reach the driver service. Check your connection and try again."), true);
-        });
-      });
-
-      var forgotToggle = document.getElementById('dbo-forgot-toggle');
-      var forgotPanel = document.getElementById('dbo-forgot-panel');
-      var forgotSend = document.getElementById('dbo-forgot-send');
-      var forgotStatus = document.getElementById('dbo-forgot-status');
-      if (forgotToggle && forgotPanel) {
-        forgotToggle.addEventListener('click', function () {
-          forgotPanel.hidden = !forgotPanel.hidden;
-        });
-      }
-      if (forgotSend) {
-        forgotSend.addEventListener('click', function () {
-          var fu = (document.getElementById('dbo-forgot-user').value || '').trim();
-          var fp = (document.getElementById('dbo-forgot-phone').value || '').trim();
-          if (!fu || !fp) {
-            setStatus(forgotStatus, dt('dbo.forgotNeed', "Enter your username and phone number so the office can verify it's you."), true);
-            return;
-          }
-          forgotSend.disabled = true;
-          setStatus(forgotStatus, dt('dbo.loading', 'Loading…'));
-          fetch('https://formsubmit.co/ajax/getquickhaul@gmail.com', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify({ _subject: 'Driver password reset request (GetQuickHaul)', _template: 'table', request_type: 'driver-password-reset', username: fu, phone: fp })
-          }).then(function (r) {
-            if (!r.ok) throw new Error('send failed');
-            setStatus(forgotStatus, dt('dbo.forgotSent', 'Request sent — the office will text your new password to the phone on your file.'));
-            forgotPanel.hidden = true;
-          }).catch(function () {
-            forgotSend.disabled = false;
-            setStatus(forgotStatus, dt('dbo.forgotFail', "Couldn't send the request. Call the office at (551) 233-8583 and we'll reset it for you."), true);
-          });
-        });
-      }
-
-      chpwForm.addEventListener('submit', function (ev) {
-        ev.preventDefault();
-        setStatus(chpwStatus, dt('dbo.loading', 'Loading…'));
-        api('/driver-change-password', {
-          method: 'POST',
-          body: { currentPassword: currentPwInput.value || '', newPassword: newPwInput.value || '' }
-        }).then(function (r) {
-          if (r.status === 200) {
-            if (state.driver) state.driver.mustChangePw = false;
-            chpwForm.hidden = true;
-            currentPwInput.value = '';
-            newPwInput.value = '';
-            setStatus(chpwStatus, '');
-            setStatus(tripsStatus, dt('dbo.chpwDone', 'Password updated. Use it the next time you sign in.'));
-          } else {
-            setStatus(chpwStatus, dt('dbo.chpwFailed', "That didn't work — check your current password and try again."), true);
-          }
-        }).catch(function () {
-          setStatus(chpwStatus, dt('dbo.netError', "Couldn't reach the driver service. Check your connection and try again."), true);
-        });
-      });
-
-      msgForm.addEventListener('submit', function (ev) {
-        ev.preventDefault();
-        var text = (msgInput.value || '').trim();
-        if (!text) return;
-        setStatus(msgStatus, dt('dbo.loading', 'Loading…'));
-        api('/driver-messages', { method: 'POST', body: { text: text } }).then(function (r) {
-          if (r.status === 200 && r.json.message) {
-            state.messages.push(r.json.message);
-            msgInput.value = '';
-            setStatus(msgStatus, '');
-            renderMessages();
-          } else {
-            setStatus(msgStatus, dt('dbo.msgFailed', "Message didn't send — try again."), true);
-          }
-        }).catch(function () {
-          setStatus(msgStatus, dt('dbo.netError', "Couldn't reach the driver service. Check your connection and try again."), true);
-        });
-      });
-
-      // Re-render dynamic content when the language changes.
-      if (window.GQH) {
-        var previousOnApply = window.GQH.onApply;
-        window.GQH.onApply = function () {
-          if (typeof previousOnApply === 'function') previousOnApply();
-          if (state.driver) {
-            areaOut.textContent = dt('dbo.areaLine', 'Your area: {area}').split('{area}').join(state.driver.area || '');
-            renderTrips();
-            renderMessages();
-          }
-        };
-      }
-
-      // Restore an existing session (e.g., the driver reloaded the page).
-      var existing = readStoredToken();
-      if (existing) {
-        state.token = existing;
-        api('/driver-me').then(function (r) {
-          if (r.status === 200 && r.json.driver) {
-            showPanel(true);
-            enterApp(r.json.driver);
-          } else {
-            storeToken('');
-          }
-        }).catch(function () { /* stay logged out; login form still works */ });
-      }
     }());
   </script>
   <script>

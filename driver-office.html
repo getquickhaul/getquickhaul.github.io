@@ -3,123 +3,636 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Driver Office — Standards &amp; Training — GetQuickHaul | GetQuickHaulNJ.com</title>
-<meta name="description" content="The GetQuickHaul driver office: the standards every driver starts with — professional dress, courtesy, checking the merchandise, and the agreement on what we carry and what we never carry. GetQuickHaulNJ.com · (551) 233-8583">
+<title>Driver Office — GetQuickHaul | GetQuickHaulNJ.com</title>
+<meta name="description" content="The GetQuickHaul driver office: sign in with your driver login to see your trips, your pay and your messages with dispatch. GetQuickHaulNJ.com · (551) 233-8583">
 <style>
-  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; color: #1c2733; background: #f7f9fb; }
-  header { background: #18395d; color: #fff; padding: 22px 20px; border-bottom: 5px solid #d32f26; }
-  .brand { max-width: 820px; margin: 0 auto; display: flex; align-items: center; gap: 14px; }
-  .brand img { width: 58px; height: 58px; border-radius: 13px; flex: 0 0 auto; }
-  .brand .name { font-size: 24px; font-weight: 800; line-height: 1.1; }
-  .brand .tag { color: #f5b921; font-weight: 700; letter-spacing: .06em; font-size: 13px; text-transform: uppercase; margin-top: 3px; }
-  .brand a { color: #fff; text-decoration: none; }
-  main { max-width: 820px; margin: 0 auto; padding: 26px 20px 48px; background: #fff; }
-  h1 { color: #18395d; font-size: 30px; line-height: 1.25; margin: 4px 0 12px; }
-  h2 { color: #18395d; font-size: 21px; margin: 30px 0 6px; border-bottom: 3px solid #f5b921; padding-bottom: 5px; }
-  p, li { line-height: 1.55; font-size: 16px; }
-  a { color: #18395d; }
-  .lead { font-size: 17px; }
-  .rule { background: #f7f9fb; border-left: 4px solid #f5b921; padding: 14px 18px; margin: 18px 0; }
-  .rule p { margin: 4px 0; }
-  .never { background: #fdf0ef; border: 1.5px solid #d32f26; border-radius: 10px; padding: 16px 18px; margin: 18px 0; }
-  .never p { margin: 4px 0; }
-  .quiet { color: #5a6a7a; font-size: 15px; margin-top: 18px; }
-  footer { text-align: center; padding: 22px 16px 30px; font-size: 14px; color: #5a6a7a; }
-  footer nav a { display: inline-block; font-size: 17px; font-weight: 800; color: #18395d; text-decoration: underline; text-underline-offset: 3px; padding: 10px 8px; }
-  footer nav { line-height: 2; }
-  footer a { color: #18395d; }
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Roboto+Slab:wght@600;700&display=swap');
+    :root {
+      color-scheme: light dark;
+      --ink: #102541;
+      --ink-2: #253b56;
+      --paper: #f7f9fb;
+      --surface: #ffffff;
+      --soft: #eaf0f5;
+      --line: #cbd7e2;
+      --accent: #f6bd32;
+      --accent-ink: #172236;
+      --blue: #315e88;
+      --blue-dark: #18395d;
+      --muted: #52677e;
+      --success: #287451;
+      --shadow: 0 20px 50px rgba(16, 37, 65, .12);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #edf5fc;
+        --ink-2: #d7e5f1;
+        --paper: #0c1725;
+        --surface: #142337;
+        --soft: #1c3047;
+        --line: #35516c;
+        --accent: #f7c44a;
+        --accent-ink: #142033;
+        --blue: #79a9d5;
+        --blue-dark: #b7d7f0;
+        --muted: #b6c7d7;
+        --success: #78cea5;
+        --shadow: 0 20px 55px rgba(0, 0, 0, .34);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 17px/1.58 "DM Sans", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    h1, h2, h3 { font-family: "Roboto Slab", serif; line-height: 1.08; margin-top: 0; }
+    header { background: #18395d; color: #fff; padding: 22px 20px; border-bottom: 5px solid #d32f26; }
+    .brand { max-width: 880px; margin: 0 auto; display: flex; align-items: center; gap: 14px; }
+    .brand img { width: 58px; height: 58px; border-radius: 13px; flex: 0 0 auto; }
+    .brand .name { font-size: 24px; font-weight: 800; line-height: 1.1; }
+    .brand .tag { color: #f5b921; font-weight: 700; letter-spacing: .06em; font-size: 13px; text-transform: uppercase; margin-top: 3px; }
+    .brand a { color: #fff; text-decoration: none; }
+    .office { background: var(--blue-dark); color: #fff; }
+    @media (prefers-color-scheme: dark) { .office { background: #102b47; } }
+    .office-inner { width: min(1160px, calc(100% - 40px)); margin: 0 auto; padding: 34px 0 46px; }
+    .office .dbo-entry { margin-top: 0; padding-top: 0; border-top: 0; }
+    footer { text-align: center; padding: 20px 16px 26px; font-size: 14px; color: var(--muted); }
+    footer a { color: var(--ink); font-weight: 700; }
+    .btn {
+      min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 12px 19px; border-radius: 8px; font-weight: 800; text-decoration: none; border: 2px solid transparent;
+    }
+    .btn-primary { background: var(--accent); color: var(--accent-ink); box-shadow: 0 8px 0 rgba(133, 92, 0, .18); }
+    .btn-secondary { border-color: var(--line); background: var(--surface); color: var(--ink); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .field { min-width: 0; }
+    label { display: block; margin-bottom: 7px; color: var(--ink); font-size: .92rem; font-weight: 800; }
+    input, textarea, select {
+      width: 100%; min-height: 48px; border: 1px solid var(--line); border-radius: 7px; padding: 11px 12px;
+      background: var(--paper); color: var(--ink); font: inherit;
+    }
+    textarea { min-height: 108px; resize: vertical; }
+    input:focus, textarea:focus, select:focus { outline: 3px solid color-mix(in srgb, var(--blue) 35%, transparent); border-color: var(--blue); }
+    .step-controls { display: flex; justify-content: space-between; gap: 12px; margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); }
+    .step-controls .btn { min-width: 126px; cursor: pointer; font: 800 1rem/1.2 "DM Sans", sans-serif; }
+    .step-controls .btn:only-child { margin-left: auto; }
+    .login-link { background: none; border: 0; padding: 6px 2px; font-family: "DM Sans", sans-serif; font-size: .92rem; font-weight: 800; color: var(--blue); cursor: pointer; border-bottom: 2px solid var(--line); white-space: nowrap; }
+    .login-link:hover { color: var(--ink); border-bottom-color: var(--accent); }
+    a.login-link { text-decoration: none; }
+    .driver-close { padding: 9px 14px; border: 1px solid rgba(255,255,255,.4); border-radius: 7px; background: transparent; color: #fff; font: 800 .88rem/1.2 "DM Sans", sans-serif; cursor: pointer; }
+    .driver-close:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    .driver-status { min-height: 1.5em; margin: 11px 0 0; color: var(--muted); font-size: .84rem; }
+    .driver-status.is-error { color: #a43a2f; font-weight: 700; }
+    @media (prefers-color-scheme: dark) { .driver-status.is-error { color: #ff9a8f; } }
+    /* Driver back office (login + trip board) — staging addition */
+    .dbo-entry { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.22); color: #dbe9f4; font-weight: 700; }
+    .dbo-entry .btn { cursor: pointer; font: 800 1rem/1.2 "DM Sans", sans-serif; }
+    #dbo-panel[hidden] { display: none; }
+    .dbo-panel { margin-top: 26px; }
+    .dbo-forgot-wrap { margin-top: 12px; text-align: center; }
+    .dbo-forgot-wrap .dbo-intro { text-align: left; margin-top: 10px; }
+    .dbo-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; }
+    .dbo-bar h3 { margin: 0; color: #fff; font-size: 1.5rem; }
+    .dbo-card { padding: 30px; background: var(--surface); color: var(--ink); border-radius: 6px 20px 6px 20px; box-shadow: var(--shadow); }
+    .dbo-intro { margin: 0 0 20px; color: var(--muted); max-width: 620px; }
+    .dbo-card .step-controls { display: flex; margin-top: 20px; }
+    .dbo-card .step-controls .btn { width: auto; cursor: pointer; font: 800 1rem/1.2 "DM Sans", sans-serif; min-height: 56px; padding: 14px 24px; }
+    #dbo-app[hidden] { display: none; }
+    .dbo-appbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+    .dbo-greeting { margin: 0; font: 700 1.35rem/1.25 "Roboto Slab", serif; }
+    .dbo-greeting .dbo-area { display: block; margin-top: 3px; color: var(--muted); font: 600 .9rem/1.4 "DM Sans", sans-serif; }
+    .dbo-logout { cursor: pointer; }
+    .dbo-chpw { margin-top: 22px; padding: 20px 22px; border: 1px solid var(--accent); border-radius: 8px; background: var(--soft); }
+    .dbo-chpw[hidden] { display: none; }
+    .dbo-chpw h4 { margin: 0 0 8px; font: 700 1.1rem/1.25 "Roboto Slab", serif; }
+    .dbo-chpw p { margin: 0 0 16px; color: var(--muted); font-size: .92rem; }
+    .dbo-cols { display: grid; grid-template-columns: 1.15fr .85fr; gap: 30px; margin-top: 24px; align-items: start; }
+    .dbo-subhead { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .dbo-cols h4 { margin: 0 0 14px; font: 700 1.12rem/1.25 "Roboto Slab", serif; }
+    .dbo-subhead h4 { margin: 0; }
+    .dbo-refresh { padding: 8px 13px; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); color: var(--ink); font: 800 .85rem/1.2 "DM Sans", sans-serif; cursor: pointer; }
+    .dbo-empty { margin: 0; padding: 16px 18px; border: 1px dashed var(--line); border-radius: 8px; color: var(--muted); font-size: .92rem; }
+    .dbo-empty[hidden] { display: none; }
+    .dbo-trip { padding: 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .dbo-trip + .dbo-trip { margin-top: 14px; }
+    .dbo-trip.is-new { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(246,189,50,.25); }
+    .dbo-trip-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .dbo-ref { font: 700 1.02rem/1.3 "Roboto Slab", serif; }
+    .dbo-pill { padding: 4px 10px; border-radius: 999px; font-size: .75rem; font-weight: 800; letter-spacing: .03em; text-transform: uppercase; }
+    .dbo-pill-new { background: var(--accent); color: var(--accent-ink); }
+    .dbo-pill-accepted { background: var(--blue-dark); color: #fff; }
+    .dbo-pill-done { background: var(--success); color: #fff; }
+    .dbo-route { margin: 0 0 10px; font-weight: 700; overflow-wrap: anywhere; }
+    .dbo-meta { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; color: var(--muted); font-size: .9rem; }
+    .dbo-meta strong { color: var(--ink); }
+    .dbo-trip-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .dbo-trip-actions .btn { min-height: 46px; padding: 10px 16px; font-size: .92rem; cursor: pointer; }
+    .dbo-thread { display: grid; gap: 10px; max-height: 380px; overflow-y: auto; padding: 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+    .dbo-thread:empty { display: none; }
+    .dbo-msg { max-width: 88%; padding: 10px 13px; border-radius: 10px; font-size: .93rem; overflow-wrap: anywhere; }
+    .dbo-msg p { margin: 0; white-space: pre-wrap; }
+    .dbo-msg .dbo-msg-from { display: block; margin-bottom: 3px; font-size: .72rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; opacity: .75; }
+    .dbo-msg-driver { justify-self: end; background: var(--blue-dark); color: #fff; }
+    .dbo-msg-dispatch { justify-self: start; background: var(--soft); color: var(--ink); }
+    .dbo-msgform { display: grid; gap: 10px; margin-top: 14px; }
+    .dbo-msgform .btn { width: auto; justify-self: end; cursor: pointer; min-height: 46px; padding: 10px 18px; font-size: .92rem; }
+    .dbo-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    @media (max-width: 820px) { .dbo-cols { grid-template-columns: 1fr; } .dbo-card { padding: 24px 18px; } }
 </style>
 </head>
 <body>
 <header>
   <div class="brand">
-    <a href="https://getquickhaulnj.com/"><img src="assets/app-icon-192.png" alt="GetQuickHaul logo"></a>
+    <a href="https://getquickhaulnj.com/"><img src="logo-van-net-1024.png" alt="GetQuickHaul logo"></a>
     <div>
       <div class="name"><a href="https://getquickhaulnj.com/">GetQuickHaul</a></div>
       <div class="tag">Community Cargo Delivery</div>
     </div>
   </div>
 </header>
-<main>
-  <h1>Driver Office — Start Here</h1>
-  <p class="lead">Welcome to the platform. GetQuickHaul is <strong>not a job and you're not an employee</strong> — it's a vehicle you get in to build your own business: we bring the platform, the bookings and the customers; you bring the van and the professionalism. You keep <strong>80% of every fare</strong>.</p>
-  <p class="lead"><strong>This page is your first training.</strong> Before your first trip, know these standards cold — they're the agreement every driver runs under.</p>
-
-  <video controls preload="none" poster="video/training-driver-1-poster.png" playsinline style="width:100%;border-radius:10px;margin:10px 0"><source src="video/training-driver-1.mp4" type="video/mp4"></video>
-  
-  <h2>1. Dress professional</h2>
-  <video controls preload="none" poster="video/training-driver-2-poster.png" playsinline style="width:100%;border-radius:10px;margin:10px 0"><source src="video/training-driver-2.mp4" type="video/mp4"></video>
-  
-  <div class="rule">
-    <p>You are the face the customer sees — the whole company, in their doorway. Arrive <strong>clean and professional</strong>: clean clothes, closed shoes, no torn or dirty workwear. When your GetQuickHaul gear arrives, wear it. Keep the van clean inside and out; a clean van is a five-star review before you say a word.</p>
+<main class="office">
+  <div class="office-inner">
+    <div class="dbo-entry">
+      <span data-i18n="dbo.entryQ">Already approved as a GetQuickHaul driver?</span>
+      <button class="btn btn-secondary" id="dbo-open" type="button" aria-expanded="false" aria-controls="dbo-panel" data-i18n="dbo.loginBtn">Driver login</button>
+    </div>
+        <div class="dbo-panel" id="dbo-panel" hidden>
+          <div class="dbo-bar">
+            <h3 data-i18n="dbo.title">Driver back office</h3>
+            <button class="driver-close" id="dbo-close" type="button" data-i18n="dbo.hideBtn">Hide</button>
+          </div>
+          <form class="dbo-card" id="dbo-login-form" novalidate>
+            <p class="dbo-intro" data-i18n="dbo.loginIntro">Sign in with the username and password GetQuickHaul gave you when your application was approved. Your trips, pay and messages with dispatch live here.</p>
+            <div class="form-grid">
+              <div class="field">
+                <label for="dbo-username" data-i18n="dbo.username">Username</label>
+                <input id="dbo-username" name="dbo-username" type="text" autocomplete="username" aria-label="Username" data-i18n-aria="dbo.username" required />
+              </div>
+              <div class="field">
+                <label for="dbo-password" data-i18n="dbo.password">Password</label>
+                <input id="dbo-password" name="dbo-password" type="password" autocomplete="current-password" aria-label="Password" data-i18n-aria="dbo.password" required />
+              </div>
+            </div>
+            <div class="step-controls"><button class="btn btn-primary" id="dbo-login-submit" type="submit" data-i18n="dbo.signIn">Sign in</button></div>
+            <div class="dbo-forgot-wrap">
+              <button class="login-link" id="dbo-forgot-toggle" type="button" data-i18n="dbo.forgot">Forgot password?</button>
+              <div id="dbo-forgot-panel" hidden>
+                <p class="dbo-intro" data-i18n="dbo.forgotIntro">Enter your username and the phone number on your driver file. The office will verify it&rsquo;s you and text a new temporary password to that phone.</p>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="dbo-forgot-user" data-i18n="dbo.username">Username</label>
+                    <input id="dbo-forgot-user" type="text" autocomplete="username" aria-label="Username" data-i18n-aria="dbo.username" />
+                  </div>
+                  <div class="field">
+                    <label for="dbo-forgot-phone" data-i18n="dbo.phone">Phone number</label>
+                    <input id="dbo-forgot-phone" type="tel" autocomplete="tel" aria-label="Phone number" data-i18n-aria="dbo.phone" />
+                  </div>
+                </div>
+                <div class="step-controls"><button class="btn btn-secondary" id="dbo-forgot-send" type="button" data-i18n="dbo.forgotSend">Send reset request</button></div>
+                <p class="driver-status" id="dbo-forgot-status" role="status" aria-live="polite"></p>
+              </div>
+            </div>
+            <p class="driver-status" id="dbo-login-status" role="status" aria-live="polite"></p>
+          </form>
+          <div class="dbo-card" id="dbo-app" hidden>
+            <div class="dbo-appbar">
+              <p class="dbo-greeting"><span data-i18n="dbo.hello">Hi,</span> <span id="dbo-driver-name"></span><span class="dbo-area" id="dbo-driver-area"></span></p>
+              <button class="btn btn-secondary dbo-logout" id="dbo-logout" type="button" data-i18n="dbo.logout">Log out</button>
+            </div>
+            <form class="dbo-chpw" id="dbo-chpw" hidden novalidate>
+              <h4 data-i18n="dbo.chpwTitle">Set your own password</h4>
+              <p data-i18n="dbo.chpwIntro">You signed in with a temporary password. Choose your own before you continue — you'll use it every time you sign in.</p>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="dbo-current-pw" data-i18n="dbo.currentPw">Current password</label>
+                  <input id="dbo-current-pw" type="password" autocomplete="current-password" aria-label="Current password" data-i18n-aria="dbo.currentPw" required />
+                </div>
+                <div class="field">
+                  <label for="dbo-new-pw" data-i18n="dbo.newPw">New password (10+ characters)</label>
+                  <input id="dbo-new-pw" type="password" autocomplete="new-password" aria-label="New password" data-i18n-aria="dbo.newPw" required />
+                </div>
+              </div>
+              <div class="step-controls"><button class="btn btn-primary" type="submit" data-i18n="dbo.chpwBtn">Save new password</button></div>
+              <p class="driver-status" id="dbo-chpw-status" role="status" aria-live="polite"></p>
+            </form>
+            <div class="dbo-cols">
+              <div class="dbo-trips-wrap">
+                <div class="dbo-subhead">
+                  <h4 data-i18n="dbo.tripsH">Your trips</h4>
+                  <button class="dbo-refresh" id="dbo-refresh" type="button" data-i18n="dbo.refresh">Refresh</button>
+                </div>
+                <p class="dbo-empty" id="dbo-trips-empty" data-i18n="dbo.noTrips" hidden>No trips yet. When a booking comes in for your area, it will appear here — and we'll email you too.</p>
+                <div id="dbo-trips"></div>
+                <p class="driver-status" id="dbo-trips-status" role="status" aria-live="polite"></p>
+              </div>
+              <div class="dbo-msgs-wrap">
+                <h4 data-i18n="dbo.msgsH">Messages with dispatch</h4>
+                <div class="dbo-thread" id="dbo-thread"></div>
+                <form class="dbo-msgform" id="dbo-msg-form" novalidate>
+                  <label class="dbo-sr" for="dbo-msg-input" data-i18n="dbo.msgsH">Messages with dispatch</label>
+                  <textarea id="dbo-msg-input" rows="2" maxlength="1000" placeholder="Write a message to dispatch…" data-i18n-ph="dbo.msgPh"></textarea>
+                  <button class="btn btn-primary" type="submit" data-i18n="dbo.send">Send</button>
+                </form>
+                <p class="driver-status" id="dbo-msg-status" role="status" aria-live="polite"></p>
+              </div>
+            </div>
+          </div>
+        </div>
   </div>
-
-  <h2>2. Be courteous — every stop, every time</h2>
-  <video controls preload="none" poster="video/training-driver-3-poster.png" playsinline style="width:100%;border-radius:10px;margin:10px 0"><source src="video/training-driver-3.mp4" type="video/mp4"></video>
-  
-  <div class="rule">
-    <p>· Greet the customer <strong>by name</strong>. Text or call when you're on your way and when you arrive.<br>
-    · Be patient — with elders, with busy store staff, with a customer who's mid-move and stressed.<br>
-    · Never argue with a customer. If something goes wrong — damage, a delay, a disagreement — stay calm and <strong>call the office: (551) 233-8583</strong>. That's what the office is for.<br>
-    · Thank them at the door. Courtesy is why customers book again — and ask for you.</p>
-  </div>
-
-  <h2>3. Check the merchandise</h2>
-  <video controls preload="none" poster="video/training-driver-4-poster.png" playsinline style="width:100%;border-radius:10px;margin:10px 0"><source src="video/training-driver-4.mp4" type="video/mp4"></video>
-  
-  <div class="rule">
-    <p>· <strong>Before you load:</strong> walk the items with the customer. Count them. Look at the condition together — if something is already scratched or broken, say it out loud and note it <em>before</em> you touch it. A photo of the load protects you and the customer.<br>
-    · <strong>Load it right:</strong> secure everything so nothing shifts, slides or crushes on the road.<br>
-    · <strong>At drop-off:</strong> check the items off together before you leave. Cash, check and COD are collected <strong>before unloading</strong> — that's the house rule, no exceptions.</p>
-  </div>
-
-  <h2>4. The agreement — what we carry, and what we NEVER carry</h2>
-  <video controls preload="none" poster="video/training-driver-5-poster.png" playsinline style="width:100%;border-radius:10px;margin:10px 0"><source src="video/training-driver-5.mp4" type="video/mp4"></video>
-  
-  <div class="rule">
-    <p><strong>We carry:</strong> furniture, boxes, store merchandise, appliances (curb to curb), business freight and route deliveries — the honest cargo of a neighborhood.</p>
-  </div>
-  <div class="never">
-    <p><strong>NEVER — no exceptions, no side deals:</strong></p>
-    <p>· <strong>No firearms or ammunition.</strong><br>
-    · <strong>No drugs or powders of any kind</strong> — nothing illegal, nothing that "looks like" it.<br>
-    · <strong>Nothing stolen, nothing unlawful, no hazardous chemicals or fuel.</strong></p>
-    <p>If a customer asks you to carry anything on this list, refuse politely — "I'm sorry, our agreement doesn't allow me to carry that" — and call the office. A driver who takes one of these loads, on or off the platform, is off the platform. This rule protects your license, your van, and your freedom. It is not negotiable.</p>
-  </div>
-
-  <h2>5. Run it like a business</h2>
-  <video controls preload="none" poster="video/training-driver-6-poster.png" playsinline style="width:100%;border-radius:10px;margin:10px 0"><source src="video/training-driver-6.mp4" type="video/mp4"></video>
-  
-  <div class="rule">
-    <p>· On time is the standard — if you're running late, the customer hears it from you first, not from the clock.<br>
-    · Phone charged, app open, trip details read before you roll.<br>
-    · No passengers on a booked trip, and never a trip "off the books" for a platform customer — that's how drivers lose the platform.<br>
-    · Your earnings, your trips and your ratings live in the app and your driver record — the office can walk you through them any time.</p>
-  </div>
-
-  <p class="quiet">Questions before your first trip? Call or text the office at <a href="tel:+15512338583"><strong>(551) 233-8583</strong></a> or email <a href="mailto:getquickhaul@gmail.com"><strong>getquickhaul@gmail.com</strong></a>. Not a driver yet? <a href="https://getquickhaulnj.com/register.html">Join us at Driver Launch Night</a>.</p>
 </main>
 <footer>
-  <nav>
-    <a href="https://getquickhaulnj.com/">Home</a> ·
-    <a href="https://getquickhaulnj.com/register.html">Driver Launch Night — Nov 19</a> ·
-    <a href="https://getquickhaulnj.com/ambassador-office.html">Ambassador Office</a> ·
-    <a href="https://getquickhaulnj.com/review.html">Leave a review</a>
-  </nav>
-  GetQuickHaul · Community Cargo Delivery · (551) 233-8583 · GetQuickHaul<strong style="color:#d32f26">NJ</strong>.com
+  GetQuickHaul · Community Cargo Delivery · Office: <a href="tel:+15512338583">(551) 233-8583</a> · GetQuickHaul<strong style="color:#d32f26">NJ</strong>.com
 </footer>
+  <script>
+    /* ==================================================================
+       GetQuickHaul driver back office — login, trip board, messages.
+       Talks to the driver endpoints on the same Twilio Functions
+       service that runs /dispatch. The session token lives in
+       sessionStorage only (gone when the tab closes). Every step is
+       guarded: if the service is unreachable, the rest of the page is
+       unaffected and the driver just sees a friendly status line.
+       ================================================================== */
+    (function () {
+      var DBO_API_BASE = 'https://getquickhaul-8703.twil.io';
+      var TOKEN_KEY = 'gqh-driver-token';
 
-<style>
-  .gqh-band { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; display: grid; grid-template-columns: 1fr 1fr 1fr; background: #18395d; border-top: 3px solid #f5b921; box-shadow: 0 -2px 10px rgba(0,0,0,.25); }
-  .gqh-band a { color: #fff; text-decoration: none; font-weight: 800; font-size: 15px; text-align: center; padding: 14px 6px calc(14px + env(safe-area-inset-bottom)); }
-  .gqh-band a.mid { background: #d32f26; }
-  .gqh-band a:active { opacity: .85; }
-  body { padding-bottom: 58px; }
-</style>
-<div class="gqh-band">
-  <a href="https://getquickhaulnj.com/">GetQuickHaulNJ.com</a>
-  <a class="mid" href="https://getquickhaulnj.com/register.html">Register free</a>
-  <a href="tel:+15512338583">(551) 233-8583</a>
-</div>
+      function el(id) { return document.getElementById(id); }
+      var openBtn = el('dbo-open');
+      var panel = el('dbo-panel');
+      if (!openBtn || !panel) return;
+      var closeBtn = el('dbo-close');
+      var loginForm = el('dbo-login-form');
+      var loginStatus = el('dbo-login-status');
+      var usernameInput = el('dbo-username');
+      var passwordInput = el('dbo-password');
+      var app = el('dbo-app');
+      var nameOut = el('dbo-driver-name');
+      var areaOut = el('dbo-driver-area');
+      var logoutBtn = el('dbo-logout');
+      var chpwForm = el('dbo-chpw');
+      var chpwStatus = el('dbo-chpw-status');
+      var currentPwInput = el('dbo-current-pw');
+      var newPwInput = el('dbo-new-pw');
+      var tripsBox = el('dbo-trips');
+      var tripsEmpty = el('dbo-trips-empty');
+      var tripsStatus = el('dbo-trips-status');
+      var refreshBtn = el('dbo-refresh');
+      var threadBox = el('dbo-thread');
+      var msgForm = el('dbo-msg-form');
+      var msgInput = el('dbo-msg-input');
+      var msgStatus = el('dbo-msg-status');
+
+      var state = { token: '', driver: null, trips: [], messages: [] };
+
+      function t(key, vars) {
+        return (window.GQH && window.GQH.t) ? window.GQH.t(key, vars) : key;
+      }
+      function dt(key, fallback) {
+        var s = t(key);
+        return (s === key || !s) ? fallback : s;
+      }
+      function setStatus(node, text, isError) {
+        if (!node) return;
+        node.textContent = text || '';
+        node.classList.toggle('is-error', !!isError);
+      }
+      function money(v) {
+        var n = typeof v === 'number' ? v : parseFloat(v);
+        return isFinite(n) ? '$' + n.toFixed(2) : '';
+      }
+      function storeToken(token) {
+        state.token = token || '';
+        try {
+          if (token) window.sessionStorage.setItem(TOKEN_KEY, token);
+          else window.sessionStorage.removeItem(TOKEN_KEY);
+        } catch (e) { /* private mode — token lives in memory only */ }
+      }
+      function readStoredToken() {
+        try { return window.sessionStorage.getItem(TOKEN_KEY) || ''; } catch (e) { return ''; }
+      }
+
+      function api(path, opts) {
+        opts = opts || {};
+        var headers = { 'Content-Type': 'application/json' };
+        if (state.token) headers['Authorization'] = 'Bearer ' + state.token;
+        return window.fetch(DBO_API_BASE + path, {
+          method: opts.method || 'GET',
+          headers: headers,
+          body: opts.body ? JSON.stringify(opts.body) : undefined
+        }).then(function (res) {
+          return res.json().catch(function () { return {}; }).then(function (json) {
+            if (typeof json === 'string') {
+              try { json = JSON.parse(json); } catch (e) { json = {}; }
+            }
+            return { status: res.status, json: json || {} };
+          });
+        });
+      }
+
+      // ---------- views ----------
+      function showPanel(show) {
+        panel.hidden = !show;
+        openBtn.setAttribute('aria-expanded', show ? 'true' : 'false');
+        if (show) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      function enterApp(driver) {
+        state.driver = driver;
+        loginForm.hidden = true;
+        app.hidden = false;
+        nameOut.textContent = driver.name || driver.username || '';
+        areaOut.textContent = dt('dbo.areaLine', 'Your area: {area}').split('{area}').join(driver.area || '');
+        chpwForm.hidden = !driver.mustChangePw;
+        loadTrips();
+        loadMessages();
+      }
+      function exitApp() {
+        storeToken('');
+        state.driver = null;
+        state.trips = [];
+        state.messages = [];
+        app.hidden = true;
+        loginForm.hidden = false;
+        if (passwordInput) passwordInput.value = '';
+        if (currentPwInput) currentPwInput.value = '';
+        if (newPwInput) newPwInput.value = '';
+        setStatus(loginStatus, '');
+      }
+
+      // ---------- trips ----------
+      function pillFor(status) {
+        if (status === 'accepted') return { cls: 'dbo-pill-accepted', label: dt('dbo.tripAccepted', 'Accepted') };
+        if (status === 'done') return { cls: 'dbo-pill-done', label: dt('dbo.tripDone', 'Done') };
+        return { cls: 'dbo-pill-new', label: dt('dbo.tripNew', 'New') };
+      }
+      function metaRow(label, value, strong) {
+        var li = document.createElement('li');
+        li.textContent = label + ': ';
+        if (strong) {
+          var s = document.createElement('strong');
+          s.textContent = value;
+          li.appendChild(s);
+        } else {
+          li.appendChild(document.createTextNode(value));
+        }
+        return li;
+      }
+      function renderTrips() {
+        tripsBox.innerHTML = '';
+        tripsEmpty.hidden = state.trips.length > 0;
+        state.trips.forEach(function (trip) {
+          var card = document.createElement('article');
+          card.className = 'dbo-trip' + (trip.status === 'new' ? ' is-new' : '');
+          var head = document.createElement('div');
+          head.className = 'dbo-trip-head';
+          var ref = document.createElement('span');
+          ref.className = 'dbo-ref';
+          ref.textContent = trip.ref || '';
+          var pill = pillFor(trip.status);
+          var pillNode = document.createElement('span');
+          pillNode.className = 'dbo-pill ' + pill.cls;
+          pillNode.textContent = pill.label;
+          head.appendChild(ref);
+          head.appendChild(pillNode);
+          card.appendChild(head);
+          var route = document.createElement('p');
+          route.className = 'dbo-route';
+          route.textContent = (trip.pickup || '') + (trip.dropoff ? ' → ' + trip.dropoff : '');
+          card.appendChild(route);
+          var meta = document.createElement('ul');
+          meta.className = 'dbo-meta';
+          if (trip.dateTime) meta.appendChild(metaRow(dt('dbo.when', 'When'), trip.dateTime, false));
+          if (trip.miles !== null && trip.miles !== undefined && trip.miles !== '') {
+            meta.appendChild(metaRow(dt('dbo.miles', 'Miles'), String(trip.miles), false));
+          }
+          if (trip.total !== null && trip.total !== undefined) {
+            meta.appendChild(metaRow(dt('dbo.fare', 'Fare'), money(trip.total), false));
+          }
+          if (trip.driverPay !== null && trip.driverPay !== undefined) {
+            meta.appendChild(metaRow(dt('dbo.yourPay', 'Your pay (80%)'), money(trip.driverPay), true));
+          }
+          card.appendChild(meta);
+          if (trip.status === 'new' || trip.status === 'accepted') {
+            var actions = document.createElement('div');
+            actions.className = 'dbo-trip-actions';
+            if (trip.status === 'new') {
+              var acceptBtn = document.createElement('button');
+              acceptBtn.type = 'button';
+              acceptBtn.className = 'btn btn-primary';
+              acceptBtn.textContent = dt('dbo.accept', 'Accept trip');
+              acceptBtn.addEventListener('click', function () { tripAction(trip.ref, 'accept'); });
+              actions.appendChild(acceptBtn);
+            } else {
+              var doneBtn = document.createElement('button');
+              doneBtn.type = 'button';
+              doneBtn.className = 'btn btn-primary';
+              doneBtn.textContent = dt('dbo.complete', 'Mark done');
+              doneBtn.addEventListener('click', function () { tripAction(trip.ref, 'complete'); });
+              actions.appendChild(doneBtn);
+            }
+            card.appendChild(actions);
+          }
+          tripsBox.appendChild(card);
+        });
+      }
+      function loadTrips() {
+        if (!state.token) return;
+        api('/driver-trips').then(function (r) {
+          if (r.status === 200 && r.json.trips) {
+            state.trips = r.json.trips;
+            setStatus(tripsStatus, '');
+            renderTrips();
+          } else if (r.status === 401) {
+            exitApp();
+          }
+        }).catch(function () {
+          setStatus(tripsStatus, dt('dbo.netError', "Couldn't reach the driver service. Check your connection and try again."), true);
+        });
+      }
+      function tripAction(ref, action) {
+        setStatus(tripsStatus, dt('dbo.loading', 'Loading…'));
+        api('/driver-trip-action', { method: 'POST', body: { ref: ref, action: action } }).then(function (r) {
+          if (r.status === 200) {
+            setStatus(tripsStatus, '');
+            loadTrips();
+          } else {
+            setStatus(tripsStatus, dt('dbo.actionFailed', "That didn't go through — tap Refresh and try again."), true);
+          }
+        }).catch(function () {
+          setStatus(tripsStatus, dt('dbo.netError', "Couldn't reach the driver service. Check your connection and try again."), true);
+        });
+      }
+
+      // ---------- messages ----------
+      function renderMessages() {
+        threadBox.innerHTML = '';
+        state.messages.forEach(function (msg) {
+          var bubble = document.createElement('div');
+          bubble.className = 'dbo-msg ' + (msg.from === 'driver' ? 'dbo-msg-driver' : 'dbo-msg-dispatch');
+          var from = document.createElement('span');
+          from.className = 'dbo-msg-from';
+          from.textContent = msg.from === 'driver' ? dt('dbo.fromYou', 'You') : dt('dbo.fromDispatch', 'Dispatch');
+          var text = document.createElement('p');
+          text.textContent = msg.text || '';
+          bubble.appendChild(from);
+          bubble.appendChild(text);
+          threadBox.appendChild(bubble);
+        });
+        threadBox.scrollTop = threadBox.scrollHeight;
+      }
+      function loadMessages() {
+        if (!state.token) return;
+        api('/driver-messages').then(function (r) {
+          if (r.status === 200 && r.json.messages) {
+            state.messages = r.json.messages;
+            renderMessages();
+          }
+        }).catch(function () { /* thread simply stays as-is */ });
+      }
+
+      // ---------- events ----------
+      openBtn.addEventListener('click', function () { showPanel(panel.hidden); });
+      closeBtn.addEventListener('click', function () { showPanel(false); });
+      if (refreshBtn) refreshBtn.addEventListener('click', function () { loadTrips(); loadMessages(); });
+      if (logoutBtn) logoutBtn.addEventListener('click', exitApp);
+
+      loginForm.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var username = (usernameInput.value || '').trim();
+        var password = passwordInput.value || '';
+        if (!username || !password) {
+          setStatus(loginStatus, dt('dbo.loginFailed', 'Sign-in failed — check your username and password.'), true);
+          return;
+        }
+        setStatus(loginStatus, dt('dbo.loading', 'Loading…'));
+        // Login is unauthenticated: send without any stored token.
+        var saved = state.token;
+        state.token = '';
+        api('/driver-login', { method: 'POST', body: { username: username, password: password } }).then(function (r) {
+          if (r.status === 200 && r.json.token) {
+            storeToken(r.json.token);
+            setStatus(loginStatus, '');
+            enterApp(r.json.driver || {});
+          } else {
+            state.token = saved;
+            if (r.status === 403) {
+              setStatus(loginStatus, dt('dbo.inactive', 'This account is not active. Please contact GetQuickHaul.'), true);
+            } else {
+              setStatus(loginStatus, dt('dbo.loginFailed', 'Sign-in failed — check your username and password.'), true);
+            }
+          }
+        }).catch(function () {
+          state.token = saved;
+          setStatus(loginStatus, dt('dbo.netError', "Couldn't reach the driver service. Check your connection and try again."), true);
+        });
+      });
+
+      var forgotToggle = document.getElementById('dbo-forgot-toggle');
+      var forgotPanel = document.getElementById('dbo-forgot-panel');
+      var forgotSend = document.getElementById('dbo-forgot-send');
+      var forgotStatus = document.getElementById('dbo-forgot-status');
+      if (forgotToggle && forgotPanel) {
+        forgotToggle.addEventListener('click', function () {
+          forgotPanel.hidden = !forgotPanel.hidden;
+        });
+      }
+      if (forgotSend) {
+        forgotSend.addEventListener('click', function () {
+          var fu = (document.getElementById('dbo-forgot-user').value || '').trim();
+          var fp = (document.getElementById('dbo-forgot-phone').value || '').trim();
+          if (!fu || !fp) {
+            setStatus(forgotStatus, dt('dbo.forgotNeed', "Enter your username and phone number so the office can verify it's you."), true);
+            return;
+          }
+          forgotSend.disabled = true;
+          setStatus(forgotStatus, dt('dbo.loading', 'Loading…'));
+          fetch('https://formsubmit.co/ajax/getquickhaul@gmail.com', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ _subject: 'Driver password reset request (GetQuickHaul)', _template: 'table', request_type: 'driver-password-reset', username: fu, phone: fp })
+          }).then(function (r) {
+            if (!r.ok) throw new Error('send failed');
+            setStatus(forgotStatus, dt('dbo.forgotSent', 'Request sent — the office will text your new password to the phone on your file.'));
+            forgotPanel.hidden = true;
+          }).catch(function () {
+            forgotSend.disabled = false;
+            setStatus(forgotStatus, dt('dbo.forgotFail', "Couldn't send the request. Call the office at (551) 233-8583 and we'll reset it for you."), true);
+          });
+        });
+      }
+
+      chpwForm.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        setStatus(chpwStatus, dt('dbo.loading', 'Loading…'));
+        api('/driver-change-password', {
+          method: 'POST',
+          body: { currentPassword: currentPwInput.value || '', newPassword: newPwInput.value || '' }
+        }).then(function (r) {
+          if (r.status === 200) {
+            if (state.driver) state.driver.mustChangePw = false;
+            chpwForm.hidden = true;
+            currentPwInput.value = '';
+            newPwInput.value = '';
+            setStatus(chpwStatus, '');
+            setStatus(tripsStatus, dt('dbo.chpwDone', 'Password updated. Use it the next time you sign in.'));
+          } else {
+            setStatus(chpwStatus, dt('dbo.chpwFailed', "That didn't work — check your current password and try again."), true);
+          }
+        }).catch(function () {
+          setStatus(chpwStatus, dt('dbo.netError', "Couldn't reach the driver service. Check your connection and try again."), true);
+        });
+      });
+
+      msgForm.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var text = (msgInput.value || '').trim();
+        if (!text) return;
+        setStatus(msgStatus, dt('dbo.loading', 'Loading…'));
+        api('/driver-messages', { method: 'POST', body: { text: text } }).then(function (r) {
+          if (r.status === 200 && r.json.message) {
+            state.messages.push(r.json.message);
+            msgInput.value = '';
+            setStatus(msgStatus, '');
+            renderMessages();
+          } else {
+            setStatus(msgStatus, dt('dbo.msgFailed', "Message didn't send — try again."), true);
+          }
+        }).catch(function () {
+          setStatus(msgStatus, dt('dbo.netError', "Couldn't reach the driver service. Check your connection and try again."), true);
+        });
+      });
+
+      // Re-render dynamic content when the language changes.
+      if (window.GQH) {
+        var previousOnApply = window.GQH.onApply;
+        window.GQH.onApply = function () {
+          if (typeof previousOnApply === 'function') previousOnApply();
+          if (state.driver) {
+            areaOut.textContent = dt('dbo.areaLine', 'Your area: {area}').split('{area}').join(state.driver.area || '');
+            renderTrips();
+            renderMessages();
+          }
+        };
+      }
+
+      // Restore an existing session (e.g., the driver reloaded the page).
+      var existing = readStoredToken();
+      if (existing) {
+        state.token = existing;
+        api('/driver-me').then(function (r) {
+          if (r.status === 200 && r.json.driver) {
+            showPanel(true);
+            enterApp(r.json.driver);
+          } else {
+            storeToken('');
+          }
+        }).catch(function () { /* stay logged out; login form still works */ });
+      }
+    }());
+  </script>
 </body>
 </html>
