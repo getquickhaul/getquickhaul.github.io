@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Driver Documents Upload · GetQuickHaul | GetQuickHaulNJ.com</title>
+<meta name="description" content="Secure upload page for GetQuickHaul driver applicants: driver's license, vehicle registration and insurance go straight to our office for review. GetQuickHaulNJ.com · (551) 233-8583">
+<style>
+  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; color: #1c2733; background: #f7f9fb; }
+  header { background: #18395d; color: #fff; padding: 22px 20px; border-bottom: 5px solid #d32f26; }
+  .brand { max-width: 820px; margin: 0 auto; display: flex; align-items: center; gap: 14px; }
+  .brand img { width: 58px; height: 58px; border-radius: 13px; flex: 0 0 auto; }
+  .brand .name { font-size: 24px; font-weight: 800; line-height: 1.1; }
+  .brand .tag { color: #f5b921; font-weight: 700; letter-spacing: .06em; font-size: 13px; text-transform: uppercase; margin-top: 3px; }
+  .brand a { color: #fff; text-decoration: none; }
+  main { max-width: 820px; margin: 0 auto; padding: 26px 20px 48px; background: #fff; }
+  h1 { color: #18395d; font-size: 30px; line-height: 1.25; margin: 4px 0 12px; }
+  p, li { line-height: 1.55; font-size: 16px; }
+  a { color: #18395d; }
+  .lead { font-size: 17px; }
+  .pricebox { background: #f7f9fb; border-left: 4px solid #f5b921; padding: 14px 18px; margin: 22px 0; }
+  .pricebox p { margin: 4px 0; }
+  .quiet { color: #5a6a7a; font-size: 15px; margin-top: 18px; }
+  label { display: block; font-weight: 700; font-size: 15px; margin: 14px 0 5px; }
+  input[type="text"], input[type="email"], input[type="tel"] { width: 100%; box-sizing: border-box; padding: 12px; border: 1.5px solid #b9c4cf; border-radius: 8px; font-size: 16px; font-family: inherit; background: #fff; }
+  input[type="file"] { width: 100%; box-sizing: border-box; padding: 12px; border: 1.5px dashed #b9c4cf; border-radius: 8px; font-size: 16px; font-family: inherit; background: #f7f9fb; }
+  .submit { display: block; width: 100%; text-align: center; padding: 16px 18px; border: none; border-radius: 10px; font-weight: 800; font-size: 18px; background: #d32f26; color: #fff; cursor: pointer; font-family: inherit; margin-top: 20px; }
+  .thanks { background: #eef7ee; border: 1.5px solid #008748; border-radius: 10px; padding: 16px 18px; margin: 18px 0; }
+  .thanks p { margin: 4px 0; }
+  footer { text-align: center; padding: 22px 16px 30px; font-size: 14px; color: #5a6a7a; }
+  footer nav a { display: inline-block; font-size: 17px; font-weight: 800; color: #18395d; text-decoration: underline; text-underline-offset: 3px; padding: 10px 8px; }
+  footer nav { line-height: 2; }
+  footer a { color: #18395d; }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <a href="https://getquickhaulnj.com/"><img src="assets/app-icon-192.png" alt="GetQuickHaul logo"></a>
+    <div>
+      <div class="name"><a href="https://getquickhaulnj.com/">GetQuickHaul</a></div>
+      <div class="tag">Community Cargo Delivery</div>
+    </div>
+  </div>
+</header>
+<main>
+  <h1>Driver Documents Upload</h1>
+  <p class="lead">Applied to drive with GetQuickHaul? Upload your documents here — they go straight to our office for review. Clear photos are fine.</p>
+
+  <div class="pricebox">
+    <p><strong>What we review:</strong> your driver's license (front), your vehicle registration, and your insurance card or policy page showing your vehicle is covered.</p>
+    <p>Send what you have ready — you can use this same link again for anything still missing.</p>
+  </div>
+
+  <div class="thanks" id="thanks" hidden>
+    <p><strong>Got them — thank you!</strong></p>
+    <p>Your documents are with our office for review. We will email you the next step. If anything is still missing, just open this link again and send the rest.</p>
+  </div>
+
+  <form id="docs-form" action="https://formsubmit.co/getquickhaul@gmail.com" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="_subject" value="Driver documents upload — GetQuickHaul">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://getquickhaulnj.com/driver-documents.html?sent=1">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+    <label for="f-name">Full name *</label>
+    <input type="text" id="f-name" name="Name" required autocomplete="name">
+
+    <label for="f-email">Email *</label>
+    <input type="email" id="f-email" name="Email" required autocomplete="email" placeholder="The email you applied with">
+
+    <label for="f-ref">Application reference (if you have it)</label>
+    <input type="text" id="f-ref" name="Application ref" placeholder="e.g. GQH-XXXXXX">
+
+    <label for="f-license">Driver's license — front *</label>
+    <input type="file" id="f-license" name="License front" required accept="image/*,.pdf">
+
+    <label for="f-reg">Vehicle registration</label>
+    <input type="file" id="f-reg" name="Vehicle registration" accept="image/*,.pdf">
+
+    <label for="f-ins">Insurance card or policy page</label>
+    <input type="file" id="f-ins" name="Insurance" accept="image/*,.pdf">
+
+    <button class="submit" type="submit">Send documents to the office</button>
+    <p class="quiet">Your documents go only to the GetQuickHaul office for your driver review — never sold, never shared. Rather talk to a person? Call <a href="tel:+15512338583">(551) 233-8583</a>.</p>
+  </form>
+</main>
+<footer>
+  <nav>
+    <a href="https://getquickhaulnj.com/">Home</a> ·
+    <a href="https://getquickhaulnj.com/#drive">Drive with us</a> ·
+    <a href="https://getquickhaulnj.com/driver-training.html">Driver Training</a>
+  </nav>
+  GetQuickHaul · Community Cargo Delivery · (551) 233-8583 · GetQuickHaul<strong style="color:#d32f26">NJ</strong>.com
+</footer>
+<script>
+  (function () {
+    var q = new URLSearchParams(window.location.search);
+    if (q.get('sent') === '1') {
+      document.getElementById('thanks').hidden = false;
+      document.getElementById('docs-form').hidden = true;
+      window.scrollTo(0, 0);
+    }
+    var ref = q.get('ref');
+    if (ref) document.getElementById('f-ref').value = ref;
+  })();
+</script>
+</body>
+</html>
